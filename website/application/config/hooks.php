@@ -11,6 +11,24 @@
 */
 
 
+$hook['post_controller_constructor'] = array(
+                                'class'    => '',
+                                'function' => 'pre_config',
+                                'filename' => 'post_controller_constructor.php',
+                                'filepath' => 'hooks',
+                                'params'   => array()
+                                );
+
+$hook['display_override'] = 
+array
+(
+                                'class'    => '',
+                                'function' => 'display_hook',
+                                'filename' => 'display_override.php',
+                                'filepath' => 'hooks',
+                                'params'   => array()
+);
+
 
 /* End of file hooks.php */
 /* Location: ./application/config/hooks.php */
