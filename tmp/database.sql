@@ -1,327 +1,433 @@
+-- MySQL dump 10.13  Distrib 5.1.61, for debian-linux-gnu (x86_64)
+--
+-- Host: localhost    Database: helpsolution
+-- ------------------------------------------------------
+-- Server version	5.1.61-0ubuntu0.10.04.1
 
+/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
+/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
+/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
+/*!40101 SET NAMES utf8 */;
+/*!40103 SET @OLD_TIME_ZONE=@@TIME_ZONE */;
+/*!40103 SET TIME_ZONE='+00:00' */;
+/*!40014 SET @OLD_UNIQUE_CHECKS=@@UNIQUE_CHECKS, UNIQUE_CHECKS=0 */;
+/*!40014 SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0 */;
+/*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
+/*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
-
-
--- ---
--- Globals
--- ---
-
--- SET SQL_MODE="NO_AUTO_VALUE_ON_ZERO";
--- SET FOREIGN_KEY_CHECKS=0;
-
--- ---
--- Table 'users'
--- Анкеты  тех кто нуждается, анкеты тех кто может помочь
--- ---
-
-DROP TABLE IF EXISTS `users`;
-		
-CREATE TABLE `users` (
-  `id` INTEGER AUTO_INCREMENT DEFAULT NULL,
-  `email` VARCHAR(255) DEFAULT NULL,
-  `password` VARCHAR(32) DEFAULT NULL,
-  `language_id` INTEGER DEFAULT NULL,
-  `create_time` TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
-  `balance` DECIMAL(10,2) DEFAULT 0,
-  `reserve` DECIMAL(10,2) DEFAULT NULL,
-  `admin` INTEGER DEFAULT 0,
-  `session_id` INTEGER DEFAULT NULL,
-  PRIMARY KEY (`id`)
-) COMMENT='Анкеты  тех кто нуждается, анкеты тех кто может помочь';
-
--- ---
--- Table 'skills'
--- 
--- ---
-
-DROP TABLE IF EXISTS `skills`;
-		
-CREATE TABLE `skills` (
-  `id` INTEGER AUTO_INCREMENT DEFAULT NULL,
-  `name` VARCHAR(255) DEFAULT NULL,
-  PRIMARY KEY (`id`)
-);
-
--- ---
--- Table 'user_skills'
--- 
--- ---
-
-DROP TABLE IF EXISTS `user_skills`;
-		
-CREATE TABLE `user_skills` (
-  `id` INTEGER AUTO_INCREMENT DEFAULT NULL,
-  `id_skills` INTEGER DEFAULT NULL,
-  `id_profile` INTEGER DEFAULT NULL,
-  PRIMARY KEY (`id`)
-);
-
--- ---
--- Table 'project'
--- 
--- ---
-
-DROP TABLE IF EXISTS `project`;
-		
-CREATE TABLE `project` (
-  `id` INTEGER AUTO_INCREMENT DEFAULT NULL,
-  `title` MEDIUMTEXT DEFAULT NULL,
-  `timestamp_create` TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
-  `timestamp_start` TIMESTAMP NOT NULL DEFAULT '0000-00-00 00:00:00',
-  `timestamp_stop` TIMESTAMP NOT NULL DEFAULT '0000-00-00 00:00:00',
-  `recursive` INTEGER DEFAULT 0,
-  `description` MEDIUMTEXT DEFAULT NULL,
-  `report_description` MEDIUMTEXT DEFAULT NULL,
-  `city_id` INTEGER DEFAULT NULL,
-  `access_type` SET('open','premoderated') DEFAULT 'premoderated',
-  `num_participants` INTEGER DEFAULT 1,
-  `energy` DECIMAL(0) DEFAULT 0,
-  PRIMARY KEY (`id`)
-);
-
--- ---
--- Table 'cities'
--- 
--- ---
-
-DROP TABLE IF EXISTS `cities`;
-		
-CREATE TABLE `cities` (
-  `id` INTEGER AUTO_INCREMENT DEFAULT NULL,
-  `name` VARCHAR(255) DEFAULT NULL,
-  PRIMARY KEY (`id`)
-);
-
--- ---
--- Table 'energy_history'
--- 
--- ---
-
-DROP TABLE IF EXISTS `energy_history`;
-		
-CREATE TABLE `energy_history` (
-  `id` INTEGER AUTO_INCREMENT DEFAULT NULL,
-  `id_profile` INTEGER DEFAULT NULL,
-  `amount` INTEGER DEFAULT NULL,
-  `timestamp_create` TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
-  `id_project` INTEGER DEFAULT NULL,
-  `role_type` SET('owner','participant','sponsor') DEFAULT NULL,
-  PRIMARY KEY (`id`)
-);
-
--- ---
--- Table 'rating'
--- 
--- ---
-
-DROP TABLE IF EXISTS `rating`;
-		
-CREATE TABLE `rating` (
-  `id` INTEGER AUTO_INCREMENT DEFAULT NULL,
-  `profile_id` INTEGER DEFAULT NULL,
-  `project_id` INTEGER DEFAULT NULL,
-  `stars` INTEGER DEFAULT NULL,
-  `feedback` MEDIUMTEXT DEFAULT NULL,
-  PRIMARY KEY (`id`)
-);
-
--- ---
--- Table 'photos'
--- 
--- ---
-
-DROP TABLE IF EXISTS `photos`;
-		
-CREATE TABLE `photos` (
-  `id` INTEGER AUTO_INCREMENT DEFAULT NULL,
-  `project_id` INTEGER DEFAULT NULL,
-  PRIMARY KEY (`id`)
-);
-
--- ---
--- Table 'ci_sessions'
--- 
--- ---
+--
+-- Table structure for table `ci_sessions`
+--
 
 DROP TABLE IF EXISTS `ci_sessions`;
-		
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `ci_sessions` (
-  `session_id` INTEGER AUTO_INCREMENT DEFAULT NULL,
-  `ip_address` VARCHAR(16) DEFAULT NULL,
-  `user_agent` VARCHAR(255) DEFAULT NULL,
-  `last_activity` INTEGER DEFAULT 0,
-  `user_data` MEDIUMTEXT DEFAULT NULL,
+  `session_id` int(11) NOT NULL AUTO_INCREMENT,
+  `ip_address` varchar(16) DEFAULT NULL,
+  `user_agent` varchar(255) DEFAULT NULL,
+  `last_activity` int(11) DEFAULT '0',
+  `user_data` mediumtext,
   PRIMARY KEY (`session_id`)
-);
+) ENGINE=MyISAM AUTO_INCREMENT=2147483648 DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
 
--- ---
--- Table 'languages'
--- 
--- ---
+--
+-- Dumping data for table `ci_sessions`
+--
 
-DROP TABLE IF EXISTS `languages`;
-		
-CREATE TABLE `languages` (
-  `id` INTEGER AUTO_INCREMENT DEFAULT NULL,
-  `code2` CHAR(2) DEFAULT NULL,
-  `code3` CHAR(3) DEFAULT NULL,
-  `default` INTEGER DEFAULT 0,
-  `active` INTEGER DEFAULT 1,
+LOCK TABLES `ci_sessions` WRITE;
+/*!40000 ALTER TABLE `ci_sessions` DISABLE KEYS */;
+INSERT INTO `ci_sessions` VALUES (2,'192.168.200.120','Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:11.0) Gecko/20100101 Firefox/11.0',1333357841,'a:2:{s:9:\"user_data\";s:0:\"\";s:11:\"language_id\";i:3;}'),(9816,'192.168.200.102','Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/535.19 (KHTML, like Gecko) Chrome/18.0.1025.142 Safari/535.19',1333352719,''),(9817,'192.168.200.102','Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/535.19 (KHTML, like Gecko) Chrome/18.0.1025.142 Safari/535.19',1333352719,''),(868,'192.168.200.102','Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/535.19 (KHTML, like Gecko) Chrome/18.0.1025.142 Safari/535.19',1333352719,'a:2:{s:9:\"user_data\";s:0:\"\";s:11:\"language_id\";i:1;}'),(9818,'192.168.200.102','Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/535.19 (KHTML, like Gecko) Chrome/18.0.1025.142 Safari/535.19',1333352719,''),(9819,'192.168.200.102','Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/535.19 (KHTML, like Gecko) Chrome/18.0.1025.142 Safari/535.19',1333352719,''),(8,'192.168.200.102','Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/535.19 (KHTML, like Gecko) Chrome/18.0.1025.142 Safari/535.19',1333352719,'a:2:{s:9:\"user_data\";s:0:\"\";s:11:\"language_id\";i:1;}'),(9820,'192.168.200.102','Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/535.19 (KHTML, like Gecko) Chrome/18.0.1025.142 Safari/535.19',1333352719,''),(9821,'192.168.200.102','Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/535.19 (KHTML, like Gecko) Chrome/18.0.1025.142 Safari/535.19',1333352719,''),(768710,'192.168.200.102','Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/535.19 (KHTML, like Gecko) Chrome/18.0.1025.142 Safari/535.19',1333353633,'a:2:{s:9:\"user_data\";s:0:\"\";s:11:\"language_id\";i:1;}'),(2147483647,'192.168.200.120','Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:11.0) Gecko/20100101 Firefox/11.0',1333357841,'a:2:{s:9:\"user_data\";s:0:\"\";s:11:\"language_id\";i:3;}');
+/*!40000 ALTER TABLE `ci_sessions` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `cities`
+--
+
+DROP TABLE IF EXISTS `cities`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `cities` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `name` varchar(255) DEFAULT NULL,
   PRIMARY KEY (`id`)
-);
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
 
--- ---
--- Table 'language_values'
--- 
--- ---
+--
+-- Dumping data for table `cities`
+--
 
-DROP TABLE IF EXISTS `language_values`;
-		
-CREATE TABLE `language_values` (
-  `id` INTEGER AUTO_INCREMENT DEFAULT NULL,
-  `language_id` INTEGER DEFAULT NULL,
-  `language_key_id` INTEGER DEFAULT NULL,
-  `key_value` VARCHAR(512) DEFAULT NULL,
-  PRIMARY KEY (`id`)
-);
+LOCK TABLES `cities` WRITE;
+/*!40000 ALTER TABLE `cities` DISABLE KEYS */;
+/*!40000 ALTER TABLE `cities` ENABLE KEYS */;
+UNLOCK TABLES;
 
--- ---
--- Table 'language_keys'
--- 
--- ---
-
-DROP TABLE IF EXISTS `language_keys`;
-		
-CREATE TABLE `language_keys` (
-  `id` INTEGER AUTO_INCREMENT DEFAULT NULL,
-  `key_name` VARCHAR(255) DEFAULT NULL,
-  PRIMARY KEY (`id`)
-);
-
--- ---
--- Table 'user_details'
--- 
--- ---
-
-DROP TABLE IF EXISTS `user_details`;
-		
-CREATE TABLE `user_details` (
-  `id` INTEGER AUTO_INCREMENT DEFAULT NULL,
-  `user_id` INTEGER DEFAULT NULL,
-  `birthdate` TIMESTAMP NOT NULL DEFAULT '0000-00-00 00:00:00',
-  `sex` SET('m','f') NOT NULL DEFAULT 'm',
-  `marital_status` SET('married','single', 'divorced', 'widow') DEFAULT NULL,
-  `education` VARCHAR(512) DEFAULT NULL,
-  `help_city_id` INTEGER DEFAULT NULL,
-  `about_me` MEDIUMTEXT DEFAULT NULL,
-  `country_id` INTEGER DEFAULT NULL,
-KEY (`id`),
-KEY (`user_id`)
-);
-
--- ---
--- Table 'countries'
--- 
--- ---
+--
+-- Table structure for table `countries`
+--
 
 DROP TABLE IF EXISTS `countries`;
-		
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `countries` (
-  `id` INTEGER AUTO_INCREMENT DEFAULT NULL,
-  `code2` CHAR(2) DEFAULT NULL,
-  `code3` CHAR(3) DEFAULT NULL,
-  `name` VARCHAR(20) DEFAULT NULL,
-  `phone_code` INTEGER DEFAULT NULL,
-  `status` INTEGER DEFAULT 1,
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `code2` char(2) DEFAULT NULL,
+  `code3` char(3) DEFAULT NULL,
+  `name` varchar(20) DEFAULT NULL,
+  `phone_code` int(11) DEFAULT NULL,
+  `status` int(11) DEFAULT '1',
   PRIMARY KEY (`id`)
-);
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
 
--- ---
--- Table 'user_password_recovery'
--- 
--- ---
+--
+-- Dumping data for table `countries`
+--
+
+LOCK TABLES `countries` WRITE;
+/*!40000 ALTER TABLE `countries` DISABLE KEYS */;
+/*!40000 ALTER TABLE `countries` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `energy_history`
+--
+
+DROP TABLE IF EXISTS `energy_history`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `energy_history` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `id_profile` int(11) DEFAULT NULL,
+  `amount` int(11) DEFAULT NULL,
+  `timestamp_create` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `id_project` int(11) DEFAULT NULL,
+  `role_type` set('owner','participant','sponsor') DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  KEY `id_profile` (`id_profile`),
+  KEY `id_project` (`id_project`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `energy_history`
+--
+
+LOCK TABLES `energy_history` WRITE;
+/*!40000 ALTER TABLE `energy_history` DISABLE KEYS */;
+/*!40000 ALTER TABLE `energy_history` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `language_keys`
+--
+
+DROP TABLE IF EXISTS `language_keys`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `language_keys` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `key_name` varchar(255) DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=MyISAM AUTO_INCREMENT=8 DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `language_keys`
+--
+
+LOCK TABLES `language_keys` WRITE;
+/*!40000 ALTER TABLE `language_keys` DISABLE KEYS */;
+INSERT INTO `language_keys` VALUES (1,'homepage title'),(2,'__1'),(3,'__0'),(4,'__eng'),(5,'__rus'),(6,'__ces'),(7,'__nld');
+/*!40000 ALTER TABLE `language_keys` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `language_values`
+--
+
+DROP TABLE IF EXISTS `language_values`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `language_values` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `language_id` int(11) DEFAULT NULL,
+  `language_key_id` int(11) DEFAULT NULL,
+  `key_value` varchar(512) DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  KEY `language_id` (`language_id`),
+  KEY `language_key_id` (`language_key_id`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `language_values`
+--
+
+LOCK TABLES `language_values` WRITE;
+/*!40000 ALTER TABLE `language_values` DISABLE KEYS */;
+/*!40000 ALTER TABLE `language_values` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `languages`
+--
+
+DROP TABLE IF EXISTS `languages`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `languages` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `code3` char(3) NOT NULL,
+  `default` int(11) NOT NULL DEFAULT '0',
+  `active` int(11) NOT NULL DEFAULT '1',
+  `code2` char(2) NOT NULL DEFAULT '',
+  PRIMARY KEY (`id`)
+) ENGINE=MyISAM AUTO_INCREMENT=25 DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `languages`
+--
+
+LOCK TABLES `languages` WRITE;
+/*!40000 ALTER TABLE `languages` DISABLE KEYS */;
+INSERT INTO `languages` VALUES (1,'eng',1,1,'en'),(2,'deu',0,0,'de'),(3,'rus',0,1,'ru'),(4,'bul',0,0,'bg'),(5,'ces',0,1,'cs'),(6,'dan',0,0,'da'),(7,'nld',0,1,'nl'),(8,'est',0,0,'et'),(9,'fin',0,0,'fi'),(10,'fra',0,0,'fr'),(11,'gre',0,0,'el'),(12,'hun',0,0,'hu'),(13,'gle',0,0,'ga'),(14,'ita',0,0,'it'),(15,'lav',0,0,'lv'),(16,'lit',0,0,'lt'),(17,'mlt',0,0,'mt'),(18,'pol',0,0,'pl'),(19,'por',0,0,'pt'),(20,'ron',0,0,'ro'),(21,'slk',0,0,'sk'),(22,'slv',0,0,'sl'),(23,'spa',0,0,'es'),(24,'swe',0,0,'sv');
+/*!40000 ALTER TABLE `languages` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `photos`
+--
+
+DROP TABLE IF EXISTS `photos`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `photos` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `project_id` int(11) DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  KEY `project_id` (`project_id`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `photos`
+--
+
+LOCK TABLES `photos` WRITE;
+/*!40000 ALTER TABLE `photos` DISABLE KEYS */;
+/*!40000 ALTER TABLE `photos` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `project`
+--
+
+DROP TABLE IF EXISTS `project`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `project` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `title` mediumtext,
+  `timestamp_create` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `timestamp_start` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00',
+  `timestamp_stop` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00',
+  `recursive` int(11) DEFAULT '0',
+  `description` mediumtext,
+  `report_description` mediumtext,
+  `city_id` int(11) DEFAULT NULL,
+  `access_type` set('open','premoderated') DEFAULT 'premoderated',
+  `num_participants` int(11) DEFAULT '1',
+  `energy` decimal(10,0) DEFAULT '0',
+  PRIMARY KEY (`id`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `project`
+--
+
+LOCK TABLES `project` WRITE;
+/*!40000 ALTER TABLE `project` DISABLE KEYS */;
+/*!40000 ALTER TABLE `project` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `rating`
+--
+
+DROP TABLE IF EXISTS `rating`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `rating` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `profile_id` int(11) DEFAULT NULL,
+  `project_id` int(11) DEFAULT NULL,
+  `stars` int(11) DEFAULT NULL,
+  `feedback` mediumtext,
+  PRIMARY KEY (`id`),
+  KEY `profile_id` (`profile_id`),
+  KEY `project_id` (`project_id`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `rating`
+--
+
+LOCK TABLES `rating` WRITE;
+/*!40000 ALTER TABLE `rating` DISABLE KEYS */;
+/*!40000 ALTER TABLE `rating` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `skills`
+--
+
+DROP TABLE IF EXISTS `skills`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `skills` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `name` varchar(255) DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `skills`
+--
+
+LOCK TABLES `skills` WRITE;
+/*!40000 ALTER TABLE `skills` DISABLE KEYS */;
+/*!40000 ALTER TABLE `skills` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `user_details`
+--
+
+DROP TABLE IF EXISTS `user_details`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `user_details` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `user_id` int(11) DEFAULT NULL,
+  `birthdate` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00',
+  `sex` set('m','f') NOT NULL DEFAULT 'm',
+  `marital_status` set('married','single','divorced','widow') DEFAULT NULL,
+  `education` varchar(512) DEFAULT NULL,
+  `help_city_id` int(11) DEFAULT NULL,
+  `about_me` mediumtext,
+  `country_id` int(11) DEFAULT NULL,
+  KEY `id` (`id`),
+  KEY `user_id` (`user_id`),
+  KEY `help_city_id` (`help_city_id`),
+  KEY `country_id` (`country_id`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `user_details`
+--
+
+LOCK TABLES `user_details` WRITE;
+/*!40000 ALTER TABLE `user_details` DISABLE KEYS */;
+/*!40000 ALTER TABLE `user_details` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `user_password_recovery`
+--
 
 DROP TABLE IF EXISTS `user_password_recovery`;
-		
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `user_password_recovery` (
-  `user_id` INTEGER AUTO_INCREMENT DEFAULT NULL,
-  `hash` CHAR(32) DEFAULT NULL,
-  `timeout` TIMESTAMP NOT NULL DEFAULT '0000-00-00 00:00:00',
+  `user_id` int(11) NOT NULL AUTO_INCREMENT,
+  `hash` char(32) DEFAULT NULL,
+  `timeout` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00',
   PRIMARY KEY (`user_id`)
-);
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
 
--- ---
--- Foreign Keys 
--- ---
+--
+-- Dumping data for table `user_password_recovery`
+--
 
-ALTER TABLE `users` ADD FOREIGN KEY (session_id) REFERENCES `ci_sessions` (`session_id`);
-ALTER TABLE `user_skills` ADD FOREIGN KEY (id_skills) REFERENCES `skills` (`id`);
-ALTER TABLE `user_skills` ADD FOREIGN KEY (id_profile) REFERENCES `users` (`id`);
-ALTER TABLE `energy_history` ADD FOREIGN KEY (id_profile) REFERENCES `users` (`id`);
-ALTER TABLE `energy_history` ADD FOREIGN KEY (id_project) REFERENCES `project` (`id`);
-ALTER TABLE `rating` ADD FOREIGN KEY (profile_id) REFERENCES `users` (`id`);
-ALTER TABLE `rating` ADD FOREIGN KEY (project_id) REFERENCES `project` (`id`);
-ALTER TABLE `photos` ADD FOREIGN KEY (project_id) REFERENCES `project` (`id`);
-ALTER TABLE `language_values` ADD FOREIGN KEY (language_id) REFERENCES `languages` (`id`);
-ALTER TABLE `language_values` ADD FOREIGN KEY (language_key_id) REFERENCES `language_keys` (`id`);
-ALTER TABLE `user_details` ADD FOREIGN KEY (user_id) REFERENCES `users` (`id`);
-ALTER TABLE `user_details` ADD FOREIGN KEY (help_city_id) REFERENCES `cities` (`id`);
-ALTER TABLE `user_details` ADD FOREIGN KEY (country_id) REFERENCES `countries` (`id`);
-ALTER TABLE `user_password_recovery` ADD FOREIGN KEY (user_id) REFERENCES `users` (`id`);
+LOCK TABLES `user_password_recovery` WRITE;
+/*!40000 ALTER TABLE `user_password_recovery` DISABLE KEYS */;
+/*!40000 ALTER TABLE `user_password_recovery` ENABLE KEYS */;
+UNLOCK TABLES;
 
--- ---
--- Table Properties
--- ---
+--
+-- Table structure for table `user_skills`
+--
 
--- ALTER TABLE `users` ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
--- ALTER TABLE `skills` ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
--- ALTER TABLE `user_skills` ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
--- ALTER TABLE `project` ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
--- ALTER TABLE `cities` ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
--- ALTER TABLE `energy_history` ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
--- ALTER TABLE `rating` ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
--- ALTER TABLE `photos` ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
--- ALTER TABLE `ci_sessions` ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
--- ALTER TABLE `languages` ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
--- ALTER TABLE `language_values` ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
--- ALTER TABLE `language_keys` ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
--- ALTER TABLE `user_details` ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
--- ALTER TABLE `countries` ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
--- ALTER TABLE `user_password_recovery` ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
+DROP TABLE IF EXISTS `user_skills`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `user_skills` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `id_skills` int(11) DEFAULT NULL,
+  `id_profile` int(11) DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  KEY `id_skills` (`id_skills`),
+  KEY `id_profile` (`id_profile`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
 
--- ---
--- Test Data
--- ---
+--
+-- Dumping data for table `user_skills`
+--
 
--- INSERT INTO `users` (`id`,`email`,`password`,`language_id`,`create_time`,`balance`,`reserve`,`admin`,`session_id`) VALUES
--- ('','','','','','','','','');
--- INSERT INTO `skills` (`id`,`name`) VALUES
--- ('','');
--- INSERT INTO `user_skills` (`id`,`id_skills`,`id_profile`) VALUES
--- ('','','');
--- INSERT INTO `project` (`id`,`title`,`timestamp_create`,`timestamp_start`,`timestamp_stop`,`recursive`,`description`,`report_description`,`city_id`,`access_type`,`num_participants`,`energy`) VALUES
--- ('','','','','','','','','','','','');
--- INSERT INTO `cities` (`id`,`name`) VALUES
--- ('','');
--- INSERT INTO `energy_history` (`id`,`id_profile`,`amount`,`timestamp_create`,`id_project`,`role_type`) VALUES
--- ('','','','','','');
--- INSERT INTO `rating` (`id`,`profile_id`,`project_id`,`stars`,`feedback`) VALUES
--- ('','','','','');
--- INSERT INTO `photos` (`id`,`project_id`) VALUES
--- ('','');
--- INSERT INTO `ci_sessions` (`session_id`,`ip_address`,`user_agent`,`last_activity`,`user_data`) VALUES
--- ('','','','','');
--- INSERT INTO `languages` (`id`,`code2`,`code3`,`default`,`active`) VALUES
--- ('','','','','');
--- INSERT INTO `language_values` (`id`,`language_id`,`language_key_id`,`key_value`) VALUES
--- ('','','','');
--- INSERT INTO `language_keys` (`id`,`key_name`) VALUES
--- ('','');
--- INSERT INTO `user_details` (`id`,`user_id`,`birthdate`,`sex`,`marital_status`,`education`,`help_city_id`,`about_me`,`country_id`) VALUES
--- ('','','','','','','','','');
--- INSERT INTO `countries` (`id`,`code2`,`code3`,`name`,`phone_code`,`status`) VALUES
--- ('','','','','','');
--- INSERT INTO `user_password_recovery` (`user_id`,`hash`,`timeout`) VALUES
--- ('','','');
+LOCK TABLES `user_skills` WRITE;
+/*!40000 ALTER TABLE `user_skills` DISABLE KEYS */;
+/*!40000 ALTER TABLE `user_skills` ENABLE KEYS */;
+UNLOCK TABLES;
 
+--
+-- Table structure for table `users`
+--
 
+DROP TABLE IF EXISTS `users`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `users` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `email` varchar(255) DEFAULT NULL,
+  `password` varchar(32) DEFAULT NULL,
+  `language_id` int(11) DEFAULT NULL,
+  `create_time` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `balance` decimal(10,2) DEFAULT '0.00',
+  `reserve` decimal(10,2) DEFAULT NULL,
+  `admin` int(11) DEFAULT '0',
+  `session_id` int(11) DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  KEY `session_id` (`session_id`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8 COMMENT='ÐÐ½ÐºÐµÑ‚Ñ‹  Ñ‚ÐµÑ… ÐºÑ‚Ð¾ Ð½ÑƒÐ¶Ð´Ð°ÐµÑ‚ÑÑ, Ð°Ð½ÐºÐµÑ‚Ñ‹';
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `users`
+--
+
+LOCK TABLES `users` WRITE;
+/*!40000 ALTER TABLE `users` DISABLE KEYS */;
+/*!40000 ALTER TABLE `users` ENABLE KEYS */;
+UNLOCK TABLES;
+/*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
+
+/*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
+/*!40014 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS */;
+/*!40014 SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS */;
+/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
+/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
+/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
+/*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
+
+-- Dump completed on 2012-04-02 12:49:21
