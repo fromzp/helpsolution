@@ -1,7 +1,7 @@
 /*<script type="text/javascript">*/
        
-var validator; 
- /*
+        var validator; 
+    /*
 function doRegistration()        
 {
     var button = $("#doRegistrationbutton");
@@ -69,68 +69,51 @@ function doRegistration()
     
 }*/
 
-function alert_email(){
-    var email=$("#email").val();
-    alert(email);
-}
-
-$(document).ready(function(){
-    $("#doRegistrationButton").click(function(){
-        if( $("#registrationForm").valid() )
-        {
-            alert("haha");
-        }
-    });
+    $(document).ready(function(){
+        $("#doRegistrationButton").click(function(){
+            if( $("#registrationForm").valid() )
+            {
+                alert("haha");
+            }
+        });
     
-   validator = $("#registrationForm").validate({
-    rules:
-        {
-            name: 
+        validator = $("#registrationForm").validate({
+            errorPlacement: function(error, element)
+            {
+                error.appendTo( $(element).parent('div').next("div") );
+            },
+            rules:
                 {
+                name: 
+                    {
+                    required: true
+                },
+                lastname: {
                     required: true
                 },
             
-            email:
-                {
+                email:
+                    {
                     required: true,
                     email: true
-                   // remote: '<?php echo site_url('ajax/validation/email_check')?>'
+                    // remote: '<?php echo site_url('ajax/validation/email_check') ?>'
                 },
-            password:
-                {
+                password:
+                    {
                     required: true,
                     minlength: 6
                 },
-            password2:
-                {
+                password2:
+                    {
                     required: true,
                     equalTo: "#password"
                 }
-            /*recaptcha_response_field:
+                /*recaptcha_response_field:
                 {
                     required:true
                 }*/
-        }
-   });
-});
+            }
+        });
+    });
 
-/*
-$(document).ready(function(){
-
-$("#registrationForm").validate({
-    rules: {
-        email: {
-            required: true,
-            minlength: 5
-        },
-        name: {
-            required: true,
-            minlength: 5
-        }
-    }
-});
-    
-
-});
-*/
-/*</script>*/
+    /*</script>*/

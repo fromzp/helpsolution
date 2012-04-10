@@ -78,7 +78,7 @@
         padding-bottom: 3px;
         border: 0;
     }
-    
+
     .header .header_menu .panel .registration_button a {
         overflow:hidden;
         color:white;
@@ -102,14 +102,14 @@
         padding-bottom: 3px;
     }
 
-     .header .header_menu .panel .login_button a {
+    .header .header_menu .panel .login_button a {
         overflow:hidden;
         color:white;
         text-align:center;
         text-decoration: none;
         padding-left: 25px;
         padding-top:9px;
-}
+    }
 
     .header .header_menu .panel .flag{
         background: url(<?php echo _img('flag-lang.png'); ?>);
@@ -128,7 +128,8 @@
         float: left;
 
     }
-
+    
+   
     .header .header_menu .menus {
         width: 475px;
         height: 97px;
@@ -138,7 +139,7 @@
     .header .header_menu .menus .li {
         margin-top: 45px;
         float: left;
-        width: 185px;
+        width: 184px;
         text-align: center;
         font-size: 9pt;
 
@@ -162,6 +163,7 @@
         margin-top: 21px;
 
     }
+
 
     .header .header_menu .menus .li:hover .black_line {
         background: #88b7d2;
@@ -733,60 +735,61 @@
     }
 
     /*center END*/
+   
+.footer{
+    background: url(<?php echo _img('footer_back.png'); ?>) repeat-x scroll 0 0 transparent;
+    color: #F0F0F0;
+    float: left;
+    font-family: Arial;
+    height: 80px;
+    width: 1020px;
+}
+.footer_text{
+    padding: 10px;
+}
+.contacts{
+    float: right;
+    font-size: 9pt;
+    margin-right: 25px;
+    margin-top: -10px;
+    text-align: right;
+}
+.copyright{
+    font-size: 9pt;
+    margin-top: 30px;
+    text-align: center;
+}
+.line_footer{
+    /*background: url("../img/header_line.png") repeat scroll 0 0 transparent;*/
+    height: 2px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 5px;
+    width: 850px;  
+}
+.footer_text .menu {
+    color: #F0F0F0;
+    float: right;
+    height: 105px;
+    margin-top: -20px;
+    width: 500px;
+}
+.text_menu a {
+    color: #F0F0F0;
+    cursor: pointer;
+    float: left;
+    font-size: 9pt;
+    font-weight: bold;
+    margin-left: 10px;
+    margin-right: 10px;
+    padding-top: 3px;
+    text-decoration: none;
+}
+.text_menu span {
+    color: #F0F0F0;
+    float: left;
+}
 
-    .footer{
-        background: url(<?php echo _img('footer_back.png'); ?>) repeat-x scroll 0 0 transparent;
-        color: #F0F0F0;
-        float: left;
-        font-family: Arial;
-        height: 80px;
-        width: 1020px;
-    }
-    .footer_text{
-        padding: 10px;
-    }
-    .contacts{
-        float: right;
-        font-size: 9pt;
-        margin-right: 25px;
-        margin-top: -10px;
-        text-align: right;
-    }
-    .copyright{
-        font-size: 9pt;
-        margin-top: 30px;
-        text-align: center;
-    }
-    .line_footer{
-        /*background: url("../img/header_line.png") repeat scroll 0 0 transparent;*/
-        height: 2px;
-        margin-left: auto;
-        margin-right: auto;
-        margin-top: 5px;
-        width: 850px;  
-    }
-    .footer_text .menu {
-        color: #F0F0F0;
-        float: right;
-        height: 105px;
-        margin-top: -20px;
-        width: 500px;
-    }
-    .text_menu a {
-        color: #F0F0F0;
-        cursor: pointer;
-        float: left;
-        font-size: 9pt;
-        font-weight: bold;
-        margin-left: 10px;
-        margin-right: 10px;
-        padding-top: 3px;
-        text-decoration: none;
-    }
-    .text_menu span {
-        color: #F0F0F0;
-        float: left;
-    }
 
     /*reklamka*/
     .yashare-auto-init {
@@ -832,15 +835,15 @@
         margin: 25px 40px 5px 40px; 
     }
 
-    #rgistration_border{
+#rgistration_border {
     border: 2px solid #ADADAD;
     float: left;
     font-size: 14px;
-    height: 330px;
+    height: 340px;
     padding: 25px 0;
     width: 935px;
-}  
-    
+} 
+
 
     .user_photo {
         float: left;
@@ -864,7 +867,7 @@
     }
 
     .user_photo .photo .upload_photo {
-        background: url("http://helpsolution/img/photo_load.png") no-repeat scroll 0 0 transparent;
+        background: url(<?php echo _img('photo_load.png'); ?>) no-repeat scroll 0 0 transparent;
         width: 207px;
         height:275px;
         float:left;
@@ -890,11 +893,11 @@
         height: 29px;
     }
 
-    .kolonki .inputs_radio {
-        float: left;
-        height: 25px;
-        width: 225px;
-    }  
+ .kolonki .inputs_radio {
+    float: left;
+    height: 25px;
+    width: 231px;
+} 
 
 
     .kolonki .captcha {
@@ -903,7 +906,7 @@
         width: 225px;   
     }
     .kolonki .captcha .image {
-        background: url("http://helpsolution/img/captcha_img.png") no-repeat scroll 0 0 transparent;
+        background: url(<?php echo _img('captcha_img.png'); ?>) no-repeat scroll 0 0 transparent;
         cursor: pointer;
         float: left;
         height: 69px;
@@ -915,7 +918,7 @@
         width: 225px;
     } 
     .kolonki .inputs .necessarily{
-        padding-top: 25px;
+        padding-top: 15px;
         float: left;
     }
 
@@ -924,8 +927,7 @@
     .kolonki .msg {
         float: left;
         padding-left: 6px;
-        padding-top: 7px;
-    }
+        }
 
     .rubber {
         clear:both;
@@ -948,7 +950,7 @@
 
 
     #doRegistrationButton {
-        background: url("http://helpsolution/img/login_green_button.png") no-repeat scroll 0 0 transparent;
+        background: url(<?php echo _img('login_green_button.png'); ?>) no-repeat scroll 0 0 transparent;
         border-style: none;
         color: white;
         float: right;
@@ -959,10 +961,12 @@
         text-align: center;
         width: 235px;
         margin-top: 10px;
+        padding-top: 5px;
     }
     
-.back_button {
-        background: url("http://helpsolution/img/login_green_button.png") no-repeat scroll 0 0 transparent;
+
+    .back_button {
+        background: url(<?php echo _img('login_green_button.png'); ?>) no-repeat scroll 0 0 transparent;
         border-style: none;
         color: white;
         float: right;
@@ -975,16 +979,28 @@
         margin-top: 10px;
         margin-right: 40px;
     }
+    
+        /*registration validate*/
+
+    label {
+        width: 10em;
+        float: left; 
+    }
+    label.error { 
+        float: none;
+        color: red;
+        vertical-align: top;
+    }
+    p {
+        clear: both; 
+ 
+    em { 
+        font-weight: bold; padding-right: 1em; vertical-align: top;
+    }
+
+    /*End registration validate*/
+    
     /*registration_page*/
-/**/
 
-* { font-family: Verdana; font-size: 96%; }
-label { width: 10em; float: left; }
-label.error { float: none; color: red; padding-left: .5em; vertical-align: top; }
-p { clear: both; }
-.submit { margin-left: 12em; }
-em { font-weight: bold; padding-right: 1em; vertical-align: top; }
-
-/**/
 
     /*</style>*/

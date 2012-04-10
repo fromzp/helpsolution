@@ -56,8 +56,9 @@ echo get_header($title, $objects);
          <input type="text" name="email" id="email" /> 
         </div>
         <div class="msg">
-            <span for="email"  ><{Електрона адреса}></span><em>*</em> 
+            <span for="email"  ><{Електрона адреса}></span><em>*</em> </br>
         </div>
+         <br /><br />
         <div class="rubber"></div>
         <div class="inputs">     
             <input type="password" name="password" id="password" class="required" /> 
@@ -65,14 +66,17 @@ echo get_header($title, $objects);
         <div class="msg">
             <span for="password" ><{Пароль}></span><em>*</em> </br>
         </div>
+       <br /><br />
         <div class="rubber"></div>
 
         <div class="inputs">    
             <input type="password" name="password2" id="password2" class="required" />
         </div>
+        
         <div class="msg">
-            <span for="password2" ><{Повторіть пароль}></span><em>*</em>
+            <span for="password2" ><{Повторіть пароль}></span><em>*</em> </br>
         </div> 
+         <br /><br />
         <div class="rubber"></div>
         <div class="inputs">
             <input type="text" name="name" id="name" class="required" minlength="2" /><br />
@@ -80,13 +84,15 @@ echo get_header($title, $objects);
         <div class="msg">
             <span for="name" ><{Ім’я}></span><em>*</em><br />
         </div>
+         <br /><br />
         <div class="rubber"></div>
         <div class="inputs">
-            <input type="text" name="lastname" id="name" /><br />
+            <input type="text" name="lastname" id="lastname" class="required" minlength="2"/><br />
         </div>
         <div class="msg">
             <span for="lastname" ><{Прізвище}></span><em>*</em><br />
-        </div>              
+        </div>       
+         <br /><br />
         <div class="rubber"></div>
         <div class="inputs_radio">
             <input type="radio" name="sex" value="Чоловік" checked ="" /><span>Чоловік</span> 
@@ -95,6 +101,7 @@ echo get_header($title, $objects);
         <div class="msg">
             <span for="sex" ><{Стать}></span><em>*</em><br />
         </div>
+         <br /><br />
         <div class="rubber"></div>
         <div class="inputs">
             <input type="text" name="captch_nomber" id="name" /><br />
@@ -119,7 +126,7 @@ echo get_header($title, $objects);
         </div>
  <div class="rubber"></div>
  
-          <div id="doRegistrationButton"> Зареэструватися </div>
+          <div id="doRegistrationButton"> <span for="registration">Зареэструватися</span> </div>
          <input  class="back_button" type="submit" id="submit" value="Назад" />
 </form>
 <?php echo get_footer(); ?>

@@ -20,9 +20,7 @@ if( isset($objects) )
 ?>
 </head>
 <body>
-    
-    
-    
+      
 <!-- header -->
 <div class="header"> 
     <div class="header_logo">      	
@@ -52,8 +50,9 @@ if( isset($objects) )
         </div>
     </div>
 
-    <div class="header_line"></div>
+    <div class="header_line">  </div>
 </div>
+</
 <!-- header end-->
 
     
