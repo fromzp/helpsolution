@@ -119,7 +119,7 @@ echo get_header($title, $objects);
         </div>
  <div class="rubber"></div>
  
-          <div id="doRegistrationButton">  </div>
+          <div id="doRegistrationButton"> Зареэструватися </div>
          <input  class="back_button" type="submit" id="submit" value="Назад" />
 </form>
 <?php echo get_footer(); ?>
