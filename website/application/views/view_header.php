@@ -26,7 +26,7 @@ if( isset($objects) )
 <!-- header -->
 <div class="header"> 
     <div class="header_logo">      	
-        <div><a href="#" class="logo_img"></a></div>
+        <div><a href="<?php echo base_url(); ?>" class="logo_img"></a></div>
     </div>
 
     <div class="header_menu">
@@ -40,8 +40,8 @@ if( isset($objects) )
                 } 
                 ?>
             </div>
-            <div><input class="registration_button" type="submit" value="Реестрацiя" /></div>
-            <div><input class="login_button" type="submit" value="Увiйти" /></div>
+            <div class="registration_button"><a href="registration">Реєстрація</a></div>
+            <div class="login_button"><a href="registration">Увiйти</a></div>
         </div>
         <div class="menus">
 
