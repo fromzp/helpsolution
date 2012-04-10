@@ -22,7 +22,7 @@ Class Registration extends CI_Controller
         _view('registration',$data);
         
     }
-    /*
+    
     
     function plans()
     {
@@ -50,7 +50,7 @@ Class Registration extends CI_Controller
         $data = array('plans'=>$plans);
         _view('frontend/registration/plans',$data);
     }
-    /*
+    
     function details()
     {
         if( !auth_check() )
@@ -113,7 +113,7 @@ Class Registration extends CI_Controller
             'plan'=>$plan_details
         );
         _view('frontend/registration/billing',$data);
-    }*/
+    }
 }
 
 
