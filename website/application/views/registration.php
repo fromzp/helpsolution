@@ -13,8 +13,8 @@ $objects = array();
 
 $objects[] = array('css', 'style_home.css.php', array('id' => 'style_home.css'));
 
-
 $objects[] = array('js_source','js/jquery.validate.min.js', array('id'=>'validate.js'));
+$objects[] = array('js_source', 'js/jquery_validate_locale/messages_' . LANGUAGE_CODE2 . '.js', array('id'=>'validate_local.js'));
 
 $objects[] = array('js','registration.js.php', array('id'=>'registration.js'));
 

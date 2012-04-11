@@ -113,7 +113,7 @@ function hook_language_user_agent($language_id=''){
         }
         
         $accept_lang = $matches[1];
-        
+
         // get language_id by code2
         $_language_id = $CI->language_model->language_get_id_by_code2($accept_lang,true);
         if( (int)$_language_id > 0 ){
