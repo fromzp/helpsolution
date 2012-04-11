@@ -980,6 +980,8 @@
         margin-right: 40px;
     }
     
+    
+
         /*registration validate*/
 
     label {
@@ -991,8 +993,10 @@
         color: red;
         vertical-align: top;
     }
+    
     p {
         clear: both; 
+    }
  
     em { 
         font-weight: bold; padding-right: 1em; vertical-align: top;
@@ -1002,5 +1006,519 @@
     
     /*registration_page*/
 
+    /*second page*/
 
+
+.content .title_text {
+    color: #88B7D2;
+    float: left;
+    font-family: Arial;
+    font-size: 16pt;
+    font-weight: bold;
+    height: auto;
+    letter-spacing: 2pt;
+    margin-left: 3%;
+    margin-top: 30px;
+    width: 68%;
+}
+
+.content .first_line {
+    float: left;
+    font-variant: inherit;
+    height: 115px;
+    margin-left: 3%;
+    margin-top: 30px;
+    width: 100%;
+}
+
+.content .first_line .article {
+    color: black;
+    font-family: Arial;
+    font-size: 12pt;
+    height: 100%;
+    width: 50%;
+    float: left;
+}
+.content .first_line .image {
+    background: url(<?php echo _img('can_help.png'); ?>) repeat scroll 0 0 transparent;
+    float: left;
+    height: 45px;
+    margin-left: 165px;
+    margin-top: 35px;
+    width: 175px;
+}
+
+.content .first_line .image .buttom {
+    background: url(<?php echo _img('can_help.png'); ?>);
+    height: 45px;
+    width: 175px;
+    border-style: none;
+    color: white;
+
+}
+
+.content .second_line {
+    float: left;
+    font-variant: inherit;
+    height: auto;
+    margin-left: 3%;
+    width: 100%;
+}
+.content .second_line .image {
+    background: url(<?php echo _img('team.png'); ?>) repeat scroll 0 0 transparent;
+    float: left;
+    height: 200px;
+    margin-left: 40px;
+    width: 397px;
+}
+
+.content .second_line .image .team_info {
+    background: none repeat scroll 0 0 #EAF5E5;
+    height: 90px;
+    margin: 13% 0 0 8%;
+    position: absolute;
+    width: 210px;
+}
+
+.content .second_line .image .team_info .info{
+    height: 100%;
+    width: 100%;
+    float: left;
+    padding-top: 5px;
+}
+
+.content .second_line .image .team_info .prapor {
+    background: url(<?php echo _img('prapor.png'); ?>) no-repeat scroll 0 0 transparent;
+    width: 35px;
+    height: 100%;
+    margin: 0 0 0 5px;
+    float: left;
+}
+.content .second_line .image .team_info .info .title {
+    float: left;
+    width: 160px;
+    height: auto;
+    color: black;
+    font-size: 9pt;
+    font-weight: bolder;
+    font-family: arial;
+
+}
+.content .second_line .image .team_info .info .ocinka{
+    float: left;
+    width: 125px;
+    height: 20px;
+    padding: 2px;
+    text-align: right;
+    font-weight: bolder;
+}
+
+.content .second_line .image .team_info .info .ocinka .star{
+    background: url(<?php echo _img('star.png'); ?>) no-repeat scroll 0 0 transparent;
+    float: left;
+    height: 15px;
+    width: 15px;
+    padding: 2px;
+}
+
+.content .second_line .image .team_info .info .text { 
+    color: #2F79CC;
+    float: left;
+    font-family: arial;
+    font-size: 9pt;
+    height: auto;
+    letter-spacing: 0;
+    width: 125px;
+}
+
+.content .second_line .image .title_text {
+    color: black;
+    width: 100
+}
+.content .second_line .article {
+    color: black;
+    float: left;
+    font-family: Arial;
+    font-size: 12pt;
+    height: 100%;
+    width: 50%;
+    margin-top: 35px;
+}   
+
+.article_title {
+    color: #65881f;
+    padding-bottom: 20px;
+}
+
+.content .third_line {
+    float: left;
+    font-variant: inherit;
+    height: 235px;
+    margin-left: 3%;
+    margin-top: 30px;
+    width: 100%;
+}
+
+.content .third_line .article {
+    color: black;
+    font-family: Arial;
+    font-size: 12pt;
+    height: 100%;
+    width: 50%;
+    float: left;
+    margin-top: 30px;
+}
+
+.content .third_line .image {
+    background: url(<?php echo _img('think.png'); ?>) repeat scroll 0 0 transparent;
+    float: left;
+    height: 242px;
+    margin: -60px 1px 1px 88px;
+    width: 219px;
+}
+
+.content .fourth_line {
+    float: left;
+    font-variant: inherit;
+    height: auto;
+    margin-left: 3%;
+    width: 100%;
+}
+
+.content .fourth_line .article {
+    color: black;
+    float: left;
+    font-family: Arial;
+    font-size: 12pt;
+    height: 100%;
+    margin-left: 110px;
+    width: 50%;
+}
+
+.content .fourth_line .image {
+    background:  url(<?php echo _img('krug.png'); ?>) repeat scroll 0 0 transparent;
+    float: left;
+    height: 170px;
+    margin: 0 0 0 145px;
+    width: 188px;
+}
+
+
+.content .fifth_line {
+    float: left;
+    font-variant: inherit;
+    height: auto;
+    margin-left: 3%;
+    margin-top: 30px;
+    width: 100%;
+}
+
+.content .fifth_line .image {
+    background: url(<?php echo _img('hands.png'); ?>) repeat scroll 0 0 transparent;
+    float: left;
+    height: 199px;
+    margin-left:81px;
+    width: 350px;
+}
+.content .fifth_line .article {
+    color: black;
+    float: left;
+    font-family: Arial;
+    font-size: 12pt;
+    height: 100%;
+    width: 50%;
+}
+.content .thists {
+    height: auto;
+    width: 100%;
+    float: left;
+    margin-top: 30px;
+}
+
+.content .thists .button {
+    background: url(<?php echo _img('can_help.png'); ?>) repeat scroll 0 0 transparent;
+    border-style: none;
+    color: white;
+    height: 45px;
+    margin-left: 45%;
+    width: 175px;
+}
+
+/*need_help*/
+.content .first_line {
+    height: auto;
+}
+.content .image_button {
+    float: left;
+    width: 175px;
+    height: auto;
+    margin-top: 30px;
+}
+
+
+.content .image_button .button {
+    background: url(<?php echo _img('can_help.png'); ?>) no-repeat scroll 0 0 transparent;
+    height: 45px;
+    width: 175px;
+    border-style: none;
+    color: white;
+    text-align: center;
+    padding-top: 5px;
+
+}
+
+
+
+.content .image_button .button a {
+    color: white;
+    font-size: 14px;
+    text-align: center;
+    text-decoration: none;
+}
+
+.content .with_hand {
+    float: left;
+    height: 540px;
+    width: 100%;
+    padding-top: 20px;
+}
+.content .with_hand .pluses {
+    float: left;
+    height: 100%;
+    padding-top: 10px;
+    width: 60%;
+}
+
+
+.content .with_hand .pluses .article {
+    width: 100%;
+    height: auto;
+    font-family: Arial;
+    font-size: 11pt;
+    color: black;
+}
+.content .with_hand .pluses .article  .numbers {
+    width: 60px;
+    height: auto;
+    float: left;
+    color: white;
+    font-size: 36pt;
+    text-align: center;
+    font-family: Arial;
+}
+.content .with_hand .pluses .article  .numbers .image_numbers {
+    background: url(<?php echo _img('green_circle.png'); ?>) no-repeat scroll 0 0 transparent;
+    float: left;
+    height: 60px;
+    width: 60px;
+
+}
+
+.content .with_hand .pluses .article .text {
+    float: left;
+    width: 537px;
+    height: auto;
+    padding-left: 15px;
+
+}
+
+.content .with_hand .pluses .article .title_text {
+    float: left;
+    width: 100%;
+    height: auto;
+    font-family: Arial;
+    font-size: 11pt;
+    color: #9cce37;
+    margin-top: 0px;
+    margin: 0px;
+    font-weight: bold;
+}
+
+.content .with_hand .pluses .article .main_text {
+    float: left;
+    height: auto;
+    margin-top: 15px;
+    width: 100%;
+}
+
+.content .with_hand .hand {
+    float: right;
+    width: 40%;
+    height: 100%;
+}
+
+.content .with_hand .hand .green_line {
+    background: #9cce37;
+    float: left;
+    height: 100%;
+    width: 10px;
+}
+
+.content .with_hand .hand .big_hand {
+    background: url(<?php echo _img('big_hand.png'); ?>) no-repeat scroll 0 0 transparent;
+    float: left;
+    height: 293px;
+    width: 330px;
+    margin-top: 40%;
+}
+
+.content .bottom_button {
+    float: left;
+    height: auto;
+    margin-left: 36%;
+    margin-top: 10px;
+    width: auto;
+}
+
+
+.content .bottom_button .button {
+    background: url(<?php echo _img('can_help.png'); ?>);
+    height: 45px;
+    width: 175px;
+    border-style: none;
+    color: white;
+    text-align: center;
+
+}
+
+.content .bottom_button .button a {
+    color: white;
+    font-size: 14px;
+    text-align: center;
+    text-decoration: none;
+}
+
+    
+/*about_us*/
+.content .first_line .about_article {
+    width: 700px;
+}
+
+.content .first_line .about_article .title_text {
+    width: auto;
+    float: none;
+    margin-top: 0px;
+    padding-bottom: 40px;
+}
+.content .first_line  .about_image {
+    margin-left: 65px;
+    margin-top: 120px;
+
+}
+
+.content .first_line  .about_image_button {
+    margin-left: 65px;
+    margin-top: 60px;
+
+}
+
+.content .the_line {
+    width: 100%;
+    height: auto;
+    float: left;
+    margin-top: 30px;
+}
+
+.content .the_line .for_image {
+    float: left;
+    height: 205px;
+    width: 335px;
+}
+
+.content .the_line .for_image .image {
+    background: url(<?php echo _img('para.png'); ?>) repeat scroll 0 0 transparent;
+    float: left;
+    height: 202px;
+    width: 223px;
+    margin-left: 20%;
+}
+
+.content .the_line .for_text {
+    color: black;
+    float: right;
+    font-family: Arial;
+    font-size: 12pt;
+    height: 100%;
+    margin-right: 30px;
+    width: 622px;
+}
+
+.content .the_line .for_text .title_text {
+    font-family: Arial;
+    font-size: 12pt;
+    color: #65881F;
+    padding-bottom: 20px;
+    font-variant: inherit;
+    float: left;
+    width: 100%;
+    margin-top: 0;
+}
+
+.content .the_line_right .for_image {
+    float: right;
+    height: 253px
+
+}
+
+.content .the_line_right .for_image .image {
+    background: url(<?php echo _img('wight.png'); ?>) no-repeat scroll 0 0 transparent;
+    height: 253px;
+    width: 211px;
+}
+.content .the_line_right .for_image_left {
+    float: left;
+}
+
+.content .the_line_right .for_image_left .image {
+    background: url(<?php echo _img('two_hands.png'); ?>) no-repeat scroll 0 0 transparent;
+    width: 299px;
+    height: 196px;
+    margin-left: 0px;
+    margin-top: 60px;
+    margin-left: 30px;
+
+}
+.content .two_botton {
+    float: left;
+    width: 100%;
+    height: 45px;
+    margin-top: 10px;
+    padding-left: 22%;
+}
+
+.content .two_botton .button_want {
+    background: url(<?php echo _img('can_help.png'); ?>) no-repeat scroll 0 0 transparent;
+    border-style: none;
+    color: white;
+    height: 45px;
+    width: 175px;
+    float: left;
+    
+}
+
+.content .two_botton .button_need {
+    background: url(<?php echo _img('can_help.png'); ?>) no-repeat scroll 0 0 transparent;
+    border-style: none;
+    color: white;
+    height: 45px;
+    text-align: center;
+    width: 175px;
+    float: left;
+    margin-left: 175px;
+    padding-top: 5px;
+}
+
+.content .two_botton .button_need a {
+    color: white;
+    font-size: 14px;
+    text-align: center;
+    text-decoration: none;
+}
+
+.clear_link {
+    text-decoration: none;
+    color: black;
+}
+
+/*END about_as*/
     /*</style>*/

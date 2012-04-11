@@ -43,9 +43,9 @@ if( isset($objects) )
         </div>
         <div class="menus">
 
-            <div class="li">Я МОЖУ ДОПОМОГТИ <div class="black_line"></div></div>
-            <div class="li ">ПОТРIБНА ДОПОМОГА <div class="black_line"></div></div>
-            <div class="li small"><span>ПРО НАС</span><div class="black_line"></div></div>
+            <div class="li"><a class="clear_link" href="can_help">Я МОЖУ ДОПОМОГТИ</a> <div class="black_line"></div></div>
+            <div class="li "><a class="clear_link" href="need_help">ПОТРIБНА ДОПОМОГА</a> <div class="black_line"></div></div>
+            <div class="li small"><span><a class="clear_link" href="about_us">ПРО НАС</a></span><div class="black_line"></div></div>
 
         </div>
     </div>
