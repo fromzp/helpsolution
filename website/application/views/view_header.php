@@ -39,7 +39,7 @@ if( isset($objects) )
                 ?>
             </div>
             <div class="registration_button"><a href="registration">Реєстрація</a></div>
-            <div class="login_button"><a href="registration">Увiйти</a></div>
+            <div class="login_button"><a href="<?php echo base_url(); ?>">Увiйти</a></div>
         </div>
         <div class="menus">
 
