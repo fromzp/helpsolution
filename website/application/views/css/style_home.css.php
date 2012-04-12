@@ -867,7 +867,7 @@
     }
 
     .user_photo .photo .upload_photo {
-        background: url(<?php echo _img('photo_load.png'); ?>) no-repeat scroll 0 0 transparent;
+         /*background: url(<?php echo _img('photo_load.png'); ?>) no-repeat scroll 0 0 transparent; */
         width: 207px;
         height:275px;
         float:left;
@@ -1521,4 +1521,7 @@
 }
 
 /*END about_as*/
+
+
+
     /*</style>*/
