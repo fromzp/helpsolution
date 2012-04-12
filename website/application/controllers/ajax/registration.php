@@ -312,7 +312,17 @@ Class Registration extends CI_Controller {
     }
 
     public function user_photo_preview() {
-                
+
+
+        $del_files = glob("/home/prihodko-ia/www/helpsolution/website/upload/*");
+        fb($del_files);
+        foreach ($del_files as $filename) {
+            unlink($filename);
+        }
+
+        $upload_dir = base_url() . 'upload/';
+        $this->load->library('image_lib');
+
         $config['upload_path'] = './upload/';
         $config['allowed_types'] = 'gif|jpg|png';
         $config['max_size'] = '1000';
@@ -327,20 +337,35 @@ Class Registration extends CI_Controller {
         if (!$this->upload->do_upload()) {
             $error = array('error' => $this->upload->display_errors());
 
-            //$this->load->view('upload_form', $error);
             print_r($error);
         } else {
-            
-            
-            
-            
-            
-            
-            $data = array('upload_data' => $this->upload->data());
-            $image = array();
-            $image = $this->upload->data();
-            fb($image);
-            echo '<img height="275" width=207 alt="альтернативный текст" src="' . base_url() . 'upload/' . $image['file_name'] . '">';
+
+            $image = array('upload_data' => $this->upload->data());
+            $image_big = array();
+            $image_big = $this->upload->data();
+            fb($image_big);
+
+            $upload_info = $this->upload->data();
+
+            chmod($upload_info['full_path'], 0666);
+
+            $img = $upload_dir . $image['upload_data']['file_name'];
+
+            $thumbnail = "/home/prihodko-ia/www/helpsolution/website/upload/thumb_" . $image['upload_data']['file_name'];
+
+            $config['image_library'] = 'gd2';
+            $config['source_image'] = $image['upload_data']['full_path'];
+            $config['new_image'] = $thumbnail;
+            //   $config['create_thumb'] = TRUE;
+            $config['maintain_ratio'] = TRUE;
+            $config['width'] = 207;
+            $config['height'] = 275;
+
+            $this->image_lib->initialize($config);
+            $this->image_lib->resize();
+
+
+            echo '<img id="user_image" height="275" width=207 alt="' . $image_big['file_name'] . '" src="' . $upload_dir . "thumb_" . $image_big['file_name'] . '">';
         }
     }
 
