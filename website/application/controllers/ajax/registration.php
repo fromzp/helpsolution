@@ -312,32 +312,37 @@ Class Registration extends CI_Controller {
     }
 
     public function user_photo_preview() {
+                
+        $config['upload_path'] = './upload/';
+        $config['allowed_types'] = 'gif|jpg|png';
+        $config['max_size'] = '1000';
+        $config['max_width'] = '1024';
+        $config['max_height'] = '768';
+        $config['overwrite'] = TRUE;
+        $config['file_name'] = time();
+        $config['overwrite'] = TRUE;
 
- $config['upload_path'] = './upload/';
-		$config['allowed_types'] = 'gif|jpg|png';
-		$config['max_size']	= '1000';
-		$config['max_width']  = '1024';
-		$config['max_height']  = '768';
+        $this->load->library('upload', $config);
 
-		$this->load->library('upload', $config);
+        if (!$this->upload->do_upload()) {
+            $error = array('error' => $this->upload->display_errors());
 
-		if ( ! $this->upload->do_upload())
-		{
-			$error = array('error' => $this->upload->display_errors());
-
-			//$this->load->view('upload_form', $error);
-                        print_r($error);
-		}
-		else
-		{
-			$data = array('upload_data' => $this->upload->data());
-
-			//$this->load->view('upload_success', $data);
-                        echo "Загрузилось";
-		}
-	}
-    
-
+            //$this->load->view('upload_form', $error);
+            print_r($error);
+        } else {
+            
+            
+            
+            
+            
+            
+            $data = array('upload_data' => $this->upload->data());
+            $image = array();
+            $image = $this->upload->data();
+            fb($image);
+            echo '<img height="275" width=207 alt="альтернативный текст" src="' . base_url() . 'upload/' . $image['file_name'] . '">';
+        }
+    }
 
 }
 

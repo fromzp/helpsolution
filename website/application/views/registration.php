@@ -30,11 +30,9 @@ $this->load->helper(array('form', 'url'));
     <h3 style="text-align: center;"><{РЕЄСТРАЦIЯ}></h3>
 </div>
 
-
 <form id="imageform" method="post" enctype="multipart/form-data" action='ajax/registration/user_photo_preview'>
 <input type="file" name="userfile" size="20" id="photoimg" style="display: none;" />
 </form>
-
 
 <span class="ajax_messages_area"></span>
 
