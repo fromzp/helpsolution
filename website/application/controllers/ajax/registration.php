@@ -314,6 +314,7 @@ Class Registration extends CI_Controller {
     public function user_photo_preview() {
 
 
+
         $del_files = glob("/home/prihodko-ia/www/helpsolution/website/upload/*");
         fb($del_files);
         foreach ($del_files as $filename) {
@@ -321,8 +322,8 @@ Class Registration extends CI_Controller {
         }
 
         $upload_dir = base_url() . 'upload/';
-        $this->load->library('image_lib');
 
+        $this->load->library('image_lib');
         $config['upload_path'] = './upload/';
         $config['allowed_types'] = 'gif|jpg|png';
         $config['max_size'] = '1000';
@@ -331,6 +332,7 @@ Class Registration extends CI_Controller {
         $config['overwrite'] = TRUE;
         $config['file_name'] = time();
         $config['overwrite'] = TRUE;
+
 
         $this->load->library('upload', $config);
 
@@ -349,8 +351,6 @@ Class Registration extends CI_Controller {
 
             chmod($upload_info['full_path'], 0666);
 
-            $img = $upload_dir . $image['upload_data']['file_name'];
-
             $thumbnail = "/home/prihodko-ia/www/helpsolution/website/upload/thumb_" . $image['upload_data']['file_name'];
 
             $config['image_library'] = 'gd2';
@@ -363,7 +363,6 @@ Class Registration extends CI_Controller {
 
             $this->image_lib->initialize($config);
             $this->image_lib->resize();
-
 
             echo '<img id="user_image" height="275" width=207 alt="' . $image_big['file_name'] . '" src="' . $upload_dir . "thumb_" . $image_big['file_name'] . '">';
         }

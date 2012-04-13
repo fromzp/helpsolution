@@ -839,10 +839,10 @@
     border: 2px solid #ADADAD;
     float: left;
     font-size: 14px;
-    height: 340px;
+    height: 365px;
     padding: 25px 0;
     width: 935px;
-} 
+}
 
 
     .user_photo {

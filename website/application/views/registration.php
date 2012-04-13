@@ -7,7 +7,7 @@ $title = replace_lang('<{Registration Page Title}>');
 #$objects[] = array('js_source', 'js/jquery_validate_locale/messages_' . LANGUAGE_CODE2 . '.js');
 #$objects[] = array('js', 'registration.js');
 #$objects[] = array('js', 'registration/step1.js');
-#$objects[] = array('js', 'recaptcha_theme_clean.js');
+
 
 $objects = array();
 
@@ -16,12 +16,11 @@ $objects[] = array('css', 'style_home.css.php', array('id' => 'style_home.css'))
 $objects[] = array('js_source', 'js/jquery.validate.min.js', array('id' => 'validate.js'));
 $objects[] = array('js_source', 'js/jquery.form.js', array('id' => 'jqueryforms.js'));
 $objects[] = array('js_source', 'js/jquery_validate_locale/messages_' . LANGUAGE_CODE2 . '.js', array('id' => 'validate_local.js'));
+$objects[] = array('js_source', 'js/recaptcha_theme_clean.js', array('id' => 'recaptcha_theme_clean.js'));
 
 $objects[] = array('js', 'registration.js.php', array('id' => 'registration.js'));
 
-
 echo get_header($title, $objects);
-$this->load->helper(array('form', 'url'));
 ?>
 
 
@@ -31,7 +30,7 @@ $this->load->helper(array('form', 'url'));
 </div>
 
 <form id="imageform" method="post" enctype="multipart/form-data" action='ajax/registration/user_photo_preview'>
-<input type="file" name="userfile" size="20" id="photoimg" style="display: none;" />
+    <input type="file" name="userfile" size="20" id="photoimg" style="display: none;" />
 </form>
 
 <span class="ajax_messages_area"></span>
@@ -42,9 +41,9 @@ $this->load->helper(array('form', 'url'));
 
         <div class="user_photo">
             <div class="photo"> 
-                
+
                 <div id="upload_photo" class="upload_photo">
-                                <div id="preview">     <img src="<?php echo _img('photo_load.png'); ?>" alt="альтернативный текст"> </div>
+                    <div id="preview">     <img src="<?php echo _img('photo_load.png'); ?>" alt="альтернативный текст"> </div>
                 </div>
                 <div class="choose">
                     <div class="inputs_radio">
@@ -109,20 +108,27 @@ $this->load->helper(array('form', 'url'));
             </div>
             <br /><br />
             <div class="rubber"></div>
-            <div class="inputs">
-                <input type="text" name="captch_nomber" id="name" /><br />
-            </div>
-            <div class="msg">
-                <span for="captch_nomber" ><{Введіть код на малюнку нижче}></span><em>*</em><br />
-            </div> 
+            <span for="recaptcha_response_field" style="margin-left: 11px;" ><{Enter words from image below}></span><em>*</em>
+            <?php echo recaptcha_get_html(); ?>
+            <!--
+             <div class="inputs">
+                 <input type="text" name="captch_nomber" id="name" /><br />
+             </div>
+             <div class="msg">
+                 <span for="captch_nomber" ><{Введіть код на малюнку нижче}></span><em>*</em><br />
+                        </div> 
+          
             <div class="rubber"></div>
             <div class="captcha"> <div class="image"> </div></div>
+            -->
             <div class="inputs">
                 <span class="necessarily">
                     Поля, що мають зірочку є обов’язковими для заповнення.</br>
                     Будь ласка ознайомтеся з правилами користування біржою.
                 </span>
             </div>
+
+
         </div>
 
     </div>

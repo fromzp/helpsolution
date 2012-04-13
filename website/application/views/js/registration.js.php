@@ -107,11 +107,11 @@ function doRegistration()
                     {
                     required: true,
                     equalTo: "#password"
-                }
-                /*recaptcha_response_field:
+                },
+                recaptcha_response_field:
                 {
                     required:true
-                }*/
+                }
             }
         });
         
@@ -130,16 +130,7 @@ function doRegistration()
                 target: '#preview'
             }).submit();
         });
-/*        
-        $(".header").click(function(){
-            $("#preview").html(''); // чистим preview
-            $("#preview").html('<img src="http://helpsolution/img/loader.gif" alt="Uploading...."/>'); //показываем картинку загрузки
-            $("#imageform").ajaxForm( //отправляем аякс запрос (тут уже действует jquery.fomrm
-            {
-                target: '#preview'
-            }).submit();
-        });
-  */      
+    
     });
 
     /*</script>*/
