@@ -36,6 +36,7 @@ class Language_model extends CI_Model {
         if( (int)$CI->session->userdata('language_id') == (int)$language_id )
         {
             $this->language_id = (int)$language_id;
+           
             return true;
         }
         return false;

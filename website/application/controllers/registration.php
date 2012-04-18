@@ -9,11 +9,11 @@ Class Registration extends CI_Controller
         if( auth_check() )
         {
             // active user don't allow to the registration process
-            if( (int)user_details('user_status_id')!=0 )
+           /* if( (int)user_details('user_status_id')!=0 )
             {
                 redirect('my/profile');
                 exit(0);
-            }
+            }*/
         }
           
         $this->load->helper('recaptchalib');
@@ -23,7 +23,7 @@ Class Registration extends CI_Controller
         
     }
     
-    
+    /*
     function plans()
     {
         if( !auth_check() )
@@ -50,7 +50,10 @@ Class Registration extends CI_Controller
         $data = array('plans'=>$plans);
         _view('frontend/registration/plans',$data);
     }
+    */
     
+    
+    /*
     function details()
     {
         if( !auth_check() )
@@ -77,7 +80,8 @@ Class Registration extends CI_Controller
         );
         _view('frontend/registration/details',$data);
     }
-    
+    */
+    /*
     function billing()
     {
         if( !auth_check() )
@@ -114,7 +118,7 @@ Class Registration extends CI_Controller
         );
         _view('frontend/registration/billing',$data);
     }
-    
+    */
 }
 
 

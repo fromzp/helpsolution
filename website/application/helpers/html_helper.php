@@ -59,6 +59,7 @@ function get_header($title='', $objects_array=array() ,$options = array())
             }
         }
     }
+    //fb($data,'data');
     $return = _view('view_header',$data,TRUE);
     return $return;
 }
@@ -170,7 +171,7 @@ function get_img_src($image)
     
     log_message('ERROR','image not abailable: '. $fs_path);
     $url = base_url() .'img/no-image.gif';
-    fb(__FILE__.'@'.__LINE__ .": ", $image);
+    //fb(__FILE__.'@'.__LINE__ .": ", $image);
     return $url;
 }
 

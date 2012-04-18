@@ -15,13 +15,13 @@ class Auth_model extends User_Model {
         
         if ( $this->auth_check() )
         {
-            $details = $this->user_details_get($this->user_id);
+           /* $details = $this->user_details_get($this->user_id);
             
             if( isset($details['admin']) and $details['admin'] == 1 )
             {
                 $this->admin = true;
             }
-            
+            */
             // update session_id
             $this->user_session_refresh($this->user_id);
             
@@ -83,7 +83,7 @@ class Auth_model extends User_Model {
         $this->db->join('user_details d','u.id=d.user_id','left');
         $this->db->where('u.email',$email);
         $this->db->where('u.password',$password);
-        $this->db->where('`d`.`user_status_id` != ',9, false);
+        //$this->db->where('`d`.`user_status_id` != ',9, false);
         $this->db->limit(1);
         
         $query = $this->db->get();

@@ -100,7 +100,7 @@ function parent_id($user_id='')
    return $user_id;
        
 }
-
+/*
 function user_details($item='', $user_id=0, $cache=true)
 {
     if( $user_id <=0 )
@@ -124,7 +124,7 @@ function user_details($item='', $user_id=0, $cache=true)
     
     return false;
 }
-
+*/
 function get_auth_block()
 {
     $data = array();

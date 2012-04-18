@@ -10,7 +10,7 @@ class User_model extends CI_Model {
         // Call the Model constructor
         parent::__construct();
     }
-    
+    /*
     function user_details_get($user_id, $cache=true)
     {
         if( $user_id <=0 )
@@ -44,7 +44,7 @@ class User_model extends CI_Model {
         
         return false;
     }
-    
+    */
     function email_is_uniq($email)
     {
         $email = safe_email($email);
@@ -174,47 +174,36 @@ class User_model extends CI_Model {
             u.id,
             u.email,
             u.email as user_email,
-            u.admin,
-            u.parent_id,
-            u.session_id,
             u.password,
-            sb.plan_id,
-            sb.id as subscription_id,
-            sb.subscription_status_id,
-            sbs.name as subscription_status_name,
-            sb.create_time as subscription_create_time,
-            p.name as plan_name,
-            d.language_id,
+            u.language_id,
+            UNIX_TIMESTAMP(d.create_time) as create_time,
+            u.balance,
+            u.admin,
+            u.session_id,
+                     
             l.code3 as language_code,
-            d.user_status_id,
-            d.user_status_id as status_id,
-            s.name as user_status_name,
-            d.country_id,
+	
             c.name as country_name,
+            
+            d.country_id,
             d.name,
             d.name as user_name,
-            d.address,
-            d.zip,
-            d.city,
-            d.phone,
-            d.company,
-            d.taxnumber,
-            d.free_plan,
-            d.logo,
-            UNIX_TIMESTAMP(d.create_time) as create_time
+            d.lastname,                      
+            d.help_city_id, 
+            d.sex,
+            d.birthdate,
+            d.marital_status,
+            d.education,
+            d.about_me   
             ');
         }
         
         $this->db->from('users u');
         $this->db->join('user_details d','u.id=d.user_id','left');
+        $this->db->join('languages l','u.language_id=l.id','left');
         $this->db->join('countries c','d.country_id=c.id','left');
-        $this->db->join('languages l','d.language_id=l.id','left');
-        $this->db->join('user_statuses s','d.user_status_id=s.id','left');
-        $this->db->join('subscriptions sb','u.id=sb.user_id and sb.subscription_status_id=1','left');
-        $this->db->join('subscription_statuses sbs','sb.subscription_status_id=sbs.id','left');
-        $this->db->join('plans p','sb.plan_id=p.id','left');
-        
-        
+                       
+                
         if( is_array($search) and sizeof($search)>0 )
         {
             $key = 'user_id';

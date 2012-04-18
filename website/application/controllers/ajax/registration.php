@@ -8,12 +8,13 @@ Class Registration extends CI_Controller {
     public function Index() {
         if (auth_check()) {
             // active user don't allow to the registration process
-            if ((int) user_details('status_id') != 0) {
+          /*  if ((int) user_details('status_id') != 0) {
                 $msg = '<{Not allowed for active user}>';
                 log_message('ERROR', $msg);
                 make_json_answer(false, $msg);
                 return false;
-            }
+            }*/
+            echo "уже зареген";
         }
         switch ($this->input->post('step')) {
             case "user_create":
@@ -47,9 +48,6 @@ Class Registration extends CI_Controller {
 
         $password = $this->input->post('password');
         $password2 = $this->input->post('password2');
-
-        fb( $this->input->post('recaptcha_challenge_field'), "chalange" );
-        fb($this->input->post('recaptcha_response_field'), 'respone_fild');
 
         log_message('DEBUG', 'Ajax request to register user [' . $email . ']');
 
@@ -93,7 +91,7 @@ Class Registration extends CI_Controller {
 
         // Check captcha
         $resp = recaptcha_check_answer($this->config->item('captcha_key_private'), $this->input->ip_address(), $this->input->post('recaptcha_challenge_field'), $this->input->post('recaptcha_response_field'));
-        fb($resp);
+        
         if (!$resp->is_valid) {
             $msg = 'captcha error';
             log_message('DEBUG', $msg . ": " . $this->input->post('recaptcha_response_field') . "; error: " . $resp->error);
@@ -139,7 +137,7 @@ Class Registration extends CI_Controller {
         make_json_answer(false, $params);
         return false;
     }
-
+/*
     function user_plan_set() {
         $CI = &get_instance();
         $this->load->model('plan_model');
@@ -213,10 +211,12 @@ Class Registration extends CI_Controller {
         make_json_answer(false, $msg);
         return false;
     }
-
+*/
+    
+    
     function user_details_set() {
         $CI = &get_instance();
-        $this->load->model('user_model');
+        //$this->load->model('user_model');
 
         if (!auth_check()) {
             $msg = 'Auth error';
@@ -282,7 +282,7 @@ Class Registration extends CI_Controller {
                 'phone' => $phone,
                 'company' => $company
             );
-            $result = $this->user_model->user_details_set($user_id, $details);
+            //$result = $this->user_model->user_details_set($user_id, $details);
             if (!$result) {
                 $status = false;
                 $params['msg'] = 'Set user details error';
@@ -316,7 +316,6 @@ Class Registration extends CI_Controller {
         /* clean temp dir */
 
         $del_files = glob($upload_path . '*');
-        fb($del_files);
         foreach ($del_files as $filename) {
             unlink($filename);
         }
