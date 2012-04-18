@@ -114,6 +114,7 @@ Class Registration extends CI_Controller
         );
         _view('frontend/registration/billing',$data);
     }
+    
 }
 
 

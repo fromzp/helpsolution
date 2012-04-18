@@ -316,12 +316,10 @@ class User_model extends CI_Model {
         $this->db->set('email',$email);
         $this->db->set('password',$password);
         $this->db->set('admin',0);
+        $this->db->set('create_time', date('Y-m-d H:i:s'));
+        $this->db->set('language_id', LANGUAGE_ID );
         $this->db->set('session_id',$CI->session->userdata('session_id'));
-        if( isset($details['parent_id']) and intval($details['parent_id'])>0 )
-        {
-            $this->db->set('parent_id',intval($details['parent_id']));
-            unset($details['parent_id']);
-        }
+
         $this->db->insert('users');
         
         if( $this->db->affected_rows() <= 0 )
@@ -337,7 +335,7 @@ class User_model extends CI_Model {
         }
         
         $details['user_id'] = $user_id;
-        $details['language_id'] = LANGUAGE_ID;
+        //$details['language_id'] = LANGUAGE_ID;
         $this->db->insert('user_details',$details);
         if( $this->db->affected_rows() <= 0 )
         {

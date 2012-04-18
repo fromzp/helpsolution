@@ -7,7 +7,7 @@ $title = replace_lang('<{Registration Page Title}>');
 #$objects[] = array('js_source', 'js/jquery_validate_locale/messages_' . LANGUAGE_CODE2 . '.js');
 #$objects[] = array('js', 'registration.js');
 #$objects[] = array('js', 'registration/step1.js');
-
+fb($this->session->all_userdata());
 
 $objects = array();
 
@@ -19,8 +19,10 @@ $objects[] = array('js_source', 'js/jquery_validate_locale/messages_' . LANGUAGE
 $objects[] = array('js_source', 'js/recaptcha_theme_clean.js', array('id' => 'recaptcha_theme_clean.js'));
 
 $objects[] = array('js', 'registration.js.php', array('id' => 'registration.js'));
+$objects[] = array('js', 'ajax.js.php', array('id' => 'ajax.js'));
 
 echo get_header($title, $objects);
+
 ?>
 
 
@@ -47,9 +49,9 @@ echo get_header($title, $objects);
                 </div>
                 <div class="choose">
                     <div class="inputs_radio">
-                        <input type="radio" name="help" value="Чоловік" checked="checked" /><span>Я можу допомогти</span></br>
+                        <input type="radio" name="help" value="canhelp" checked="checked" /><span>Я можу допомогти</span></br>
                         <div class="rubber"></div>
-                        <input type="radio" name="help" value="Жінка" checked="" /><span>Мені потрібна допомога</span> 
+                        <input type="radio" name="help" value="needhelp" checked="" /><span>Мені потрібна допомога</span> 
                     </div>
 
                 </div>
@@ -96,31 +98,26 @@ echo get_header($title, $objects);
             </div>
             <div class="msg">
                 <span for="lastname" ><{Прізвище}></span><em>*</em><br />
-            </div>       
+            </div>
+   
             <br /><br />
             <div class="rubber"></div>
             <div class="inputs_radio">
-                <input type="radio" name="sex" value="Чоловік" checked ="" /><span>Чоловік</span> 
-                <input type="radio" name="sex" value="Жінка"  /><span>Жінка</span> 
+                <input type="radio" name="sex" value="m" checked="checked" /><span>Чоловік</span> 
+                <input type="radio" name="sex" value="f"  /><span>Жінка</span> 
             </div>
             <div class="msg">
                 <span for="sex" ><{Стать}></span><em>*</em><br />
             </div>
             <br /><br />
             <div class="rubber"></div>
-            <span for="recaptcha_response_field" style="margin-left: 11px;" ><{Enter words from image below}></span><em>*</em>
-            <?php echo recaptcha_get_html(); ?>
-            <!--
-             <div class="inputs">
-                 <input type="text" name="captch_nomber" id="name" /><br />
-             </div>
-             <div class="msg">
-                 <span for="captch_nomber" ><{Введіть код на малюнку нижче}></span><em>*</em><br />
-                        </div> 
-          
-            <div class="rubber"></div>
-            <div class="captcha"> <div class="image"> </div></div>
-            -->
+    
+         <span for="recaptcha_response_field" style="margin-left: 11px;" ><{Enter words from image below}></span><em>*</em>
+        <?php echo recaptcha_get_html(); ?>
+        
+
+
+        <p>           
             <div class="inputs">
                 <span class="necessarily">
                     Поля, що мають зірочку є обов’язковими для заповнення.</br>
@@ -138,7 +135,10 @@ echo get_header($title, $objects);
     </div>
     <div class="rubber"></div>
 
-    <div id="doRegistrationButton"> <span for="registration">Зареэструватися</span> </div>
+    <div id="doRegistrationButton"> <span for="registration" >Зареєструватися</span> </div>
+
+    
+    
     <input  class="back_button" type="submit" id="submit" value="Назад" />
 </form>
 <?php echo get_footer(); ?>

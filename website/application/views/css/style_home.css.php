@@ -657,7 +657,7 @@
         color: #88b7d2;
     }
 
-    /*Ð›Ð•Ð’ÐÐ¯*/
+    /*colons*/
     .form_center .content_form .name_form_left{
         background: #ffb91a;
         font-size: 12pt;
@@ -809,7 +809,13 @@
         padding-left: 16px;
     }
 
-    em.error { color: red; }
+    em.error { color: red;
+    possition: absolute;
+    }
+    
+    div .error {
+        color: red;
+    }
 
     /*ERRORS END*/
 
@@ -962,9 +968,10 @@
         width: 235px;
         margin-top: 10px;
         padding-top: 5px;
+        cursor: default;
     }
     
-
+ 
     .back_button {
         background: url(<?php echo _img('login_green_button.png'); ?>) no-repeat scroll 0 0 transparent;
         border-style: none;

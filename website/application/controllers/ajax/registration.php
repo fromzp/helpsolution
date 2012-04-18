@@ -40,17 +40,16 @@ Class Registration extends CI_Controller {
 
         $email = $this->input->post('email');
         $name = $this->input->post('name');
+        $lastname = $this->input->post('lastname');
+        $sex = $this->input->post('sex');
+        $image = $this->input->post('image');
 
-        $address = $this->input->post('address');
-        $zip = $this->input->post('zip');
-        $city = $this->input->post('city');
-        $phone = $this->input->post('phone');
-        $company = $this->input->post('company');
-        $country_id = $this->input->post('country');
-        $taxnumber = $this->input->post('taxnumber');
 
         $password = $this->input->post('password');
         $password2 = $this->input->post('password2');
+
+        fb( $this->input->post('recaptcha_challenge_field'), "chalange" );
+        fb($this->input->post('recaptcha_response_field'), 'respone_fild');
 
         log_message('DEBUG', 'Ajax request to register user [' . $email . ']');
 
@@ -94,6 +93,7 @@ Class Registration extends CI_Controller {
 
         // Check captcha
         $resp = recaptcha_check_answer($this->config->item('captcha_key_private'), $this->input->ip_address(), $this->input->post('recaptcha_challenge_field'), $this->input->post('recaptcha_response_field'));
+        fb($resp);
         if (!$resp->is_valid) {
             $msg = 'captcha error';
             log_message('DEBUG', $msg . ": " . $this->input->post('recaptcha_response_field') . "; error: " . $resp->error);
@@ -107,14 +107,10 @@ Class Registration extends CI_Controller {
             // create new user
             $details = array(
                 'name' => $name,
-                'create_time' => date('Y-m-d H:i:s'),
-                'address' => $address,
-                'zip' => $zip,
-                'city' => $city,
-                'phone' => $phone,
-                'company' => $company,
-                'country_id' => $country_id,
-                'taxnumber' => $taxnumber
+                //'create_time' => date('Y-m-d H:i:s'),
+                'lastname' => $lastname,
+                'sex' => $sex,
+                //'image' => $image
             );
             $user_id = $this->user_model->user_create($email, md5($password), $details);
             if ($user_id > 0) {
@@ -131,7 +127,7 @@ Class Registration extends CI_Controller {
             $msg = 'Registration success';
             log_message('DEBUG', $msg);
             $params = array(
-                'url' => site_url('registration/plans')
+                'url' => site_url('about_us')
             );
             make_json_answer($status, $params);
             return true;
@@ -313,17 +309,22 @@ Class Registration extends CI_Controller {
 
     public function user_photo_preview() {
 
+        $CI = &get_instance();
+        $upload_path = $this->config->item('upload_path');
+        $upload_link = base_url() . 'upload/';
+        
+        /* clean temp dir */
 
-
-        $del_files = glob("/home/prihodko-ia/www/helpsolution/website/upload/*");
+        $del_files = glob($upload_path . '*');
         fb($del_files);
         foreach ($del_files as $filename) {
             unlink($filename);
         }
-
-        $upload_dir = base_url() . 'upload/';
+        /* upload settings */
+      
 
         $this->load->library('image_lib');
+
         $config['upload_path'] = './upload/';
         $config['allowed_types'] = 'gif|jpg|png';
         $config['max_size'] = '1000';
@@ -333,25 +334,19 @@ Class Registration extends CI_Controller {
         $config['file_name'] = time();
         $config['overwrite'] = TRUE;
 
-
         $this->load->library('upload', $config);
 
         if (!$this->upload->do_upload()) {
             $error = array('error' => $this->upload->display_errors());
 
-            print_r($error);
+            echo $error['error'];
         } else {
 
             $image = array('upload_data' => $this->upload->data());
-            $image_big = array();
-            $image_big = $this->upload->data();
-            fb($image_big);
 
-            $upload_info = $this->upload->data();
+            chmod($image['upload_data']['full_path'], 0666);
 
-            chmod($upload_info['full_path'], 0666);
-
-            $thumbnail = "/home/prihodko-ia/www/helpsolution/website/upload/thumb_" . $image['upload_data']['file_name'];
+            $thumbnail = $upload_path . 'thumb_' . $image['upload_data']['file_name'];
 
             $config['image_library'] = 'gd2';
             $config['source_image'] = $image['upload_data']['full_path'];
@@ -364,7 +359,7 @@ Class Registration extends CI_Controller {
             $this->image_lib->initialize($config);
             $this->image_lib->resize();
 
-            echo '<img id="user_image" height="275" width=207 alt="' . $image_big['file_name'] . '" src="' . $upload_dir . "thumb_" . $image_big['file_name'] . '">';
+            echo '<img id="user_image" height="275" width=207 alt="' . $image['upload_data']['file_name'] . '" src="' . $upload_link . "thumb_" . $image['upload_data']['file_name'] . '">';
         }
     }
 
