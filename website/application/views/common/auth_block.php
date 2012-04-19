@@ -4,17 +4,35 @@
 
     <div class="login_panel">
         <div class="login">
-            <p><span>Логін</span></br></p>
-            <p><input  class="style_checkbox" id="login" type="text" name="login" size="20" />  <a href="#"> Забули логін?</a></p>
-            <p></p> 
+
+
+            <div class="msg">
+                <span for="login" ><{Ім’я}></span><em></em><br />
+            </div>
+            </br>
+            <div class="inputs">
+                <input class="style_checkbox" type="text" name="login" id="login" class="login" minlength="2" />
+                <span><a href="#"> Забули логiн?</a></span>
+            </div>
+            <div class="msg_errors"></div>
+
         </div>
 
         <div class="password">
-            <p><span>Пароль</span></br></p>
-            <p><input  class="style_checkbox" id="password" type="password" name="password" size="20"> <a href="#"> Забули пароль?</a></p>
-            <p></p>
+            
+            <div class="msg">
+                <span for="password" ><{Пароль}></span><em></em><br />
+            </div>
+            </br>
+            <div class="inputs">
+                <input class="style_checkbox" type="text" name="password" id="password" class="password" minlength="2" />
+                <span><a href="#"> Забули пароль?</a></span>
+            </div>
+            <div class="msg_errors"></div>         
 
         </div>
+        
+        
         <div class="check"><input type="checkbox" name="alien" value="ON" /> Чужий комп'ютер </div>
 
         <div>

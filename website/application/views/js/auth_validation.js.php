@@ -10,7 +10,7 @@ var form = $("#login_form");
    validator = $(form).validate(
    {
     errorPlacement: function(error, element){
-      error.appendTo( $(element).parent('p').next('p') );
+      error.appendTo( $(element).parent('div').next('div') );
     },
     submitHandler: function(form) {
      authLogin();
@@ -29,17 +29,6 @@ var form = $("#login_form");
   unhighlight: function(element, errorClass, validClass) {
      $("span[for=" + element.id + "]").removeClass(errorClass);
   },
-    messages:
-        {
-        login:{
-            
-                        required: "Це поле необхідно заповнити.",
-                        email: "цей email не зареєстрований"
-            },
-                                password: {
-                        required: "Це поле необхідно заповнити."
-                    }
-    },
     rules:
         {
             login:

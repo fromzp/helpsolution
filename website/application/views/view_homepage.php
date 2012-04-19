@@ -12,7 +12,7 @@ $objects[] = array('js_source','js/jquery.validate.min.js', array('id'=>'validat
 $objects[] = array('js_source','js/slides.min.jquery.js', array('id'=>'slides.js'));
 $objects[] = array('js_source','js/share.js', array('id'=>'share.js'));
 $objects[] = array('js_source','js/tools.js', array('id'=>'tools.js'));
-
+$objects[] = array('js_source', 'js/jquery_validate_locale/messages_' . LANGUAGE_CODE2 . '.js', array('id' => 'validate_local.js'));
 
 $objects[] = array('js','homepage.js.php', array('id'=>'homepage.js'));
 $objects[] = array('js','auth.js.php', array('id'=>'auth.js'));

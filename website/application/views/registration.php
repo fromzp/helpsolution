@@ -1,13 +1,10 @@
 <?php
 $title = replace_lang('<{Registration Page Title}>');
 
-
-
 #$objects[] = array('js_source', 'js/jquery.validate.min.js');
 #$objects[] = array('js_source', 'js/jquery_validate_locale/messages_' . LANGUAGE_CODE2 . '.js');
 #$objects[] = array('js', 'registration.js');
 #$objects[] = array('js', 'registration/step1.js');
-
 
 $objects = array();
 

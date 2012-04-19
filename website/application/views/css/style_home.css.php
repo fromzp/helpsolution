@@ -366,19 +366,38 @@
         font-size: 11pt;
     }
     .content .main_content .cabinet .login_panel .login {
-        margin-top: 10px;  
+        margin-top: 10px;
+        float:left;
+        width: 100%;
+       
     }
+        
+.content .main_content .cabinet .login_panel  .msg_errors {
+    float: left;
+    height: 20px;
+    width: 100%;
+}
+    
+ .content .main_content .cabinet .login_panel  .msg {
+    float: left;
+    padding-left: 6px;
+        }
+        
+  .content .main_content .cabinet .login_panel  .inputs {
+        float: left;
+        height: 29px;
+    }
+    
 
     .content .main_content .cabinet .login_panel .password {
-        margin-top: 20px;  
+        
+        margin-top: 10px;
+        float:left;
+        width: 100%;
     }
     .content .main_content .cabinet .login_panel .check {
         margin-top: 20px;  
     }
-    .content .main_content .cabinet .login_panel div {
-        margin-top: 20px;  
-    }
-
 
     .content .main_content .cabinet .login_panel a {
         margin-left: 10px;
@@ -942,7 +961,7 @@
 
 
     .kolonki .msg {
-        float: left;
+        float: lemsgft;
         padding-left: 6px;
         }
 
