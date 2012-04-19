@@ -95,7 +95,7 @@
         validator = $("#registrationForm").validate({
             errorPlacement: function(error, element)
             {
-                error.appendTo( $(element).parent('div').next("div") );
+                error.appendTo( $(element).parent('div').prev("div") );
             },
             debug: false,
             errorClass: "error",

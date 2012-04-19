@@ -817,6 +817,17 @@
         color: red;
     }
 
+    .msg_errors {
+        float:left;
+        width: 100%;
+        height: 15px;
+        font-size: 14px;  
+    }
+    
+    #registrationForm .inputs_errors {
+    float: right;  
+    width: 490px;
+    }
     /*ERRORS END*/
 
     /*registration page content*/
@@ -845,7 +856,7 @@
     border: 2px solid #ADADAD;
     float: left;
     font-size: 14px;
-    height: 365px;
+    height: 420px;
     padding: 25px 0;
     width: 935px;
 }
@@ -943,8 +954,7 @@
 
     .accept {
         float: right;
-        height: 24px;
-        margin-top: 20px;
+        height: 24px;        
         width: 580px;
         font-size: 14px;
         font-famaly: Arial;

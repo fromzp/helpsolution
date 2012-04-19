@@ -59,6 +59,7 @@ echo get_header($title, $objects);
             <div class="line"></div>
         </div>
         <div class="kolonki">
+            <div class="msg_errors"></div>
             <div class="inputs">
                 <input type="text" name="email" id="email" /> 
             </div>
@@ -67,6 +68,7 @@ echo get_header($title, $objects);
             </div>
             <br /><br />
             <div class="rubber"></div>
+            <div class="msg_errors"></div>
             <div class="inputs">     
                 <input type="password" name="password" id="password" class="required" /> 
             </div>
@@ -75,7 +77,7 @@ echo get_header($title, $objects);
             </div>
             <br /><br />
             <div class="rubber"></div>
-
+            <div class="msg_errors"></div>
             <div class="inputs">    
                 <input type="password" name="password2" id="password2" class="required" />
             </div>
@@ -85,6 +87,7 @@ echo get_header($title, $objects);
             </div> 
             <br /><br />
             <div class="rubber"></div>
+            <div class="msg_errors"></div>
             <div class="inputs">
                 <input type="text" name="name" id="name" class="required" minlength="2" /><br />
             </div>
@@ -93,6 +96,7 @@ echo get_header($title, $objects);
             </div>
             <br /><br />
             <div class="rubber"></div>
+            <div class="msg_errors"></div>
             <div class="inputs">
                 <input type="text" name="lastname" id="lastname" class="required" minlength="2"/><br />
             </div>
@@ -117,7 +121,8 @@ echo get_header($title, $objects);
         
 
 
-        <p>           
+        <p> 
+            
             <div class="inputs">
                 <span class="necessarily">
                     Поля, що мають зірочку є обов’язковими для заповнення.</br>
@@ -129,6 +134,7 @@ echo get_header($title, $objects);
         </div>
 
     </div>
+    <div class="msg_errors inputs_errors"></div>
     <div class="accept">
         <input type="checkbox" name="accept_check" /> Я ознайомився/лась з <a href="#">правилами та умовами </a> біржі та погоджуюсь з ними.
 
