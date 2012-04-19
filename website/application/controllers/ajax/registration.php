@@ -6,15 +6,14 @@ if (!defined('BASEPATH'))
 Class Registration extends CI_Controller {
 
     public function Index() {
-        if (auth_check()) {
+        if ( auth_check() ) {
             // active user don't allow to the registration process
-          /*  if ((int) user_details('status_id') != 0) {
+            if ((int) user_details('status_id') != 0) {
                 $msg = '<{Not allowed for active user}>';
                 log_message('ERROR', $msg);
                 make_json_answer(false, $msg);
                 return false;
-            }*/
-            echo "уже зареген";
+            }
         }
         switch ($this->input->post('step')) {
             case "user_create":
@@ -91,7 +90,7 @@ Class Registration extends CI_Controller {
 
         // Check captcha
         $resp = recaptcha_check_answer($this->config->item('captcha_key_private'), $this->input->ip_address(), $this->input->post('recaptcha_challenge_field'), $this->input->post('recaptcha_response_field'));
-        
+
         if (!$resp->is_valid) {
             $msg = 'captcha error';
             log_message('DEBUG', $msg . ": " . $this->input->post('recaptcha_response_field') . "; error: " . $resp->error);
@@ -108,7 +107,7 @@ Class Registration extends CI_Controller {
                 //'create_time' => date('Y-m-d H:i:s'),
                 'lastname' => $lastname,
                 'sex' => $sex,
-                //'image' => $image
+                    //'image' => $image
             );
             $user_id = $this->user_model->user_create($email, md5($password), $details);
             if ($user_id > 0) {
@@ -137,83 +136,83 @@ Class Registration extends CI_Controller {
         make_json_answer(false, $params);
         return false;
     }
-/*
-    function user_plan_set() {
-        $CI = &get_instance();
-        $this->load->model('plan_model');
-        $this->load->model('user_model');
-        $this->load->model('subscription_model');
-        $this->load->model('billing_count_model', 'count');
 
-        if (!auth_check()) {
-            $msg = '<{Auth error}>';
-            log_message('DEBUG', $msg);
-            make_json_answer(false, $msg);
-            return false;
-        }
+    /*
+      function user_plan_set() {
+      $CI = &get_instance();
+      $this->load->model('plan_model');
+      $this->load->model('user_model');
+      $this->load->model('subscription_model');
+      $this->load->model('billing_count_model', 'count');
 
-        $user_id = user_id();
+      if (!auth_check()) {
+      $msg = '<{Auth error}>';
+      log_message('DEBUG', $msg);
+      make_json_answer(false, $msg);
+      return false;
+      }
 
-        $plan_id = intval($this->input->post('plan_id'));
-        if ($plan_id <= 0) {
-            $msg = '<{Unknown plan}>';
-            log_message('DEBUG', $msg);
-            make_json_answer(false, $msg);
-            return false;
-        }
+      $user_id = user_id();
 
-        $plans = $this->plan_model->plan_get_all();
-        if (isset($plans[$plan_id])) {
-            $plan = $plans[$plan_id];
+      $plan_id = intval($this->input->post('plan_id'));
+      if ($plan_id <= 0) {
+      $msg = '<{Unknown plan}>';
+      log_message('DEBUG', $msg);
+      make_json_answer(false, $msg);
+      return false;
+      }
 
-            // close all subscriptions
-            // @doto pay attention at here
-            $this->subscription_model->close_all($user_id);
+      $plans = $this->plan_model->plan_get_all();
+      if (isset($plans[$plan_id])) {
+      $plan = $plans[$plan_id];
 
-            // subscription create
-            $subscription = array();
-            $subscription['user_id'] = $user_id;
-            $subscription['plan_id'] = $plan_id;
-            $subscription['create_time'] = date('Y-m-d H:i:s');
-            $subscription['subscription_status_id'] = 4; //awaiting payment
-            if ($plan['amount'] <= 0) {
-                $this->user_model->user_detail_set($user_id, 'free_plan', 1);
-                $this->user_model->user_detail_set($user_id, 'user_status_id', 1); // set active
+      // close all subscriptions
+      // @doto pay attention at here
+      $this->subscription_model->close_all($user_id);
 
-                $this->count->count_init($user_id, $this->plan_model->counts($plan));
-                $subscription['subscription_status_id'] = 1; // active [FREE plan]
-            }
+      // subscription create
+      $subscription = array();
+      $subscription['user_id'] = $user_id;
+      $subscription['plan_id'] = $plan_id;
+      $subscription['create_time'] = date('Y-m-d H:i:s');
+      $subscription['subscription_status_id'] = 4; //awaiting payment
+      if ($plan['amount'] <= 0) {
+      $this->user_model->user_detail_set($user_id, 'free_plan', 1);
+      $this->user_model->user_detail_set($user_id, 'user_status_id', 1); // set active
 
-            $subscription_id = $this->subscription_model->subscription_create($subscription);
-            if ($subscription_id == false or $subscription_id <= 0) {
-                $msg = 'Subscription create error';
-                log_message('DEBUG', $msg);
-                make_json_answer(false, $msg);
-                return false;
-            }
+      $this->count->count_init($user_id, $this->plan_model->counts($plan));
+      $subscription['subscription_status_id'] = 1; // active [FREE plan]
+      }
 
-            if ($subscription_id > 0) {
-                $msg = 'Subscription successfully created with status ' . $subscription['subscription_status_id'];
-                log_message('DEBUG', $msg);
+      $subscription_id = $this->subscription_model->subscription_create($subscription);
+      if ($subscription_id == false or $subscription_id <= 0) {
+      $msg = 'Subscription create error';
+      log_message('DEBUG', $msg);
+      make_json_answer(false, $msg);
+      return false;
+      }
 
-                $params = array();
-                $params['url'] = site_url('form_builder');
-                if ($plan['amount'] > 0) {
-                    $params['url'] = site_url('registration/billing');
-                }
-                make_json_answer(true, $params);
-                return true;
-            }
-        }
+      if ($subscription_id > 0) {
+      $msg = 'Subscription successfully created with status ' . $subscription['subscription_status_id'];
+      log_message('DEBUG', $msg);
 
-        $msg = 'Unknown plan';
-        log_message('DEBUG', $msg);
-        make_json_answer(false, $msg);
-        return false;
-    }
-*/
-    
-    
+      $params = array();
+      $params['url'] = site_url('form_builder');
+      if ($plan['amount'] > 0) {
+      $params['url'] = site_url('registration/billing');
+      }
+      make_json_answer(true, $params);
+      return true;
+      }
+      }
+
+      $msg = 'Unknown plan';
+      log_message('DEBUG', $msg);
+      make_json_answer(false, $msg);
+      return false;
+      }
+     */
+
     function user_details_set() {
         $CI = &get_instance();
         //$this->load->model('user_model');
@@ -312,7 +311,7 @@ Class Registration extends CI_Controller {
         $CI = &get_instance();
         $upload_path = $this->config->item('upload_path');
         $upload_link = base_url() . 'upload/';
-        
+
         /* clean temp dir */
 
         $del_files = glob($upload_path . '*');
@@ -320,7 +319,7 @@ Class Registration extends CI_Controller {
             unlink($filename);
         }
         /* upload settings */
-      
+
 
         $this->load->library('image_lib');
 

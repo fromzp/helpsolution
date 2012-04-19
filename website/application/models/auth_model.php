@@ -15,13 +15,13 @@ class Auth_model extends User_Model {
         
         if ( $this->auth_check() )
         {
-           /* $details = $this->user_details_get($this->user_id);
+            $details = $this->user_details_get($this->user_id);
             
             if( isset($details['admin']) and $details['admin'] == 1 )
             {
                 $this->admin = true;
             }
-            */
+            
             // update session_id
             $this->user_session_refresh($this->user_id);
             

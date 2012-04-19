@@ -9,13 +9,13 @@ Class Registration extends CI_Controller
         if( auth_check() )
         {
             // active user don't allow to the registration process
-           /* if( (int)user_details('user_status_id')!=0 )
+            if( (int)user_details('user_status_id')!=0 )
             {
                 redirect('my/profile');
                 exit(0);
-            }*/
+            }
         }
-          
+        
         $this->load->helper('recaptchalib');
         
         $data = array();
@@ -53,7 +53,7 @@ Class Registration extends CI_Controller
     */
     
     
-    /*
+    
     function details()
     {
         if( !auth_check() )
@@ -70,7 +70,7 @@ Class Registration extends CI_Controller
         }
         
         $this->load->model('user_model');
-        $this->load->model('plan_model');
+        //$this->load->model('plan_model');
         
         $user_id = user_id();
         $user_details = $this->user_model->user_details_get($user_id);
@@ -80,7 +80,7 @@ Class Registration extends CI_Controller
         );
         _view('frontend/registration/details',$data);
     }
-    */
+    
     /*
     function billing()
     {

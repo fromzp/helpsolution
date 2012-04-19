@@ -10,7 +10,7 @@ class User_model extends CI_Model {
         // Call the Model constructor
         parent::__construct();
     }
-    /*
+    
     function user_details_get($user_id, $cache=true)
     {
         if( $user_id <=0 )
@@ -22,6 +22,7 @@ class User_model extends CI_Model {
         if( $cache and is_array($this->user_details) and sizeof($this->user_details)>0 )
         {
             log_message('DBG','get user details from cache:'. _var_dump($this->user_details));
+            
             return $this->user_details;
         }
 
@@ -44,7 +45,7 @@ class User_model extends CI_Model {
         
         return false;
     }
-    */
+    
     function email_is_uniq($email)
     {
         $email = safe_email($email);
@@ -176,7 +177,7 @@ class User_model extends CI_Model {
             u.email as user_email,
             u.password,
             u.language_id,
-            UNIX_TIMESTAMP(d.create_time) as create_time,
+            UNIX_TIMESTAMP(u.create_time) as create_time,
             u.balance,
             u.admin,
             u.session_id,
@@ -219,7 +220,7 @@ class User_model extends CI_Model {
                 $value = $search[$key];
                 $this->db->where('u.'.$key,$value);
             }
-            
+            /*
             $key = 'parent_id';
             if( isset($search[$key]) )
             {
@@ -233,7 +234,8 @@ class User_model extends CI_Model {
                 $value = $search[$key];
                 $this->db->where('`d`.`user_status_id`!=9',null,FALSE);
             }
-            
+            */
+            /*
             $key = 'user_status_id';
             if( isset($search[$key]) )
             {
@@ -241,19 +243,22 @@ class User_model extends CI_Model {
                 $this->db->where('d.'.$key,$value);
             }
             
+             */ 
+                          
+             /*
             $key = 'plan_id';
             if( isset($search[$key]) and !empty($search[$key]) )
             {
                 $value = (int)$search[$key];
                 $this->db->where('sb.'.$key,$value);
             }
-            
+            */
         }
         
         switch( $order_by )
         {
             case "create_time":
-                $order_by = 'd.create_time';
+                $order_by = 'u.create_time';
                 break;
             
             case "name":

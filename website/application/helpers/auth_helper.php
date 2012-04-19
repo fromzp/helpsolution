@@ -100,7 +100,7 @@ function parent_id($user_id='')
    return $user_id;
        
 }
-/*
+
 function user_details($item='', $user_id=0, $cache=true)
 {
     if( $user_id <=0 )
@@ -111,7 +111,7 @@ function user_details($item='', $user_id=0, $cache=true)
     $CI = &get_instance();
     $CI->load->model('user_model');
     $user_details = $CI->user_model->user_details_get($user_id,$cache);
-    
+    fb($user_details,'auth_helper_114 line user_details');
     if( empty($item) )
     {
         return $user_details;
@@ -124,7 +124,7 @@ function user_details($item='', $user_id=0, $cache=true)
     
     return false;
 }
-*/
+
 function get_auth_block()
 {
     $data = array();
