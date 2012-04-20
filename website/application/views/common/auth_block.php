@@ -1,8 +1,8 @@
-<span id="AMA_auth_block" ><?php echo get_ajax_messages(); ?></span>
+
 <form id="login_form">
     <div class="title_text">ОСОБИСТИЙ КАБІНЕТ</div>
     <div class="gorizont_line"></div>
-
+    <span id="AMA_auth_block" ><?php echo get_ajax_messages(); ?></span>
     <div class="login_panel">
         <div class="login">
 
@@ -28,14 +28,13 @@
                 <input class="style_checkbox" type="password" name="password" id="password" class="password" minlength="2" />
                 <span><a href="#"> Забули пароль?</a></span>
             </div>
-            <div id="ajax_err"></div>                   
+            <div class="msg_errors"></div>                 
 
         </div>
-        
-        
+                
         <div class="check"><input type="checkbox" name="alien" value="ON" /> Чужий комп'ютер </div>
         
-        <div>
+        <div class="login_button_div">
             <input class="login_button" type="submit" value="Увійти" />
         </div>
     </div>

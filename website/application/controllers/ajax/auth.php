@@ -11,10 +11,7 @@ class Auth extends CI_Controller {
         {
             $email = trim($this->input->post('email'));
             $password_md5 = safe_md5($this->input->post('password'));
-            $post_login=array();
-            $post_login['email']=$email;
-            $post_login['password'] =$password_md5;
-            fb($post_login);
+
             log_message('DEBUG','Ajax request to login user ['. $email .']');
             
             if( empty($email) or !check_email($email) )
@@ -38,16 +35,17 @@ class Auth extends CI_Controller {
                     $params = array('msg'=>$msg);
                     
                     //Login from LOGIN page
+                    fb($_SERVER['HTTP_REFERER'],'dont know');
                     if ( base_url() === $_SERVER['HTTP_REFERER'] )
                     {
-                        $url = site_url('form_builder');
+                        $url = site_url('s_login_page_form_builder');
                         // if user ADMIN - redirect to the /admin section
                         if( $admin )
                         {
                             $url = site_url('admin/users');
                         }
                         // if has not active subscriptions -> profile
-                        if( !$admin and !_subscr() )
+                        if( !$admin )
                         {
                             $url = site_url('my/profile');
                         }
