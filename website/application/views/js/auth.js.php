@@ -15,7 +15,14 @@
         //@doto use validate form
         var requestUrl = '<?php echo site_url('ajax/auth/login'); ?>';
     
-        jQuery.post( requestUrl, {email:email, password: $.md5(password)}, 
+        $.ajaxSetup({
+            beforeSend: function(){
+                ajax_move($("#AMA_auth_block"));
+                ajax_loader();  
+            }
+        });
+        
+        $.post( requestUrl, {email:email, password: $.md5(password)}, 
         
         function(data)
         {    
@@ -37,12 +44,11 @@
                 if( data.msg != null && data.msg != undefined )
                 {
                     ajax_error(data.msg);
+                   
                 }
                 $("input[name=password]").val('');
             }
         },
-
-
 
         'json' );
   

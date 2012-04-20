@@ -1555,7 +1555,71 @@
 }
 
 /*END about_as*/
+/*
+-------------------------------------------------
+Ajax messages area
+view: views/common/ajax_messages.php
+-------------------------------------------------
+*/
+#flash_msg
+{
+    background-color:#1b92d6;
+    border:1px solid #484848;
+    padding: 10px;
+    margin: 5px;
+    
+}
 
+.ajax_messages
+{
+    padding:0px;
+    margin:0px;
+    border:0px;
+}
 
+#ajax_loader
+{
+    padding:5px;
+    margin:5px;
+    display:none;
+}
+
+#ajax_err
+{
+    padding:5px;
+    margin:5px;
+    display:none;
+}
+
+#ajax_msg
+{
+    padding:5px;
+    margin:5px;
+    display:none;
+}
+
+.shareUrl
+{
+    height:auto;
+    width:auto;
+    background-color:#f3f3f3;
+    position:absolute;
+     -moz-border-radius: 9px;
+    -webkit-border-radius:9px;
+    -khtml-border-radius:9px;
+    border-radius:9px;
+    border: #1b92d6 6px solid;
+    top:195px;
+    left:39%;
+    z-index: 2;
+    padding:0;
+    /*display:none;*/
+}
+.shareUrl a {
+    color:#1b92d6;
+}
+.shareUrl p {
+    margin: 0 15px 20px 20px;
+}
 
     /*</style>*/

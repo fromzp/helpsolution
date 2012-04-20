@@ -4,8 +4,6 @@ $objects = array();
 $objects[] = array('js','ajax.js.php', array('id'=>'ajax.js'));
 $objects[] = array('css','cusel.css.php', array('id'=>'cusel.css'));
 
-
-
 $objects[] = array('js_source','js/cusel.min.js', array('id'=>'cusel.js'));
 $objects[] = array('js_source','js/jquery.validate.min.js', array('id'=>'validate.js'));
 $objects[] = array('js_source','js/slides.min.jquery.js', array('id'=>'slides.js'));
@@ -19,8 +17,7 @@ $objects[] = array('js','auth_validation.js.php', array('id'=>'auth_validation.j
 
 echo get_header($title,$objects); 
 fb($this->session->all_userdata());
-?>
-   
+?> 
 
         <!-- content -->
 
