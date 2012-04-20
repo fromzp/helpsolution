@@ -2,7 +2,6 @@
 $title = replace_lang('<{Homepage Title}>');
 $objects = array();
 $objects[] = array('js','ajax.js.php', array('id'=>'ajax.js'));
-$objects[] = array('css','style_home.css.php',array('id'=>'style_home.css'));
 $objects[] = array('css','cusel.css.php', array('id'=>'cusel.css'));
 
 
@@ -19,6 +18,7 @@ $objects[] = array('js','auth.js.php', array('id'=>'auth.js'));
 $objects[] = array('js','auth_validation.js.php', array('id'=>'auth_validation.js'));
 
 echo get_header($title,$objects); 
+fb($this->session->all_userdata());
 ?>
    
 

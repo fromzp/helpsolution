@@ -1,5 +1,5 @@
 <span id="AMA_auth_block" ></span>
-<form id="login_form" >
+<form id="login_form">
     <div class="title_text">ОСОБИСТИЙ КАБІНЕТ</div>
     <div class="gorizont_line"></div>
 
@@ -34,9 +34,9 @@
         
         
         <div class="check"><input type="checkbox" name="alien" value="ON" /> Чужий комп'ютер </div>
-
+        
         <div>
-            <input class="login_button" type="submit" id="authLoginButton" value="Увійти" />
+            <input class="login_button" type="submit" value="Увійти" />
         </div>
     </div>
 </form>
