@@ -958,10 +958,8 @@
         float: left;
     }
 
-
-
     .kolonki .msg {
-        float: lemsgft;
+        float: left;
         padding-left: 6px;
         }
 

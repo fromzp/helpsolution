@@ -1,10 +1,10 @@
-<form id="login_form" action="menu-mutual-exchange.html">
+<span id="AMA_auth_block" ></span>
+<form id="login_form" >
     <div class="title_text">ОСОБИСТИЙ КАБІНЕТ</div>
     <div class="gorizont_line"></div>
 
     <div class="login_panel">
         <div class="login">
-
 
             <div class="msg">
                 <span for="login" ><{Ім’я}></span><em></em><br />
@@ -25,7 +25,7 @@
             </div>
             </br>
             <div class="inputs">
-                <input class="style_checkbox" type="text" name="password" id="password" class="password" minlength="2" />
+                <input class="style_checkbox" type="password" name="password" id="password" class="password" minlength="2" />
                 <span><a href="#"> Забули пароль?</a></span>
             </div>
             <div class="msg_errors"></div>         
@@ -36,7 +36,7 @@
         <div class="check"><input type="checkbox" name="alien" value="ON" /> Чужий комп'ютер </div>
 
         <div>
-            <input class="login_button" type="submit" id="submit" value="Увійти" />
+            <input class="login_button" type="submit" id="authLoginButton" value="Увійти" />
         </div>
     </div>
 </form>

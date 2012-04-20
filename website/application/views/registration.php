@@ -56,6 +56,7 @@ echo get_header($title, $objects);
             <div class="line"></div>
         </div>
         <div class="kolonki">
+           
             <div class="msg_errors"></div>
             <div class="inputs">
                 <input type="text" name="email" id="email" /> 
