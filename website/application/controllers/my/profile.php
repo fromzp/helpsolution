@@ -49,7 +49,7 @@ class Profile extends CI_Controller
         */
         $data['user_details'] = $user_details;
         
-        _view('frontend/my/my_profile_details',$data);
+        _view('frontend/my/view_my_profile_details',$data);
         
     }
     
@@ -64,7 +64,7 @@ class Profile extends CI_Controller
         
         $data['user_details'] = $user_details;
 
-        _view('frontend/my/my_profile_details_subuser',$data);
+        _view('frontend/my/view_my_profile_details_subuser',$data);
         
     }
     
@@ -113,7 +113,7 @@ class Profile extends CI_Controller
         }
         $data['user_details'] = $user_details;
         
-        _view('frontend/my/my_profile_details_edit',$data);
+        _view('frontend/my/view_my_profile_details_edit',$data);
         
     }
     

@@ -19,7 +19,7 @@ Class Registration extends CI_Controller
         $this->load->helper('recaptchalib');
         
         $data = array();
-        _view('registration',$data);
+        _view('view_registration',$data);
         
     }
     

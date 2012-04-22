@@ -15,18 +15,18 @@ class Pages extends CI_Controller {
             
             log_message('DEBUG','Page request: '. $f1 .'; '. $f2);
             log_message('DEBUG','search file here: '. getcwd().'/application/views/pages/'.$f1.'/'.$f2.'.php');
-            if( !empty($f2) and file_exists(getcwd().'/application/views/pages/'.$f1.'/'.$f2.'.php') )
+            if( !empty($f2) and file_exists(getcwd().'/application/views/pages/'.$f1.'/view_'.$f2.'.php') )
             {
-                $data['page_content'] = _view('pages/'.$f1.'/'.$f2, $data, true);
-                _view('pages/container', $data);
+                $data['page_content'] = _view('pages/'.$f1.'/view_'.$f2, $data, true);
+                _view('pages/view_container', $data);
                 return true;
             }
             
             log_message('DEBUG','search file here: '. getcwd().'/views/pages/'.$f1.'.php');
-            if( file_exists(getcwd().'/application/views/pages/'.$f1.'.php') )
+            if( file_exists(getcwd().'/application/views/pages/view_'.$f1.'.php') )
             {
-                $data['page_content'] = _view('pages/'.$f1, $data, true);
-                _view('pages/container', $data);
+                $data['page_content'] = _view('pages/view_'.$f1, $data, true);
+                _view('pages/view_container', $data);
             }
             else
             {

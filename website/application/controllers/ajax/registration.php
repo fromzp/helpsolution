@@ -308,28 +308,20 @@ Class Registration extends CI_Controller {
 
     public function user_photo_preview() {
 
-        $CI = &get_instance();
-        $upload_path = $this->config->item('upload_path');
-        $upload_link = base_url() . 'upload/';
-
-        /* clean temp dir */
-
-        $del_files = glob($upload_path . '*');
-        foreach ($del_files as $filename) {
-            unlink($filename);
-        }
-        /* upload settings */
-
-
+        fb(__FILE__.'@'.__LINE__);
+        $upload_path = $this->config->item('upload_path_tmp');
+        fb($upload_path);
+        $upload_link = base_url().$this->config->item('upload_url_tmp');
+        fb($upload_link);
+        
         $this->load->library('image_lib');
-
-        $config['upload_path'] = './upload/';
+        $config['upload_path'] = $upload_path;
         $config['allowed_types'] = 'gif|jpg|png';
         $config['max_size'] = '1000';
         $config['max_width'] = '1024';
         $config['max_height'] = '768';
         $config['overwrite'] = TRUE;
-        $config['file_name'] = time();
+        $config['file_name'] = md5($this->session->userdata('session_id'));
         $config['overwrite'] = TRUE;
 
         $this->load->library('upload', $config);
@@ -352,12 +344,12 @@ Class Registration extends CI_Controller {
             //   $config['create_thumb'] = TRUE;
             $config['maintain_ratio'] = TRUE;
             $config['width'] = 207;
-            $config['height'] = 275;
+            //$config['height'] = 275;
 
             $this->image_lib->initialize($config);
             $this->image_lib->resize();
 
-            echo '<img id="user_image" height="275" width=207 alt="' . $image['upload_data']['file_name'] . '" src="' . $upload_link . "thumb_" . $image['upload_data']['file_name'] . '">';
+            echo '<img id="user_image" height="275" width=207 alt="' . $image['upload_data']['file_name'] . '" src="' . $upload_link . "thumb_" . $image['upload_data']['file_name'] .'/'. md5(microtime()) .'">';
         }
     }
 

@@ -128,7 +128,7 @@ function user_details($item='', $user_id=0, $cache=true)
 function get_auth_block()
 {
     $data = array();
-    return _view('common/auth_block', $data, true);
+    return _view('common/view_auth_block', $data, true);
 }
 
 ?>

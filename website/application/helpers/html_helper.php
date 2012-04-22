@@ -78,13 +78,6 @@ function get_navigator()
             return _view('backend/navigator_backend', $data, TRUE);
         }
         
-        
-        if( subuser_check() )
-        {
-            $data = array();
-        return _view('frontend/navigator_frontend_subuser', $data, TRUE);
-        }
-        
         $data = array();
         return _view('frontend/navigator_frontend', $data, TRUE);
     }
@@ -132,7 +125,7 @@ function get_menu_language()
     $languages = $CI->language_model->language_get_all();
 
     $data = array('languages'=>$languages);
-    $return = _view('common/language_menu', $data, TRUE);
+    $return = _view('common/view_language_menu', $data, TRUE);
     
     return $return;
 }
@@ -149,7 +142,7 @@ function _view($view, $data=array(), $option=false )
 
 function get_ajax_messages()
 {
-    $return = _view('common/ajax_messages',array(),true);
+    $return = _view('common/view_ajax_messages',array(),true);
     
     return $return;
 }

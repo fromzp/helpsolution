@@ -1,3 +1,7 @@
 RewriteEngine on
+
+# User logo
+RewriteRule ^upload\/tmp\/(thumb_)?([a-zA-Z0-9]{32}\.[a-zA-Z]{3,5})\/(.*)?$ /upload/tmp/$1$2 [L]
+
 RewriteCond $1 !^(index\.php|img|js|resources|upload|robots\.txt)
 RewriteRule ^(.*)$ /index.php/$1 [L]
