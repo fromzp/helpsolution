@@ -2,25 +2,22 @@
 $title = replace_lang('<{Homepage Title}>');
 $objects = array();
 $objects[] = array('js','ajax.js.php', array('id'=>'ajax.js'));
-$objects[] = array('css','style_home.css.php',array('id'=>'style_home.css'));
 $objects[] = array('css','cusel.css.php', array('id'=>'cusel.css'));
-
-
 
 $objects[] = array('js_source','js/cusel.min.js', array('id'=>'cusel.js'));
 $objects[] = array('js_source','js/jquery.validate.min.js', array('id'=>'validate.js'));
 $objects[] = array('js_source','js/slides.min.jquery.js', array('id'=>'slides.js'));
 $objects[] = array('js_source','js/share.js', array('id'=>'share.js'));
 $objects[] = array('js_source','js/tools.js', array('id'=>'tools.js'));
-
+$objects[] = array('js_source', 'js/jquery_validate_locale/messages_' . LANGUAGE_CODE2 . '.js', array('id' => 'validate_local.js'));
 
 $objects[] = array('js','homepage.js.php', array('id'=>'homepage.js'));
 $objects[] = array('js','auth.js.php', array('id'=>'auth.js'));
 $objects[] = array('js','auth_validation.js.php', array('id'=>'auth_validation.js'));
 
 echo get_header($title,$objects); 
-?>
-   
+fb($this->session->all_userdata());
+?> 
 
         <!-- content -->
 

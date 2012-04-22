@@ -16,8 +16,12 @@ function get_header($title='', $objects_array=array() ,$options = array())
     $data['title'] = $title;
 
     $default_objects = array();
-    $default_objects[] = array('js','language_switcher.js.php', array('id'=>'language_switcher'));
     
+    $default_objects[] = array('css','style_home.css.php',array('id'=>'style_home.css'));
+    
+    $default_objects[] = array('js','language_switcher.js.php', array('id'=>'language_switcher'));  
+    
+    $default_objects[] = array('js_source','js/jquery.md5.js', array('id'=>'jquery.md5'));
     
     $data['opt_language_menu'] = get_menu_language();
     
@@ -59,6 +63,7 @@ function get_header($title='', $objects_array=array() ,$options = array())
             }
         }
     }
+    //fb($data,'data');
     $return = _view('view_header',$data,TRUE);
     return $return;
 }
@@ -170,7 +175,7 @@ function get_img_src($image)
     
     log_message('ERROR','image not abailable: '. $fs_path);
     $url = base_url() .'img/no-image.gif';
-    fb(__FILE__.'@'.__LINE__ .": ", $image);
+    //fb(__FILE__.'@'.__LINE__ .": ", $image);
     return $url;
 }
 

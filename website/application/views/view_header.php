@@ -20,13 +20,11 @@ if( isset($objects) )
 ?>
 </head>
 <body>
-    
-    
-    
+      
 <!-- header -->
 <div class="header"> 
     <div class="header_logo">      	
-        <div><a href="#" class="logo_img"></a></div>
+        <div><a href="<?php echo base_url(); ?>" class="logo_img"></a></div>
     </div>
 
     <div class="header_menu">
@@ -40,20 +38,21 @@ if( isset($objects) )
                 } 
                 ?>
             </div>
-            <div><input class="registration_button" type="submit" value="Реестрацiя" /></div>
-            <div><input class="login_button" type="submit" value="Увiйти" /></div>
+            <div class="registration_button"><a href="registration">Реєстрація</a></div>
+            <div class="login_button"><a href="<?php echo base_url(); ?>">Увiйти</a></div>
         </div>
         <div class="menus">
 
-            <div class="li">Я МОЖУ ДОПОМОГТИ <div class="black_line"></div></div>
-            <div class="li ">ПОТРIБНА ДОПОМОГА <div class="black_line"></div></div>
-            <div class="li small"><span>ПРО НАС</span><div class="black_line"></div></div>
+            <div class="li"><a class="clear_link" href="can_help">Я МОЖУ ДОПОМОГТИ</a> <div class="black_line"></div></div>
+            <div class="li "><a class="clear_link" href="need_help">ПОТРIБНА ДОПОМОГА</a> <div class="black_line"></div></div>
+            <div class="li small"><span><a class="clear_link" href="about_us">ПРО НАС</a></span><div class="black_line"></div></div>
 
         </div>
     </div>
 
-    <div class="header_line"></div>
+    <div class="header_line">  </div>
 </div>
+</
 <!-- header end-->
 
     

@@ -83,7 +83,7 @@ class Auth_model extends User_Model {
         $this->db->join('user_details d','u.id=d.user_id','left');
         $this->db->where('u.email',$email);
         $this->db->where('u.password',$password);
-        $this->db->where('`d`.`user_status_id` != ',9, false);
+        //$this->db->where('`d`.`user_status_id` != ',9, false);
         $this->db->limit(1);
         
         $query = $this->db->get();

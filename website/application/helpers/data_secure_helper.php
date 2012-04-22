@@ -19,7 +19,7 @@ if ( ! function_exists('base64_url_decode'))
 
 function safe_chars($string, $add="", $len=1024)
 {
-    $res = mb_substr(ereg_replace("[^".$add."a-zA-Z0-9\ \._-]", "", trim($string)), 0, $len);
+    $res = mb_substr(preg_replace("[^".$add."a-zA-Z0-9\ \._-]", "", trim($string)), 0, $len);
     $res = str_replace("\0","",$res);
     return $res;
 }

@@ -22,6 +22,7 @@ class User_model extends CI_Model {
         if( $cache and is_array($this->user_details) and sizeof($this->user_details)>0 )
         {
             log_message('DBG','get user details from cache:'. _var_dump($this->user_details));
+            
             return $this->user_details;
         }
 
@@ -174,47 +175,36 @@ class User_model extends CI_Model {
             u.id,
             u.email,
             u.email as user_email,
-            u.admin,
-            u.parent_id,
-            u.session_id,
             u.password,
-            sb.plan_id,
-            sb.id as subscription_id,
-            sb.subscription_status_id,
-            sbs.name as subscription_status_name,
-            sb.create_time as subscription_create_time,
-            p.name as plan_name,
-            d.language_id,
+            u.language_id,
+            UNIX_TIMESTAMP(u.create_time) as create_time,
+            u.balance,
+            u.admin,
+            u.session_id,
+                     
             l.code3 as language_code,
-            d.user_status_id,
-            d.user_status_id as status_id,
-            s.name as user_status_name,
-            d.country_id,
+	
             c.name as country_name,
+            
+            d.country_id,
             d.name,
             d.name as user_name,
-            d.address,
-            d.zip,
-            d.city,
-            d.phone,
-            d.company,
-            d.taxnumber,
-            d.free_plan,
-            d.logo,
-            UNIX_TIMESTAMP(d.create_time) as create_time
+            d.lastname,                      
+            d.help_city_id, 
+            d.sex,
+            d.birthdate,
+            d.marital_status,
+            d.education,
+            d.about_me   
             ');
         }
         
         $this->db->from('users u');
         $this->db->join('user_details d','u.id=d.user_id','left');
+        $this->db->join('languages l','u.language_id=l.id','left');
         $this->db->join('countries c','d.country_id=c.id','left');
-        $this->db->join('languages l','d.language_id=l.id','left');
-        $this->db->join('user_statuses s','d.user_status_id=s.id','left');
-        $this->db->join('subscriptions sb','u.id=sb.user_id and sb.subscription_status_id=1','left');
-        $this->db->join('subscription_statuses sbs','sb.subscription_status_id=sbs.id','left');
-        $this->db->join('plans p','sb.plan_id=p.id','left');
-        
-        
+                       
+                
         if( is_array($search) and sizeof($search)>0 )
         {
             $key = 'user_id';
@@ -230,7 +220,7 @@ class User_model extends CI_Model {
                 $value = $search[$key];
                 $this->db->where('u.'.$key,$value);
             }
-            
+            /*
             $key = 'parent_id';
             if( isset($search[$key]) )
             {
@@ -244,7 +234,8 @@ class User_model extends CI_Model {
                 $value = $search[$key];
                 $this->db->where('`d`.`user_status_id`!=9',null,FALSE);
             }
-            
+            */
+            /*
             $key = 'user_status_id';
             if( isset($search[$key]) )
             {
@@ -252,19 +243,22 @@ class User_model extends CI_Model {
                 $this->db->where('d.'.$key,$value);
             }
             
+             */ 
+                          
+             /*
             $key = 'plan_id';
             if( isset($search[$key]) and !empty($search[$key]) )
             {
                 $value = (int)$search[$key];
                 $this->db->where('sb.'.$key,$value);
             }
-            
+            */
         }
         
         switch( $order_by )
         {
             case "create_time":
-                $order_by = 'd.create_time';
+                $order_by = 'u.create_time';
                 break;
             
             case "name":
@@ -316,12 +310,10 @@ class User_model extends CI_Model {
         $this->db->set('email',$email);
         $this->db->set('password',$password);
         $this->db->set('admin',0);
+        $this->db->set('create_time', date('Y-m-d H:i:s'));
+        $this->db->set('language_id', LANGUAGE_ID );
         $this->db->set('session_id',$CI->session->userdata('session_id'));
-        if( isset($details['parent_id']) and intval($details['parent_id'])>0 )
-        {
-            $this->db->set('parent_id',intval($details['parent_id']));
-            unset($details['parent_id']);
-        }
+
         $this->db->insert('users');
         
         if( $this->db->affected_rows() <= 0 )
@@ -337,7 +329,7 @@ class User_model extends CI_Model {
         }
         
         $details['user_id'] = $user_id;
-        $details['language_id'] = LANGUAGE_ID;
+        //$details['language_id'] = LANGUAGE_ID;
         $this->db->insert('user_details',$details);
         if( $this->db->affected_rows() <= 0 )
         {
