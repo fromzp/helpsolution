@@ -1,5 +1,5 @@
 <?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
-
+// test changes
 class Get_object extends CI_Controller {
 
 	public function js($file='',$rand='')
