@@ -63,59 +63,110 @@ function get_header($title='', $objects_array=array() ,$options = array())
             }
         }
     }
-    //fb($data,'data');
+    
+
     $return = _view('view_header',$data,TRUE);
+    return $return;
+}
+
+function get_header_auth($title='', $objects_array=array() ,$options = array())
+{
+    $CI = &get_instance();
+    
+    /*
+     * options['navigator'] = true -> $option_navigator = true
+     */
+    if(is_array($options) and sizeof($options) >0 ){
+        extract($options,EXTR_PREFIX_ALL,'opt_');
+    }
+    
+    
+    $data = array();
+    $data['title'] = $title;
+
+    $default_objects = array();
+    
+    $default_objects[] = array('css','style_home.css.php',array('id'=>'style_home.css'));
+    
+    $default_objects[] = array('js','language_switcher.js.php', array('id'=>'language_switcher'));  
+    
+    $default_objects[] = array('js_source','js/jquery.md5.js', array('id'=>'jquery.md5'));
+    
+    $data['opt_language_menu'] = get_menu_language();
+    
+
+    $objects_array = objects_merge($objects_array, $default_objects);
+    
+    fb(__FILE__.'@'.__LINE__);
+    fb($objects_array);
+    
+    
+    // load objects (css, js)
+    $data['objects'] = '';
+    if( isset($objects_array) and is_array($objects_array) and sizeof($objects_array)>0 )
+    {
+        foreach( $objects_array as $object )
+        {
+            if( count($object) == 3 )
+            {
+                list($type,$filename,$params) = $object;
+            }
+            else
+            {
+                $params = array();
+                list($type,$filename) = $object;
+            }
+            if( $type == 'raw')
+            {
+                $object_html = $filename; // filename - raw html
+            }
+            else
+            {
+                $object_html = get_object($type, $filename,$params);
+                
+            }
+            
+            if( $object_html !== false )
+            {
+                $data['objects'] .= "\n". $object_html;
+            }
+        }
+    }
+    
+
+    $return = _view('view_header_auth',$data,TRUE);
     return $return;
 }
 
 function get_navigator()
 {
-    if( auth_check() )
-    {
-        if( admin_check() )
-        {
-            $data = array();
-            return _view('backend/navigator_backend', $data, TRUE);
-        }
-        
-        $data = array();
-        return _view('frontend/navigator_frontend', $data, TRUE);
-    }
-    
     $data = array();
-    $return =  _view('navigator', $data, TRUE);
+    $CI = &get_instance();
+    
+    $data['page']= $CI->uri->segment(1); 
+    $return =  _view('view_navigator', $data, TRUE);
     return $return;
 }
 
 function get_navigator_auth()
 {
-    if( auth_check() )
-    {
-        if( admin_check() )
-        {
-            $data = array();
-            return _view('backend/navigator_auth', $data, TRUE);
-        }
-        
-        $data = array();
-        return _view('frontend/navigator_auth', $data, TRUE);
-    }
-    
     $data = array();
-    $return =  _view('navigator_auth', $data, TRUE);
+    $return =  _view('view_navigator_auth', $data, TRUE);
     return $return;
 }
 
-function get_footer($info=true)
+function get_footer()
 {
-    $data = array(
-        'info'=>$info
-    );
+    $data = array();
     $return =  _view('view_footer', $data, TRUE);
     return $return;
 }
 
-
+function get_footer_auth()
+{
+    $return =  _view('view_footer_auth', $data, TRUE);
+    return $return;
+}
 
 
 function get_menu_language()

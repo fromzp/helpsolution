@@ -41,12 +41,7 @@ if( isset($objects) )
             <div class="registration_button"><a href="registration">Реєстрація</a></div>
             <div class="login_button"><a href="<?php echo base_url(); ?>">Увiйти</a></div>
         </div>
-        <div class="menus">
-            <div class="li"><a class="clear_link" href="<?php echo site_url('can_help'); ?>">Я МОЖУ ДОПОМОГТИ</a> <div class="black_line"></div></div>
-            <div class="li "><a class="clear_link" href="<?php echo site_url('need_help'); ?>">ПОТРIБНА ДОПОМОГА</a> <div class="black_line"></div></div>
-            <div class="li small"><span><a class="clear_link" href="<?php echo site_url('about_us'); ?>">ПРО НАС</a></span><div class="black_line"></div></div>
-
-        </div>
+        <?php echo get_navigator(); ?>
     </div>
 
     <div class="header_line">  </div>
