@@ -92,8 +92,7 @@
 
         <script>
             $(document).ready(function()
-            {
-                
+            {   
                 $('.main_menu').find('a').live('mouseenter', function()
                 {
                     var menu_id=$(this).attr('id');
