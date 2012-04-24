@@ -86,7 +86,7 @@ function get_header_auth($title='', $objects_array=array() ,$options = array())
 
     $default_objects = array();
     
-    $default_objects[] = array('css','style_home.css.php',array('id'=>'style_home.css'));
+    $default_objects[] = array('css','style.css.php',array('id'=>'style.css'));
     
     $default_objects[] = array('js','language_switcher.js.php', array('id'=>'language_switcher'));  
     

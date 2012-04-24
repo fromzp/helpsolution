@@ -1,5 +1,8 @@
+/*<style type="text/css">
+    style_profile.css*/
 body{
     margin-top: 0;
+    
 }
 .page { 
     width: 1020px;
@@ -14,7 +17,7 @@ body{
 
 /*Header*/
 .page .header .header_logo {
-    background: url("../img/logo_header.png") no-repeat scroll 0 0 transparent;
+    background: url(<?php echo _img('logo_header.png'); ?>) no-repeat scroll 0 0 transparent;
     height: 90px;
     width: 1020px;
 
@@ -1375,3 +1378,4 @@ a{
     float: right;
 }
 /*reklamka END*/
+   /*</style>*/

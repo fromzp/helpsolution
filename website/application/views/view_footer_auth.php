@@ -2,8 +2,8 @@
 <div class="yashare-auto-init" data-yashareL10n="ru" data-yashareType="button" data-yashareQuickServices="vkontakte,facebook,twitter,odnoklassniki"></div>
 <!-- reklamka END -->
         
-<!-- footer -->
-<div class="footer">
+ <!-- footer -->
+        <div class="footer">
             <div class="footer_text menu">
                 <div class="text_menu"><a href="">Про нас</a><span>|</span></div> 
                 <div class="text_menu"><a href="">ЗМІ і Новини</a><span>|</span></div>
@@ -21,9 +21,7 @@
             <div class="copyright">&copy; 2011, Біржа взаємодопомоги «Є Рішення!»</div>
             <div class="line_footer"></div>
         </div>
- 
         <!-- footer END -->
 
     </body>
-
 </html>

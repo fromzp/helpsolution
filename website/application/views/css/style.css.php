@@ -1041,4 +1041,29 @@ a{
     padding: 1px;
     width: 12px;
 }
+
+/*menu css view*/
+
+ul.dropdown,
+ul.dropdown li,
+ul.dropdown ul {
+	list-style: none;
+	margin: 0;
+	padding: 0;
+}
+
+ul.dropdown {
+	position: relative;
+	z-index: 597;
+	float: left;
+}
+
+ul.dropdown li {
+	float: left;
+	line-height: 1.3em;
+	vertical-align: middle;
+	zoom: 1;
+}
+
+/*END*/
 /*</style>*/

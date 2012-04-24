@@ -48,7 +48,7 @@ class Profile extends CI_Controller
         }
         */
         $data['user_details'] = $user_details;
-        
+        fb($data, 'user_details_array');
         _view('frontend/my/view_my_profile_details',$data);
         
     }
