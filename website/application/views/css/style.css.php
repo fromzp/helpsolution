@@ -65,6 +65,11 @@
 .header .header_menu .main_menu li .active{
     background-color: #78adcc;
 }
+
+.header .header_menu .main_menu li .active_page {
+    background-color: #78adcc;
+}
+
 .header .header_menu .main_menu li a:hover {
     background-color: #78adcc;
 }
@@ -74,6 +79,14 @@
     padding: 3px 0px 10px;
     width: 32%;
 }
+
+/*menu make*/
+.active_menu {
+    display:inline;
+}
+
+/*menu_make_end*/
+
 
 .header .header_menu .user_panel .login .user_logo {
     background: url(<?php echo _img('icon_people.png'); ?>) no-repeat scroll 0 0 transparent;
@@ -1044,26 +1057,7 @@ a{
 
 /*menu css view*/
 
-ul.dropdown,
-ul.dropdown li,
-ul.dropdown ul {
-	list-style: none;
-	margin: 0;
-	padding: 0;
-}
 
-ul.dropdown {
-	position: relative;
-	z-index: 597;
-	float: left;
-}
-
-ul.dropdown li {
-	float: left;
-	line-height: 1.3em;
-	vertical-align: middle;
-	zoom: 1;
-}
 
 /*END*/
 /*</style>*/
