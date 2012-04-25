@@ -54,9 +54,9 @@
                     <div class="menu_listing">
 
                         <ul  for="href_market" style="display: none;">
-                            <li><a href="menu-mutual-exchange.html">Біржа</a><div "></div></li>
-                            <li><a href="my-volunteer-applications.html">Мої заявки "Можу допомогти"</a></li>
-                            <li><a href="my-ad.html">Мої оголошення</a></li>
+                            <li><a href="menu-mutual-exchange.html">Біржа</a><div></div></li>
+                            <li><a href="my-volunteer-applications.html">Мої заявки "Можу допомогти"</a><div></div></li>
+                            <li><a href="my-ad.html">Мої оголошення</a><div></div></li>
                         </ul>
 
                         <ul for="href_need_help" style="display: none;">
@@ -64,11 +64,12 @@
                         </ul> 
 
                         <ul for="href_can_help" class="active_menu" >
-                            <li><a href="">Мій профіль</a><div class="current"></div></li>                  
+                            <li><a href="">Мій профіль</a><div class="current_page"></div></li>                  
+                            <li><a href="">Кабiнет</a><div ></div></li> 
                         </ul>   
 
                         <ul for="href_achiv"  style="display: none;">
-                            <li><a href="">Звiти</a><div ></div></li>                  
+                            <li><a href="">Звiти</a><div ></div></li>                                
                         </ul>  
 
                     </div>

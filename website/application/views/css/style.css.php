@@ -199,7 +199,22 @@ a{
     text-align: center;
     width: 182px;
 }
-.header .menu .menu_listing .current{
+
+.header .menu .menu_listing ul li a{
+    text-align: center;
+    width: 182px;
+}
+
+.header .menu .menu_listing ul li:hover div {
+    background:  url(<?php echo _img('menu_triangle.png'); ?>) no-repeat scroll 0 0 transparent; 
+    width: 26px;
+    height: 23px;
+    margin-top: 29px;
+    margin-left: 78px;
+    position: absolute;
+}
+
+.header .menu .menu_listing .current_page {
     background:  url(<?php echo _img('menu_triangle.png'); ?>) no-repeat scroll 0 0 transparent; 
     width: 26px;
     height: 23px;
