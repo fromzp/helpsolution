@@ -137,6 +137,7 @@ function get_header_auth($title='', $objects_array=array() ,$options = array())
     
 
     $return = _view('view_header_auth',$data,TRUE);
+    
     return $return;
 }
 

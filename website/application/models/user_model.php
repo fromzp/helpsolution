@@ -189,7 +189,8 @@ class User_model extends CI_Model {
             d.country_id,
             d.name,
             d.name as user_name,
-            d.lastname,                      
+            d.lastname,
+            d.image,           
             d.help_city_id, 
             d.sex,
             d.birthdate,
@@ -330,6 +331,7 @@ class User_model extends CI_Model {
         
         $details['user_id'] = $user_id;
         //$details['language_id'] = LANGUAGE_ID;
+        fb($details,'334 line user_model details array --->>');
         $this->db->insert('user_details',$details);
         if( $this->db->affected_rows() <= 0 )
         {

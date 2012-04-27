@@ -200,12 +200,18 @@ a{
     width: 182px;
 }
 
-.header .menu .menu_listing ul li a{
-    text-align: center;
-    width: 182px;
+.header .menu .menu_listing ul li:hover div{
+    background:  url(<?php echo _img('menu_triangle.png'); ?>) no-repeat scroll 0 0 transparent; 
+    width: 26px;
+    height: 23px;
+    margin-top: 29px;
+    margin-left: 78px;
+    position: absolute;
 }
 
-.header .menu .menu_listing ul li:hover div {
+.header .menu .menu_listing ul li div:hover {}
+
+.header .menu .menu_listing .current {
     background:  url(<?php echo _img('menu_triangle.png'); ?>) no-repeat scroll 0 0 transparent; 
     width: 26px;
     height: 23px;
@@ -1070,8 +1076,320 @@ a{
     width: 12px;
 }
 
-/*menu css view*/
+/*profile_view*/
+.content .profile {
+    float: left;
+    height: auto;
+    width: 220px;
+}
 
+.content .profile .left_part {
+    width:220px;
+    height:auto;
+    
+}
+
+.content .profile .left_part .portfolio {
+    background: none repeat scroll 0 0 #DEDEDE;
+    height: 660px;
+    text-align: center;
+    width: 220px;
+}
+
+.content .profile .left_part .portfolio .portfolio_name {
+    float:left;
+    height:16px;
+    width:180px;
+    margin:20px 0px 0px 20px; 
+    
+   
+}
+
+.content .profile .left_part .portfolio .portfolio_rating {
+    float:left;
+    height:20px;
+    width:180px;
+    margin:15px 0px 0px 20px; 
+       
+}
+
+.content .profile .left_part .portfolio .portfolio_photo {
+    float:left;
+    width:200px;
+    height:235px;
+    margin:15px 0px 0px 10px;
+    border: 1px solid black;
+   
+} 
+
+.content .profile .left_part .portfolio .portfolio_energy {   
+    background: url( <?php echo _img('energy.png'); ?>) no-repeat scroll 0 0 transparent;
+    float:left;
+    width:200px;
+    height:45px;
+    border:1px solid black;
+    margin: 18px 0px 0px 10px;  
+}
+
+.content .profile .left_part .portfolio .portfolio_energy .energy {
+    color: green;
+    float: left;
+    font-size: 12px;
+    font-weight: bold;
+    margin: 3px 0 0 65px;
+    border:0;
+}
+.content .profile .left_part .portfolio .portfolio_energy .energy td {
+    float:left;
+}
+    
+.content .profile .left_part .portfolio .user_info_statistic {
+    float:left;
+    text-align:left;
+    width:200px;
+    height:auto;
+    margin:5px 10px 0 10px;
+}
+
+.content .profile .left_part .portfolio .user_info_statistic .info_div {
+font-size: 14px;
+font-weight: normal;
+
+}
+
+.content .profile .left_part .portfolio .user_info_statistic .info_div span {
+
+font-weight: bold;
+
+}
+
+.content .profile .left_part .portfolio .user_info_statistic .second_info {
+    margin-top: 20px;
+}
+
+.content .profile .left_part .news {
+    height:auto;
+    width:99%;
+}
+
+.content .profile .left_part .portfolio .portfolio_buttons {
+    margin: 20px 0px 0px 9px;
+    float:left;
+    width:202px;
+    height:100px;
+
+    
+}
+
+.content .profile .left_part .portfolio .portfolio_buttons div {
+    float:left;
+    background: url( <?php echo _img('portfolio_button.png'); ?>) no-repeat scroll 0 0 transparent;
+    width:202px;
+    height:35px;
+    padding-top:15px;
+    color:white;
+    font-size:14px;   
+}
+
+.content .main_content {
+    float:left;
+    width:770px; 
+    height: auto;
+    margin-left:30px;
+}
+
+.content .main_content .about_me {
+    float:left;
+    width:99%;
+    min-height: 50px;
+    border: 1px solid green;    
+    font-family: Arial,Helvetica,sans-serif;
+    font-style: italic;
+
+}
+
+.content .main_content .more_info {
+    float:left;
+    width:99%;
+    height:auto;   
+}
+
+.content .main_content .more_info .info_div {
+    float:left;
+    width:99%;
+    height:17px;
+    margin-top:5px;
+}
+.content .main_content .more_info .info_div span {
+font-weight: bold;
+margin-left:5px;
+}
+
+.content .main_content .more_info .info_div .content_icon{
+    height:17px;
+    width:17px;
+    background:grey;
+    float:left;
+    margin-top:2px;
+    
+}
+
+.content .main_content .more_info .info_div .content_icon_status {
+    background: url( <?php echo _img('content_icon_famaly.png'); ?>) no-repeat scroll 0 0 transparent;
+}
+
+.content .main_content .more_info .info_div .content_icon_age {
+    background: url( <?php echo _img('content_icon_year18.png'); ?>) no-repeat scroll 0 0 transparent;
+}
+
+.content .main_content .more_info .info_div .content_icon_marital {
+    background: url( <?php echo _img('content_icon_famaly.png'); ?>) no-repeat scroll 0 0 transparent;
+}
+
+.content .main_content .more_info .info_div .content_icon_skills {
+    background: url( <?php echo _img('content_icon_help.png'); ?>) no-repeat scroll 0 0 transparent;
+}
+
+.content .main_content .more_info .info_div .content_icon_country{
+      background: url( <?php echo _img('content_icon_city.png'); ?>) no-repeat scroll 0 0 transparent; 
+      margin-top:4px;
+}
+
+.content .main_content .market_history {
+    float: left;
+    margin-top: 10px;
+    max-height: 560px;
+    min-height: 125px;
+    width: 100%;
+}
+
+.content .main_content .market_history .paragraph {
+    background:grey;
+    height:40px;
+    width:100%;
+    float:left;   
+    margin-top:10px;
+}
+
+.content .main_content .market_history .paragraph .text {
+    float:left;
+    margin: 5px 0 0 10px;
+    color: white;
+    padding-top:5px;
+}
+
+.content .main_content .market_history .all_of_history {
+    float: left;
+    height: auto;   
+    width: 100%;
+    
+}
+
+.content .main_content .market_history .all_of_history .history {
+    float:left;
+    height:110px;
+    width:100%;
+    margin-top:20px;
+}
+
+.content .main_content .market_history .all_of_history .history .project_photo {
+    float:left;
+    height:110px;
+    width:150px;
+
+}
+
+.content .main_content .market_history .all_of_history .history .project_photo .history_photo {
+    float:left;
+    height:90px;
+    width:150px;
+    background: #DEDEDE;
+
+}
+
+.content .main_content .market_history .all_of_history .history .project_photo .photo_info {
+    float:left;
+    height:20px;
+    width:150px;   
+    background:grey;
+    color:white;
+    font-size:14px;
+    text-align:center;
+}
+
+.content .main_content .market_history .all_of_history .history .history_fild {
+    float: left;  
+    height: 100%;
+    width: 600px;
+    margin-left:20px;
+}
+
+.content .main_content .market_history .all_of_history .history .history_fild .history_rating{
+    float:left;
+    height: 18px;
+    width:100%;
+    background:grey;
+}
+
+.content .main_content .market_history .all_of_history .history .history_fild .history_about {
+    background: none repeat scroll 0 0 #DEDEDE;
+    float: left;
+    font-family: Arial,Helvetica,sans-serif;
+    font-size: 14px;
+    font-style: italic;
+    height: 45px;
+    width:100%;
+    
+    white-space: -moz-pre-wrap; /* Mozilla */
+    white-space: -pre-wrap; /* Opera 4-6 */
+    white-space: -o-pre-wrap; /* Opera 7 */
+    word-wrap: break-word; /* Internet Explorer 5.5+ */
+   /* margin: 5px 0 0 0px;
+    overflow: hidden;
+    padding: 0 5px 5px 15px;*/
+}
+
+.content .main_content .market_history .all_of_history .history .history_fild .user_comment {
+    float:left;
+    height: 42px;
+    width:100%;       
+    margin-top:5px;
+    white-space: -moz-pre-wrap; /* Mozilla */
+    white-space: -pre-wrap; /* Opera 4-6 */
+    white-space: -o-pre-wrap; /* Opera 7 */
+    word-wrap: break-word; /* Internet Explorer 5.5+ */
+    
+}
+
+content .main_content .market_history .all_of_history .history .history_fild .user_comment .comment_rating {
+    float:left;
+    width:100%;
+    height: 10px;
+}
+
+
+.content .main_content .market_history .all_of_history .history .history_fild .user_comment .comment_rating {
+    float:left;
+    height:15px;
+    width:100%;
+    
+}
+
+.content .main_content .market_history .all_of_history .history .history_fild .user_comment .comment_text {
+    float:left;
+    width:100%;
+    height:27px;
+    font-family: Arial,Helvetica,sans-serif;
+    font-size: 12px;
+    font-style: italic;
+    padding-top: 5px;
+}
+
+.profile_content {
+    height:auto;
+    min-height:0;
+}
+/*profile_view_end*/
 
 
 /*END*/

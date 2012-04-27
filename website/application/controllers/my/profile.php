@@ -4,6 +4,7 @@ class Profile extends CI_Controller
 {
     function Index()
     {
+        
         if( !auth_check() )
         {
             auth_error();

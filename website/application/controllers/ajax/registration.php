@@ -6,7 +6,7 @@ if (!defined('BASEPATH'))
 Class Registration extends CI_Controller {
 
     public function Index() {
-        if ( auth_check() ) {
+        if (auth_check()) {
             // active user don't allow to the registration process
             if ((int) user_details('status_id') != 0) {
                 $msg = '<{Not allowed for active user}>';
@@ -86,6 +86,19 @@ Class Registration extends CI_Controller {
             $params['password'] = _jerr('minlength', array(6));
         }
 
+        if ( !empty( $image ) ) {
+
+            $upload_to = $this->config->item('upload_path');
+            $upload_from = $this->config->item('upload_path_tmp');
+
+            if (!copy($upload_from.$image, $upload_to.$image)) {                 
+                 $status = false;
+                 $params['image'] = _jerr('failed to image create');                 
+            }
+            
+        } else {
+            $image=NULL;
+        }
 
 
         // Check captcha
@@ -107,7 +120,7 @@ Class Registration extends CI_Controller {
                 //'create_time' => date('Y-m-d H:i:s'),
                 'lastname' => $lastname,
                 'sex' => $sex,
-                    //'image' => $image
+                'image' => $image
             );
             $user_id = $this->user_model->user_create($email, md5($password), $details);
             if ($user_id > 0) {
@@ -124,7 +137,7 @@ Class Registration extends CI_Controller {
             $msg = 'Registration success';
             log_message('DEBUG', $msg);
             $params = array(
-                'url' => site_url('about_us')
+                'url' => site_url('my/profile')
             );
             make_json_answer($status, $params);
             return true;
@@ -308,12 +321,12 @@ Class Registration extends CI_Controller {
 
     public function user_photo_preview() {
 
-        fb(__FILE__.'@'.__LINE__);
+        fb(__FILE__ . '@' . __LINE__);
         $upload_path = $this->config->item('upload_path_tmp');
         fb($upload_path);
-        $upload_link = base_url().$this->config->item('upload_url_tmp');
+        $upload_link = base_url() . $this->config->item('upload_url_tmp');
         fb($upload_link);
-        
+
         $this->load->library('image_lib');
         $config['upload_path'] = $upload_path;
         $config['allowed_types'] = 'gif|jpg|png';
@@ -343,13 +356,13 @@ Class Registration extends CI_Controller {
             $config['new_image'] = $thumbnail;
             //   $config['create_thumb'] = TRUE;
             $config['maintain_ratio'] = TRUE;
-            $config['width'] = 207;
-            //$config['height'] = 275;
+            $config['width'] = 200;
+            $config['height'] = 235;
 
             $this->image_lib->initialize($config);
             $this->image_lib->resize();
-
-            echo '<img id="user_image" height="275" width=207 alt="' . $image['upload_data']['file_name'] . '" src="' . $upload_link . "thumb_" . $image['upload_data']['file_name'] .'/'. md5(microtime()) .'">';
+            fb('name_photo', $image['upload_data']['file_name']);
+            echo '<img id="user_image" height="275" width=207 alt="' . $image['upload_data']['file_name'] . '" src="' . $upload_link . "thumb_" . $image['upload_data']['file_name'] . '/' . md5(microtime()) . '">';
         }
     }
 
