@@ -35,8 +35,8 @@
                         </ul> 
 
                         <ul for="href_can_help" class="active_menu" >
-                            <li><a href="">Мій профіль</a><div class="current_page"></div></li>                  
-                            <li><a href="">Кабiнет</a><div ></div></li> 
+                            <li><a href="<?php echo(site_url('my/profile')) ?>">Мій профіль</a><div class="<?php echo $page=='profile'?'current_page':''; ?>"></div></li>                  
+                            <li><a href="<?php echo(site_url('my/edit_profile')) ?>">Кабiнет</a><div class="<?php echo $page=='edit_profile'?'current_page':''; ?>"></div></li> 
                         </ul>   
 
                         <ul for="href_achiv"  style="display: none;">
@@ -56,5 +56,3 @@
 
             </div>
 
-
-      

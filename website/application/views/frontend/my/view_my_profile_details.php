@@ -76,7 +76,7 @@ echo get_header_auth($title, $objects);
                 <!-- in controller profile, from database take first 4 history project ant pull in the history div -->
                 <?php
                 $help_count = array();
-                $help_count['1'] = array(
+                $help_count['0'] = array(
                     "stars" => "1",
                     "user_rate" => "5",
                     "title" => "Допомогали копали",
@@ -84,7 +84,7 @@ echo get_header_auth($title, $objects);
                     "description" => "Як добро було о восьмiй встати та кортоплю покопати",
                     "report_description" => "Дуже сподобалося"
                 );
-                $help_count['2'] = array(
+                $help_count['1'] = array(
                     "stars" => "3",
                     "user_rate" => "4",
                     "title" => "Допомогали будували",

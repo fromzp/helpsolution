@@ -93,7 +93,8 @@ Class Registration extends CI_Controller {
 
             if (!copy($upload_from.$image, $upload_to.$image)) {                 
                  $status = false;
-                 $msg = 'image upload error';        
+                 $msg = 'image upload error';   
+                 //$params['password'] = _jerr();
             }
             
         } else {

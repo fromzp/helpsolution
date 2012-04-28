@@ -154,6 +154,8 @@ function get_navigator()
 function get_navigator_auth()
 {
     $data = array();
+    $CI = &get_instance();
+    $data['page']= $CI->uri->segment(2); 
     $return =  _view('view_navigator_auth', $data, TRUE);
     return $return;
 }

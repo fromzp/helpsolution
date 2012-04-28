@@ -1113,11 +1113,10 @@
     }
 
     .content .second_line .image .team_info {
-        background: none repeat scroll 0 0 #EAF5E5;
-        height: 90px;
-        margin: 13% 0 0 8%;
-        position: absolute;
-        width: 210px;
+    background: none repeat scroll 0 0 #EAF5E5;
+    height: 90px;
+    margin: 34% 0 0 20%;
+    width: 210px;
     }
 
     .content .second_line .image .team_info .info{

@@ -1160,17 +1160,19 @@ a{
 .content .profile .left_part .portfolio .user_info_statistic .info_div {
 font-size: 14px;
 font-weight: normal;
+height:auto;
 
 }
 
 .content .profile .left_part .portfolio .user_info_statistic .info_div span {
-
+height:auto;
 font-weight: bold;
 
 }
 
 .content .profile .left_part .portfolio .user_info_statistic .second_info {
     margin-top: 20px;
+    height:auto;
 }
 
 .content .profile .left_part .news {
@@ -1223,12 +1225,14 @@ font-weight: bold;
 .content .main_content .more_info .info_div {
     float:left;
     width:99%;
-    height:17px;
+    height:auto;
     margin-top:5px;
 }
 .content .main_content .more_info .info_div span {
+height:auto;
 font-weight: bold;
 margin-left:5px;
+float:left;
 }
 
 .content .main_content .more_info .info_div .content_icon{
@@ -1400,16 +1404,36 @@ content .main_content .market_history .all_of_history .history .history_fild .us
 .content .main_content .base_skills .educetion {
     float:left;
     height:auto;
-    width:50%;   
+    width:100%;   
 }
 
 .content .main_content .base_skills .paragraph    {
     float:left;
     height:auto;
-    width:50%;  
+    width:100%;  
 }
 /*profile_view_end*/
+/*profile_edit*/
 
+/*profile_edit_end*/
+.content .main_content .why_i_here {
+    float:left;
+    height:auto;
+    width:100%;    
+}
+
+.content .main_content .why_i_here textarea {
+    
+    margin:0;
+    padding:0;
+    float:left;
+    resize: none;
+}
+
+.content .main_content .info_div .selects {
+    float:right;
+    margin-right:52%;
+}
 
 /*END*/
 /*</style>*/
