@@ -15,7 +15,7 @@
         var lastname=$('#lastname').val();
         
         var sex=$(':radio[name=sex][checked=checked]').val();
-        var help= $(':radio[name=help][checked=checked]').val();
+        var taked_status= $(':radio[name=help][checked=checked]').val();
         var agree = $(':checkbox[ name=accept_check]').attr('checked');
         
         var recaptcha_response_field = $("#recaptcha_response_field").val();
@@ -32,6 +32,7 @@
             ajax_loader();
            },
             success: function(data)
+            
             {
                 ajax_loader();
                 if( data.status == 0 )
@@ -39,7 +40,11 @@
                     Recaptcha.reload();
                     if( data.msg != null && data.msg != undefined )
                     {
+                        if ( data.msg == "image upload error" ) {
+                            $("#preview").html("Image can not be upload");
+                        }
                         ajax_error(data.msg);
+                        
                     }
                     validator.showErrors(data.params);
                     //@doto integrate with jquery.validator

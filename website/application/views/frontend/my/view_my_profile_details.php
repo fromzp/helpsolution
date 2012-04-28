@@ -16,8 +16,8 @@ echo get_header_auth($title, $objects);
                 </div>
                 <div class="portfolio_rating"> (звездочки) </div>
                 <div class="portfolio_photo">
-                    <img src="<?php if (!empty($user_details['photo']))
-                        echo _img($user_details['photo']); ?>" alt="Image">
+                    <img src="<?php if (!empty($user_details['image']))
+                        echo base_url() . $this->config->item('upload_url') . $user_details['image']; ?>"  width="200" height="235" alt="Image">
                 </div>
                 <div class="portfolio_energy">
 
@@ -74,26 +74,61 @@ echo get_header_auth($title, $objects);
             <div class="all_of_history">
                 
                 <!-- in controller profile, from database take first 4 history project ant pull in the history div -->
+<?php 
 
+$help_count=array();
+$help_count['1']=array(
+    "stars" => "1",
+    "user_rate" => "5",
+    "title" => "Допомогали копали",
+    "image" =>  _img('slider_img_2.png'),
+    "description" => "Як добро було о восьмiй встати та кортоплю покопати" ,
+    "report_description" => "Дуже сподобалося"
+    );
+$help_count['2']=array(
+    "stars" => "3",
+    "user_rate" => "4",
+    "title" => "Допомогали будували",
+    "image" =>  _img('slider_img_4.png'),
+    "description" => "Я кортоплю докопали вiдразу погреб здубували" ,
+    "report_description" => "Дуже сподобалося"
+    );
 
-                <div class="history">
+$user_details['id_projects'] = $help_count;
+
+foreach ($user_details['id_projects'] as $value) {
+    
+  
+ 
+    echo '
+          <div class="history">
                     <div class="project_photo">
-                        <div class="history_photo"></div>
-                        <div class="photo_info"> <span>exo title</span> <a href=""></a></div>
+                        <div class="history_photo"> <img src=" '. $value['image'] .' " alt=" '. $value['title'] .' "  heigh="90" width="150"> </div>
+                        <div class="photo_info"> <span>'.  $value['title'] . '</span> <a href=""></a></div>
                     </div>
                     <div class="history_fild">
-                        <div class="history_rating"> exho star rating</div>
-                        <div class="history_about">
-                            echo about
-                        </div>
+                    <div class="history_rating">';
+                    $num=(int)$value['stars'];
+                    for ($i=1; $i <= $num; $i++ ) {
+                        echo  ' <img src="'. _img('star.png') .'" alt="альтернативный текст"> ';
+                    }
+                        echo '</div>
+                            <div class="history_about">  '. $value['description'] .'  </div>
                         <div class="user_comment">
-                            <div class="comment_rating">exho star rating</div>
-                            <div class="comment_text"> Відгук <?php echo " " . $user_details['name'] . ":"; ?> </div>
+                            <div class="comment_rating">';
+                                 $num=(int)$value['user_rate'];
+                    for ($i=1; $i <= $num; $i++ ) {
+                        echo  ' <img src="'. _img('star.png') .'" alt="альтернативный текст"> ';
+                    } 
+                        echo '</div>
+                            <div class="comment_text"> Відгук '. $user_details['name'] . ': '. $value['report_description'] .' </div>
                         </div>
                     </div>
-                </div>
+                </div>';   
+}
 
-
+?>
+            
 
             </div>
             
