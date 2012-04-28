@@ -1077,6 +1077,12 @@ a{
 }
 
 /*profile_view*/
+
+.profile_content {
+    height:auto;
+    min-height:0;
+}
+
 .content .profile {
     float: left;
     height: auto;
@@ -1263,7 +1269,7 @@ margin-left:5px;
     width: 100%;
 }
 
-.content .main_content .market_history .paragraph {
+.content .main_content  .paragraph {
     background:grey;
     height:40px;
     width:100%;
@@ -1271,7 +1277,7 @@ margin-left:5px;
     margin-top:10px;
 }
 
-.content .main_content .market_history .paragraph .text {
+.content .main_content .paragraph .text {
     float:left;
     margin: 5px 0 0 10px;
     color: white;
@@ -1385,9 +1391,22 @@ content .main_content .market_history .all_of_history .history .history_fild .us
     padding-top: 5px;
 }
 
-.profile_content {
+.content .main_content .base_skills {
+    float:left;
+    width:100%;
     height:auto;
-    min-height:0;
+} 
+
+.content .main_content .base_skills .educetion {
+    float:left;
+    height:auto;
+    width:50%;   
+}
+
+.content .main_content .base_skills .paragraph    {
+    float:left;
+    height:auto;
+    width:50%;  
 }
 /*profile_view_end*/
 

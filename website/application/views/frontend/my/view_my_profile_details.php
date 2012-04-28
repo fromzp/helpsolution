@@ -72,69 +72,84 @@ echo get_header_auth($title, $objects);
         <div class="market_history">
             <div class="paragraph"> <span class="text">Істория Активності на Біржі</span> </div>                        
             <div class="all_of_history">
-                
+
                 <!-- in controller profile, from database take first 4 history project ant pull in the history div -->
-<?php 
+                <?php
+                $help_count = array();
+                $help_count['1'] = array(
+                    "stars" => "1",
+                    "user_rate" => "5",
+                    "title" => "Допомогали копали",
+                    "image" => _img('slider_img_2.png'),
+                    "description" => "Як добро було о восьмiй встати та кортоплю покопати",
+                    "report_description" => "Дуже сподобалося"
+                );
+                $help_count['2'] = array(
+                    "stars" => "3",
+                    "user_rate" => "4",
+                    "title" => "Допомогали будували",
+                    "image" => _img('slider_img_4.png'),
+                    "description" => "Я кортоплю докопали вiдразу погреб здубували",
+                    "report_description" => "Дуже сподобалося"
+                );
 
-$help_count=array();
-$help_count['1']=array(
-    "stars" => "1",
-    "user_rate" => "5",
-    "title" => "Допомогали копали",
-    "image" =>  _img('slider_img_2.png'),
-    "description" => "Як добро було о восьмiй встати та кортоплю покопати" ,
-    "report_description" => "Дуже сподобалося"
-    );
-$help_count['2']=array(
-    "stars" => "3",
-    "user_rate" => "4",
-    "title" => "Допомогали будували",
-    "image" =>  _img('slider_img_4.png'),
-    "description" => "Я кортоплю докопали вiдразу погреб здубували" ,
-    "report_description" => "Дуже сподобалося"
-    );
+                $user_details['id_projects'] = $help_count;
 
-$user_details['id_projects'] = $help_count;
+                foreach ($user_details['id_projects'] as $value) {
 
-foreach ($user_details['id_projects'] as $value) {
-    
-  
- 
-    echo '
+                    echo '
           <div class="history">
                     <div class="project_photo">
-                        <div class="history_photo"> <img src=" '. $value['image'] .' " alt=" '. $value['title'] .' "  heigh="90" width="150"> </div>
-                        <div class="photo_info"> <span>'.  $value['title'] . '</span> <a href=""></a></div>
+                        <div class="history_photo"> <img src=" ' . $value['image'] . ' " alt=" ' . $value['title'] . ' "  heigh="90" width="150"> </div>
+                        <div class="photo_info"> <span>' . $value['title'] . '</span> <a href=""></a></div>
                     </div>
                     <div class="history_fild">
                     <div class="history_rating">';
-                    $num=(int)$value['stars'];
-                    for ($i=1; $i <= $num; $i++ ) {
-                        echo  ' <img src="'. _img('star.png') .'" alt="альтернативный текст"> ';
+                    $num = (int) $value['stars'];
+                    for ($i = 1; $i <= $num; $i++) {
+                        echo ' <img src="' . _img('star.png') . '" alt="альтернативный текст"> ';
                     }
-                        echo '</div>
-                            <div class="history_about">  '. $value['description'] .'  </div>
+                    echo '</div>
+                            <div class="history_about">  ' . $value['description'] . '  </div>
                         <div class="user_comment">
                             <div class="comment_rating">';
-                                 $num=(int)$value['user_rate'];
-                    for ($i=1; $i <= $num; $i++ ) {
-                        echo  ' <img src="'. _img('star.png') .'" alt="альтернативный текст"> ';
-                    } 
-                        echo '</div>
-                            <div class="comment_text"> Відгук '. $user_details['name'] . ': '. $value['report_description'] .' </div>
+                    $num = (int) $value['user_rate'];
+                    for ($i = 1; $i <= $num; $i++) {
+                        echo ' <img src="' . _img('star.png') . '" alt="альтернативный текст"> ';
+                    }
+                    echo '</div>
+                            <div class="comment_text"> Відгук ' . $user_details['name'] . ': ' . $value['report_description'] . ' </div>
                         </div>
                     </div>
-                </div>';   
-}
+                </div>';
+                }
+                ?>
 
-?>
-            
 
             </div>
-            
+        </div>
+        <div class="base_skills">
             <div class="paragraph"> <span class="text">Освіта</span> </div> 
-            <div class="paragraph"> <span class="text">Історія роботи</span> </div> 
+            <div class="educetion">
+                <?php
+                if (!empty($user_details['education'])) {
+                    echo $user_details['education'];
+                }
+                ?>                
+            </div>           
 
+
+
+
+            <div class="paragraph"> <span class="text">Історія роботи</span> </div> 
+            <div class="work_where">
+                <?php
+                if (!empty($user_details['work'])) {
+                    echo $user_details['work'];
+                }
+                ?>
+
+            </div>
         </div>
     </div>
 
