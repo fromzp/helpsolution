@@ -1196,7 +1196,8 @@ font-weight: bold;
     height:35px;
     padding-top:15px;
     color:white;
-    font-size:14px;   
+    font-size:14px;
+    cursor: default;
 }
 
 .content .main_content {
@@ -1228,6 +1229,8 @@ font-weight: bold;
     height:auto;
     margin-top:5px;
 }
+
+
 .content .main_content .more_info .info_div span {
 height:auto;
 font-weight: bold;
@@ -1243,6 +1246,8 @@ float:left;
     margin-top:2px;
     
 }
+
+
 
 .content .main_content .more_info .info_div .content_icon_status {
     background: url( <?php echo _img('content_icon_famaly.png'); ?>) no-repeat scroll 0 0 transparent;
@@ -1288,6 +1293,17 @@ float:left;
     padding-top:5px;
 }
 
+.content .main_content .paragraph .save_edited {
+    float:right;
+    margin: 5px 10px 0 10px;
+    color: white;
+    padding-top:5px;
+    font-style: italic;
+    text-decoration: underline;
+    cursor: pointer;
+    
+    
+}
 .content .main_content .market_history .all_of_history {
     float: left;
     height: auto;   
@@ -1406,16 +1422,16 @@ content .main_content .market_history .all_of_history .history .history_fild .us
     height:auto;
     width:100%;   
 }
-
-.content .main_content .base_skills .paragraph    {
+/*
+.content .main_content .base_skills .paragraph    {    
     float:left;
-    height:auto;
+    height:40px;
     width:100%;  
-}
+}*/
 /*profile_view_end*/
 /*profile_edit*/
 
-/*profile_edit_end*/
+
 .content .main_content .why_i_here {
     float:left;
     height:auto;
@@ -1432,8 +1448,73 @@ content .main_content .market_history .all_of_history .history .history_fild .us
 
 .content .main_content .info_div .selects {
     float:right;
-    margin-right:52%;
+    margin-right:38%;
 }
 
+#age_select {
+    float: left;
+    margin-right: 16px;
+}
+.content .main_content .base_skills .info_div {
+    float: left;
+    height: auto;
+    margin-top: 5px;
+    width: 99%;
+}
+
+.content .main_content .base_skills .info_div span {
+height:auto;
+font-weight: bold;
+
+}
+
+.content .main_content .more_info select  {
+    border: 1px solid grey;
+    background: none;
+    color:grey;
+    width:200px;
+}
+
+.content .main_content .change_info {
+    float:left;
+    height:auto;
+    width:100%;
+}
+
+.content .main_content .change_info .change_registration_info {
+    float:left;
+    height:auto;
+    width:100%;
+}
+
+
+
+.content .main_content .change_info .change_registration_info .inputs {
+    float:left;
+    width:100%;
+    height:auto;
+    background:#d0d0d0;
+     
+}
+
+.content .main_content .change_info .change_registration_info .inputs .input_name {
+    float:left;
+    height:16px;
+    width:150px;
+    background:rgey;
+}
+
+.content .main_content .change_info .change_registration_info .inputs input {
+    float:left;
+    height:auto;
+    width:auto;
+}
+
+.content .main_content .change_info .change_registration_info .inputs .msg {
+    float:left;
+    width:auto;    
+}
+
+/*profile_edit_end*/
 /*END*/
 /*</style>*/
