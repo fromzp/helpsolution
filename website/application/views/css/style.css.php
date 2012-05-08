@@ -1097,7 +1097,8 @@ a{
 
 .content .profile .left_part .portfolio {
     background: none repeat scroll 0 0 #DEDEDE;
-    height: 660px;
+    float: left;
+    height: auto;
     text-align: center;
     width: 220px;
 }
@@ -1493,7 +1494,7 @@ font-weight: bold;
     float:left;
     width:100%;
     height:auto;
-    background:#d0d0d0;
+    
      
 }
 
@@ -1502,19 +1503,70 @@ font-weight: bold;
     height:16px;
     width:150px;
     background:rgey;
+    font-weight: bold;
 }
 
 .content .main_content .change_info .change_registration_info .inputs input {
-    float:left;
-    height:auto;
-    width:auto;
+    float: left;
+    height: auto;
+    margin-left: 20px;
+    width: auto;
 }
 
 .content .main_content .change_info .change_registration_info .inputs .msg {
     float:left;
-    width:auto;    
+    width:auto;
+    color:red;
+    font-size:15px;
 }
 
+.content .main_content .change_info .change_registration_info .inputs .sex {
+    float:left;
+    width:auto;
+}
+
+.content .main_content .change_info .change_registration_info .inputs .sex input {
+    float:none;
+}
 /*profile_edit_end*/
+
+
+    .msg_errors {
+        float: left;
+        height: 20px;
+        width: 100%;
+    }
+
+     .msg {
+        float: left;
+        padding-left: 6px;
+    }
+
+    
+        /*ERRORS*/
+    em.error {
+        padding-left: 16px;
+    }
+
+    em.error { color: red;
+               possition: absolute;
+    }
+
+    div .error {
+        color: red;
+    }
+
+    .msg_errors {
+        float:left;
+        width: 100%;
+        height: 15px;
+        font-size: 14px;  
+    }
+
+    .inputs_errors {
+        float: right;  
+        width: 490px;
+    }
+    /*ERRORS END*/
 /*END*/
 /*</style>*/

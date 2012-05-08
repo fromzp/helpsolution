@@ -4,11 +4,12 @@ class Profile extends CI_Controller
 {
     function Index()
     {
-        
+        fb($this->session->all_userdata(),'all userdata profile 7line');
         if( !auth_check() )
         {
-            auth_error();
-            return false;
+            /*auth_error();
+            return false;*/
+            print_r($this->session->all_userdata());
         }
                
        
@@ -49,7 +50,7 @@ class Profile extends CI_Controller
         }
         */
         $data['user_details'] = $user_details;
-        fb($data, 'user_details_array');
+        fb($data, 'profile 53 line user_details_array');
         _view('frontend/my/view_my_profile_details',$data);
         
     }

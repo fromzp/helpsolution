@@ -227,6 +227,24 @@ Class Registration extends CI_Controller {
       }
      */
 
+    function user_registration_info_change(){
+        $email = $this->input->post('email');
+        $name = $this->input->post('name');
+        $lastname = $this->input->post('lastname');
+        $sex = $this->input->post('sex'); 
+        $password = $this->input->post('password');
+        $password2 = $this->input->post('password2');
+        
+        
+        $params=array();
+        $status = false;    
+        $params['name'] = _jerr(); 
+        make_json_answer(false, $params);
+        return false;
+       
+    }
+    
+    
     function user_details_set() {
         $CI = &get_instance();
         //$this->load->model('user_model');

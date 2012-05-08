@@ -48,6 +48,7 @@ class User_model extends CI_Model {
     
     function email_is_uniq($email)
     {
+        $activ_user_id=$this->session->userdata('user_id');       
         $email = safe_email($email);
         if( empty($email) or !check_email($email) )
         {
@@ -55,7 +56,8 @@ class User_model extends CI_Model {
         }
         $this->db->select('id');
         $this->db->from('users');
-        $this->db->where('email',$email);
+        $this->db->where('id !=', $activ_user_id);
+        $this->db->where('email',$email);          
         $query = $this->db->get();
         if( $query->num_rows()>0 )
         {

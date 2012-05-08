@@ -4,7 +4,7 @@
                     <ul>
                         <li><a id="href_market" href="menu-mutual-exchange.html">БІРЖА ВЗАЄМОДОПОМОГИ</a></li> 
                         <li><a id="href_need_help" href="menu-my-volunteers.html">ТІ, ХТО МОЖУТЬ МЕНІ ДОПОМОГТИ</a></li>
-                        <li><a id="href_can_help" class="active_page style_menu" href="menu-volunteer.html">Я МОЖУ ДОПОМОГТИ</a></li>
+                        <li><a id="href_can_help" class="active_page style_menu" href="profile">Я МОЖУ ДОПОМОГТИ</a></li>
                         <li><a id="href_achiv" class="style_menu" href="menu-my-achievements.html">МОЇ ЗДОБУТКИ</a></li>
 
                     </ul>

@@ -46,7 +46,8 @@
                         ajax_error(data.msg);
                         
                     }
-                    validator.showErrors(data.params);
+                    validator.showErrors(validator_errors_prepare(validator,data.params));
+                    
                     //@doto integrate with jquery.validator
                 }
                 

@@ -4,11 +4,12 @@ class Edit_profile extends CI_Controller
 {
     function Index()
     {
-        
+        fb($this->session->all_userdata(),'all userdata edit_profile');
         if( !auth_check() )
         {
-            auth_error();
-            return false;
+          /*  auth_error();
+            return false;*/
+         print_r($this->session->all_userdata());
         }
                
        
