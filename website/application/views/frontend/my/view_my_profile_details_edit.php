@@ -212,24 +212,24 @@ echo get_header_auth($title, $objects);
         
         $.post(requestUrl, {email:email, password:password, password2:password2, name:name, lastname:lastname, sex:sex}, function(data)
         {
-ajax_loader();
-                if( data.status == 0 )
-                {
-                    /*
+            ajax_loader();
+            if( data.status == 0 )
+            {
+                /*
                     if( data.msg != null && data.msg != undefined )
                     {
 
                         ajax_error(data.msg);
                         
                     }*/
-                    validator.showErrors(validator_errors_prepare(validator,data.params));
-                    //@doto integrate with jquery.validator
-                }
+                validator.showErrors(validator_errors_prepare(validator,data.params));
+                //@doto integrate with jquery.validator
+            }
                 
-                if( data.status == 1 )
-                {
-    alert('change');
-                }
+            if( data.status == 1 )
+            {
+                window.location.reload(); 
+            }
         }, 'json');
     }
 
@@ -241,18 +241,11 @@ ajax_loader();
         {
             errorPlacement: function(error, element){
                 error.appendTo( $(element).next('div') );
-            },
-            submitHandler: function(form) {
-                make_edit();
-            },
-            debug: false,
+            },    
             errorClass: "error",
             validClass: "valid",
             success: 'valid',
-            onclick: false,
-            onkeyup: false,
-            onfocusout: false,
-            onsubmit: true,
+            debug: false,
             highlight: function(element, errorClass, validClass) {
                 $("span[for=" + element.id + "]").addClass(errorClass);
             },
@@ -291,14 +284,23 @@ ajax_loader();
 
         $('#registration_info').live('click', function()
         {
-
-            if ( $('#edit_login_form').valid() ) {
+       /* $('#email').removeData("previousValue");
+        $('#edit_login_form').validate().element( "#email" );
+     */
+           
+           if ( $('#edit_login_form').valid() ) 
+           {
+              
                 make_edit();
+               
             }
         });
 
 
     });
+    
+
+    
 </script>
 
 <?php echo get_footer(); ?>

@@ -35,7 +35,7 @@ class Auth extends CI_Controller {
                     $params = array('msg'=>$msg);
                     
                     //Login from LOGIN page
-                    fb($_SERVER['HTTP_REFERER'],'dont know');
+    
                     if ( base_url() === $_SERVER['HTTP_REFERER'] )
                     {
                         $url = site_url('s_login_page_form_builder');

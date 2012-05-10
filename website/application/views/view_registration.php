@@ -146,3 +146,7 @@ echo get_header($title, $objects);
     <input  class="back_button" type="reset" id="reset" value="Назад" />
 </form>
 <?php echo get_footer(); ?>
+<script>
+    
+    
+    </script>

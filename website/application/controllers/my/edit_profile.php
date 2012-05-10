@@ -9,7 +9,8 @@ class Edit_profile extends CI_Controller
         {
           /*  auth_error();
             return false;*/
-         print_r($this->session->all_userdata());
+ 
+         redirect(base_url());
         }
                
        

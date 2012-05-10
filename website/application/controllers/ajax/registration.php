@@ -228,23 +228,74 @@ Class Registration extends CI_Controller {
      */
 
     function user_registration_info_change(){
+        $CI = &get_instance();        
+        $this->load->model('user_model');
+        
         $email = $this->input->post('email');
         $name = $this->input->post('name');
         $lastname = $this->input->post('lastname');
         $sex = $this->input->post('sex'); 
         $password = $this->input->post('password');
-        $password2 = $this->input->post('password2');
-        
-        
+        $password2 = $this->input->post('password2');                
+
         $params=array();
-        $status = false;    
-        $params['name'] = _jerr(); 
-        make_json_answer(false, $params);
-        return false;
-       
+        $status = true;
+        
+        if (empty($email)) {
+            $status = false;
+            $params['email'] = _jerr();
+        }
+
+        if (!check_email($email)) {
+            $status = false;
+            $params['email'] = _jerr('email');
+        }
+
+        if (empty($name)) {
+            $status = false;
+            $params['name'] = _jerr();
+        }
+
+        if ($status and !$this->user_model->email_is_uniq($email)) {
+            $status = false;
+            $params['email'] = _jerr('remote');
+        }
+
+        if (empty($password)) {
+            $status = false;
+            $params['password'] = _jerr();
+        }
+
+        if (mb_strlen($password) < 6) {
+            $status = false;
+            $params['password'] = _jerr('minlength', array(6));
+        }
+
+       if ($status) 
+           {
+           
+          // chanhe info
+            $details = array(
+                'name' => $name,
+                //'create_time' => date('Y-m-d H:i:s'),
+                'lastname' => $lastname,
+                'sex' => $sex
+                
+            );
+            $status = $this->user_model->user_edit_registration($email, md5($password), $details);         
+       }
+       fb($status,'status afer model');
+       if ( $status ) {       
+           make_json_answer($status);
+           return true;
+       } else {
+                $status = false;
+                $params['msg'] = replace_lang('<{User edit error}>');
+                return false;
+            } 
     }
     
-    
+    /*
     function user_details_set() {
         $CI = &get_instance();
         //$this->load->model('user_model');
@@ -337,7 +388,7 @@ Class Registration extends CI_Controller {
         make_json_answer(false, $params);
         return false;
     }
-
+*/
     public function user_photo_preview() {
 
         fb(__FILE__ . '@' . __LINE__);
