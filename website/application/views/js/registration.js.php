@@ -40,8 +40,8 @@
                     Recaptcha.reload();
                     if( data.msg != null && data.msg != undefined )
                     {
-                        if ( data.msg == "image upload error" ) {
-                            $("#preview").html("Image can not be upload");
+                        if ( data.msg == "upload error" ) {
+                            $("#preview").html("Check right to upload and upload/tmp folder");
                         }
                         ajax_error(data.msg);
                         

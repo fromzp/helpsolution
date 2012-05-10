@@ -86,17 +86,23 @@ Class Registration extends CI_Controller {
             $params['password'] = _jerr('minlength', array(6));
         }
 
-        if ( !empty( $image ) ) {
+     if (!empty($image)) {
 
             $upload_to = $this->config->item('upload_path');
             $upload_from = $this->config->item('upload_path_tmp');
 
-            if (!copy($upload_from.$image, $upload_to.$image)) {                 
-                 $status = false;
-                 $msg = 'image upload error';   
-                 //$params['password'] = _jerr();
+            if (!is_writable($upload_from) || !is_writable($upload_to)) {
+                $status = false;
+                $params['msg'] = 'upload error';
             }
-            
+
+            if ($status) {
+
+                if (!copy($upload_from . $image, $upload_to . $image)) {
+                    $status = false;
+                    $msg = 'image upload error';
+                } 
+            }
         } else {
             $image=NULL;
         }
@@ -227,20 +233,20 @@ Class Registration extends CI_Controller {
       }
      */
 
-    function user_registration_info_change(){
-        $CI = &get_instance();        
+    function user_registration_info_change() {
+        $CI = &get_instance();
         $this->load->model('user_model');
-        
+
         $email = $this->input->post('email');
         $name = $this->input->post('name');
         $lastname = $this->input->post('lastname');
-        $sex = $this->input->post('sex'); 
+        $sex = $this->input->post('sex');
         $password = $this->input->post('password');
-        $password2 = $this->input->post('password2');                
+        $password2 = $this->input->post('password2');
 
-        $params=array();
+        $params = array();
         $status = true;
-        
+
         if (empty($email)) {
             $status = false;
             $params['email'] = _jerr();
@@ -271,124 +277,123 @@ Class Registration extends CI_Controller {
             $params['password'] = _jerr('minlength', array(6));
         }
 
-       if ($status) 
-           {
-           
-          // chanhe info
+        if ($status) {
+
+            // chanhe info
             $details = array(
                 'name' => $name,
                 //'create_time' => date('Y-m-d H:i:s'),
                 'lastname' => $lastname,
                 'sex' => $sex
-                
             );
-            $status = $this->user_model->user_edit_registration($email, md5($password), $details);         
-       }
-       fb($status,'status afer model');
-       if ( $status ) {       
-           make_json_answer($status);
-           return true;
-       } else {
-                $status = false;
-                $params['msg'] = replace_lang('<{User edit error}>');
-                return false;
-            } 
-    }
-    
-    /*
-    function user_details_set() {
-        $CI = &get_instance();
-        //$this->load->model('user_model');
-
-        if (!auth_check()) {
-            $msg = 'Auth error';
-            log_message('DEBUG', $msg);
-            make_json_answer(false, $msg);
+            $status = $this->user_model->user_edit_registration($email, md5($password), $details);
+        }
+        fb($status, 'status afer model');
+        if ($status) {
+            make_json_answer($status);
+            return true;
+        } else {
+            $status = false;
+            $params['msg'] = replace_lang('<{User edit error}>');
             return false;
         }
-
-        $user_id = user_id();
-
-        $name = $this->input->post('name');
-        $address = $this->input->post('address');
-        $zip = $this->input->post('zip');
-        $city = $this->input->post('city');
-        $country = (int) $this->input->post('country');
-        $phone = $this->input->post('phone');
-        $company = $this->input->post('company');
-
-        log_message('DEBUG', 'Ajax request to save user details [' . $user_id . ']');
-
-        $status = true;
-        $params = array();
-
-        if (empty($name)) {
-            $status = false;
-            $params['name'] = _jerr();
-        }
-
-        if (empty($address)) {
-            $status = false;
-            $params['address'] = _jerr();
-        }
-
-        if (empty($city)) {
-            $status = false;
-            $params['city'] = _jerr();
-        }
-
-        $countries = country_get_all();
-        if ($country <= 0 or !isset($countries[$country])) {
-            $status = false;
-            $params['country'] = _jerr();
-        }
-
-        if (empty($phone)) {
-            $status = false;
-            $params['phone'] = _jerr();
-        }
-
-        if (empty($company)) {
-            $status = false;
-            $params['company'] = _jerr();
-        }
-
-        if ($status) {
-            // update details
-            $details = array(
-                'name' => $name,
-                'address' => $address,
-                'zip' => $zip,
-                'city' => $city,
-                'country_id' => $country,
-                'phone' => $phone,
-                'company' => $company
-            );
-            //$result = $this->user_model->user_details_set($user_id, $details);
-            if (!$result) {
-                $status = false;
-                $params['msg'] = 'Set user details error';
-            }
-        }
-
-        if ($status) {
-
-            $msg = 'update user details success';
-            log_message('DEBUG', $msg);
-            $params = array(
-                'url' => site_url('registration/plans')
-            );
-            make_json_answer($status, $params);
-            return true;
-        }
-
-        $msg = '<{Registration error}>';
-        log_message('DEBUG', $msg . _var_dump($params));
-        $params['msg'] = $msg;
-        make_json_answer(false, $params);
-        return false;
     }
-*/
+
+    /*
+      function user_details_set() {
+      $CI = &get_instance();
+      //$this->load->model('user_model');
+
+      if (!auth_check()) {
+      $msg = 'Auth error';
+      log_message('DEBUG', $msg);
+      make_json_answer(false, $msg);
+      return false;
+      }
+
+      $user_id = user_id();
+
+      $name = $this->input->post('name');
+      $address = $this->input->post('address');
+      $zip = $this->input->post('zip');
+      $city = $this->input->post('city');
+      $country = (int) $this->input->post('country');
+      $phone = $this->input->post('phone');
+      $company = $this->input->post('company');
+
+      log_message('DEBUG', 'Ajax request to save user details [' . $user_id . ']');
+
+      $status = true;
+      $params = array();
+
+      if (empty($name)) {
+      $status = false;
+      $params['name'] = _jerr();
+      }
+
+      if (empty($address)) {
+      $status = false;
+      $params['address'] = _jerr();
+      }
+
+      if (empty($city)) {
+      $status = false;
+      $params['city'] = _jerr();
+      }
+
+      $countries = country_get_all();
+      if ($country <= 0 or !isset($countries[$country])) {
+      $status = false;
+      $params['country'] = _jerr();
+      }
+
+      if (empty($phone)) {
+      $status = false;
+      $params['phone'] = _jerr();
+      }
+
+      if (empty($company)) {
+      $status = false;
+      $params['company'] = _jerr();
+      }
+
+      if ($status) {
+      // update details
+      $details = array(
+      'name' => $name,
+      'address' => $address,
+      'zip' => $zip,
+      'city' => $city,
+      'country_id' => $country,
+      'phone' => $phone,
+      'company' => $company
+      );
+      //$result = $this->user_model->user_details_set($user_id, $details);
+      if (!$result) {
+      $status = false;
+      $params['msg'] = 'Set user details error';
+      }
+      }
+
+      if ($status) {
+
+      $msg = 'update user details success';
+      log_message('DEBUG', $msg);
+      $params = array(
+      'url' => site_url('registration/plans')
+      );
+      make_json_answer($status, $params);
+      return true;
+      }
+
+      $msg = '<{Registration error}>';
+      log_message('DEBUG', $msg . _var_dump($params));
+      $params['msg'] = $msg;
+      make_json_answer(false, $params);
+      return false;
+      }
+     */
+
     public function user_photo_preview() {
 
         fb(__FILE__ . '@' . __LINE__);
@@ -397,6 +402,11 @@ Class Registration extends CI_Controller {
         $upload_link = base_url() . $this->config->item('upload_url_tmp');
         fb($upload_link);
 
+        if (!is_dir($upload_path)) {
+            if (!mkdir($upload_path)) {
+                echo "No access for creating temp folder";
+            };
+        }
         $this->load->library('image_lib');
         $config['upload_path'] = $upload_path;
         $config['allowed_types'] = 'gif|jpg|png';
