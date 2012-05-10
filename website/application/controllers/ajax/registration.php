@@ -396,12 +396,17 @@ Class Registration extends CI_Controller {
 
     public function user_photo_preview() {
 
-        fb(__FILE__ . '@' . __LINE__);
-        $upload_path = $this->config->item('upload_path_tmp');
-        fb($upload_path);
+       
+        $upload_path = $this->config->item('upload_path_tmp');       
         $upload_link = base_url() . $this->config->item('upload_url_tmp');
-        fb($upload_link);
-
+        $logo_max_width_upload=$this->config->item('upload_logo_image_max_width');
+        $max_upload_size=$this->config->item('upload_max_filesize');
+        $max_upload_width=$this->config->item('upload_image_max_width'); 
+        $max_upload_height=$this->config->item('upload_image_max_height');
+        
+        
+        
+        
         if (!is_dir($upload_path)) {
             if (!mkdir($upload_path)) {
                 echo "No access for creating temp folder";
@@ -410,9 +415,9 @@ Class Registration extends CI_Controller {
         $this->load->library('image_lib');
         $config['upload_path'] = $upload_path;
         $config['allowed_types'] = 'gif|jpg|png';
-        $config['max_size'] = '1000';
-        $config['max_width'] = '1024';
-        $config['max_height'] = '768';
+        $config['max_size'] = $max_upload_size;
+        $config['max_width'] = $max_upload_width;
+        $config['max_height'] = $max_upload_height;
         $config['overwrite'] = TRUE;
         $config['file_name'] = md5($this->session->userdata('session_id'));
         $config['overwrite'] = TRUE;
@@ -430,19 +435,31 @@ Class Registration extends CI_Controller {
             chmod($image['upload_data']['full_path'], 0666);
 
             $thumbnail = $upload_path . 'thumb_' . $image['upload_data']['file_name'];
-
+            
+            $upload_width=$image['upload_data']['image_width'];
+            $size_constant= $upload_width/$image['upload_data']['image_height'];
+            
+            if ( $upload_width > $logo_max_width_upload) 
+            {
+            $config['width'] = $logo_max_width_upload;
+            $config['height'] = $config['width']/$size_constant; 
+            }
+            
+            else {
+            $config['width'] = $upload_width;
+            $config['height'] = $config['width']/$size_constant; 
+            }
+            
             $config['image_library'] = 'gd2';
             $config['source_image'] = $image['upload_data']['full_path'];
             $config['new_image'] = $thumbnail;
             //   $config['create_thumb'] = TRUE;
-            $config['maintain_ratio'] = TRUE;
-            $config['width'] = 200;
-            $config['height'] = 235;
-
+            $config['maintain_ratio'] = TRUE;           
+                       
             $this->image_lib->initialize($config);
             $this->image_lib->resize();
             fb('name_photo', $image['upload_data']['file_name']);
-            echo '<img id="user_image" height="275" width=207 alt="' . $image['upload_data']['file_name'] . '" src="' . $upload_link . "thumb_" . $image['upload_data']['file_name'] . '/' . md5(microtime()) . '">';
+            echo '<img id="user_image" height="'.$config['height'].'" width= "'.$config['width'].'" alt="' . $image['upload_data']['file_name'] . '" src="' . $upload_link . "thumb_" . $image['upload_data']['file_name'] . '/' . md5(microtime()) . '">';
         }
     }
 
