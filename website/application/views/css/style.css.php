@@ -80,11 +80,51 @@
     width: 32%;
 }
 
+.header .header_menu .login {
+    float: left;
+    height: 69px;
+    width: 195px;
+
+}
+
 /*menu make*/
+
+
+
 .active_menu {
     display:inline;
 }
 
+.login:hover .drop_logout {
+    display:block;
+}
+.drop_logout {    
+   
+    float: left;
+    height: 35px;
+    position: absolute;
+    width: 195px;
+    display:none;
+    
+}
+
+.login .drop_logout .logout {
+    background: white;
+    float:left;
+    width:100%;
+    height:30px;
+    margin-top:34px;
+   
+}
+
+.login .drop_logout .logout a {
+    color: black;
+    float: left;
+    font-size: 12px;
+    margin-left: 40px;
+    margin-top: 5px;
+    text-decoration: none;
+}
 /*menu_make_end*/
 
 

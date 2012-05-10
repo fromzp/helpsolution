@@ -5,6 +5,7 @@ $objects[] = array('js_source', 'js/jquery.validate.min.js', array('id' => 'vali
 $objects[] = array('js_source', 'js/jquery_validate_locale/messages_' . LANGUAGE_CODE2 . '.js', array('id' => 'validate_local.js'));
 
 $objects[] = array('js', 'ajax.js.php', array('id' => 'ajax.js'));
+$objects[] = array('js', 'edit_profile.js.php', array('id' => 'edit_profile.js'));
 
 echo get_header_auth($title, $objects);
 ?>
@@ -182,125 +183,6 @@ echo get_header_auth($title, $objects);
 
 
 </div>
-<script>
 
-    function make_edit()        
-    {
-       
-   
-        var email = $("#email").val();
-        var password = $("#password").val();
-        var password2 = $("#password2").val();
-        var name=$('#name').val();
-        var lastname=$('#lastname').val();        
-        var sex=$(':radio[name=sex][checked=checked]').val();
-        
-        var requestUrl = '<?php echo site_url('ajax/registration/user_registration_info_change'); ?>';
-        
-        $.ajaxSetup(
-        {
-            beforeSend: function(){
-                ajax_loader();
-            },
-            error: function(){
-                ajax_loader();   
-                ajax_error('Registration error.');
-                alert('ERROR');
-            }
-    
-        });
-        
-        $.post(requestUrl, {email:email, password:password, password2:password2, name:name, lastname:lastname, sex:sex}, function(data)
-        {
-            ajax_loader();
-            if( data.status == 0 )
-            {
-                /*
-                    if( data.msg != null && data.msg != undefined )
-                    {
-
-                        ajax_error(data.msg);
-                        
-                    }*/
-                validator.showErrors(validator_errors_prepare(validator,data.params));
-                //@doto integrate with jquery.validator
-            }
-                
-            if( data.status == 1 )
-            {
-                window.location.reload(); 
-            }
-        }, 'json');
-    }
-
-    $(document).ready(function(){
-
-        var form = $("#edit_login_form");
-
-        validator = $(form).validate(
-        {
-            errorPlacement: function(error, element){
-                error.appendTo( $(element).next('div') );
-            },    
-            errorClass: "error",
-            validClass: "valid",
-            success: 'valid',
-            debug: false,
-            highlight: function(element, errorClass, validClass) {
-                $("span[for=" + element.id + "]").addClass(errorClass);
-            },
-            unhighlight: function(element, errorClass, validClass) {
-                $("span[for=" + element.id + "]").removeClass(errorClass);
-            },
-            rules:
-                {
-                name: 
-                    {
-                    required: true
-                },
-                lastname: {
-                    required: true
-                },
-            
-                email:
-                    {
-                    required: true,
-                    email: true,
-                    remote: '<?php echo site_url('ajax/validation/email_check') ?>'
-                },
-                password:
-                    {
-                    required: true,
-                    minlength: 6
-                },
-                
-                password2:
-                    {
-                    required: true,
-                    equalTo: "#password"
-                }
-            }
-        });
-
-        $('#registration_info').live('click', function()
-        {
-       /* $('#email').removeData("previousValue");
-        $('#edit_login_form').validate().element( "#email" );
-     */
-           
-           if ( $('#edit_login_form').valid() ) 
-           {
-              
-                make_edit();
-               
-            }
-        });
-
-
-    });
-    
-
-    
-</script>
 
 <?php echo get_footer(); ?>

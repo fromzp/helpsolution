@@ -11,10 +11,16 @@
                 </div>
 
                 <div class="user_panel">
+
                     <div class="login">
+                                          <div class="drop_logout">
+                        <div class="logout"><a href="/ajax/auth/logout">Logout</a></div>
+                    </div>
                         <div class="user_logo"></div>
                         <div class="user_name"><?php echo $user_details['name'] . " " . $user_details['lastname']; ?></br> <span>(alexrostova)</span></div>
                         <div class="info_row"><a href=""></a></div>
+
+                        
                     </div>
                     <div><a class="message" href=""></a><span class="messag">1</span></div>
                     <div><a class="settings" href=""></a></div>
