@@ -48,7 +48,7 @@ echo get_header($title, $objects);
                     <div class="inputs_radio">
                         <input type="radio" name="help" value="can_help" checked="checked"/><span>Я можу допомогти </span></br>
                         <div class="rubber"></div>
-                        <input type="radio" name="help" value="need_help" <?php echo $who_join=="need_help"?'checked="checked"':"";?> /><span>Мені потрібна допомога   </span> 
+                        <input type="radio" name="help" value="need_help" <?php if (!empty($who_join) ) {echo $who_join=="need_help"?'checked="checked"':"";}?> /><span>Мені потрібна допомога   </span> 
                     </div>
 
                 </div>

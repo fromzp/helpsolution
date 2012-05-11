@@ -20,12 +20,11 @@ Class Registration extends CI_Controller
        
       $data = array();
         
-     if ( !empty($_POST['who_join']) ) {
-         $data['who_join']=$_POST['who_join'];
-     } else {
-        $data['who_join']="";
+      if ( isset ($_POST['who_join']) ) {
+          $data['who_join']=$_POST['who_join'];
+      }
         _view('view_registration',$data);
-     }
+     
     }
     
     /*
