@@ -16,17 +16,16 @@ Class Registration extends CI_Controller
             }
         }
         
-        $this->load->helper('recaptchalib');
-        
-      
+        $this->load->helper('recaptchalib');   
        
-        $data = array();
+      $data = array();
         
-     if ($_POST['who_join'] ) {
+     if ( !empty($_POST['who_join']) ) {
          $data['who_join']=$_POST['who_join'];
-     }
+     } else {
+        $data['who_join']="";
         _view('view_registration',$data);
-        
+     }
     }
     
     /*
