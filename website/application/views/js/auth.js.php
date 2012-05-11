@@ -7,6 +7,8 @@
     
         var email = $("input[name=login]").val();
         var password = $("input[name=password]").val();
+        var alien = $('#alien:checked').val();
+        
         if( email.length ==0 || password.length==0 )
         {
             return false;
@@ -22,7 +24,7 @@
             }
         });
         
-        $.post( requestUrl, {email:email, password: $.md5(password)}, 
+        $.post( requestUrl, {email:email, password: $.md5(password), alien:alien}, 
         
         function(data)
         {    

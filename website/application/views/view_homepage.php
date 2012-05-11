@@ -97,12 +97,13 @@ fb($this->session->all_userdata());
                     <div class="join_us">
                         <div class="join_us_title_text">ПРИЄДНУЙСЯ</div>
                         <div class="gorizont_line"></div>
+                        <form id="proceed" action="registration" method="POST">
                         <div class="who_join">
-                            <input type="radio" name="who_join" value="volonter" /> Я можу допомогти</br>
+                            <input type="radio" name="who_join" value="can_help" checked="checked" /> Я можу допомогти</br>
                             <input type="radio" name="who_join" value="need_help" /> Мені потрібна допомога</br>
                             <div><input class="proceed" type="submit" name="proceed" value="Продовжити"/></div>
                         </div>
-
+                         </form>
                     </div>
                 </div>
             </div>

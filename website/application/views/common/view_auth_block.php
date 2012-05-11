@@ -32,7 +32,7 @@
 
         </div>
                 
-        <div class="check"><input type="checkbox" name="alien" value="ON" /> Чужий комп'ютер </div>
+        <div class="check"><input type="checkbox" id="alien" /> Чужий комп'ютер </div>
         
         <div class="login_button_div">
             <input class="login_button" type="submit" value="Увійти" />

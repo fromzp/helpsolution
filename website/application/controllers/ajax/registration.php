@@ -399,22 +399,21 @@ Class Registration extends CI_Controller {
        
         $upload_path = $this->config->item('upload_path_tmp');       
         $upload_link = base_url() . $this->config->item('upload_url_tmp');
-        $logo_max_width_upload=$this->config->item('upload_logo_image_max_width');
+        $logo_max_upload_width=$this->config->item('upload_logo_image_max_width');
         $max_upload_size=$this->config->item('upload_max_filesize');
         $max_upload_width=$this->config->item('upload_image_max_width'); 
         $max_upload_height=$this->config->item('upload_image_max_height');
-        
-        
-        
+        $allowed_types=$this->config->item('upload_allowed_types');
         
         if (!is_dir($upload_path)) {
             if (!mkdir($upload_path)) {
                 echo "No access for creating temp folder";
             };
         }
+        
         $this->load->library('image_lib');
         $config['upload_path'] = $upload_path;
-        $config['allowed_types'] = 'gif|jpg|png';
+        $config['allowed_types'] = $allowed_types;
         $config['max_size'] = $max_upload_size;
         $config['max_width'] = $max_upload_width;
         $config['max_height'] = $max_upload_height;
@@ -439,17 +438,15 @@ Class Registration extends CI_Controller {
             $upload_width=$image['upload_data']['image_width'];
             $size_constant= $upload_width/$image['upload_data']['image_height'];
             
-            if ( $upload_width > $logo_max_width_upload) 
+            if ( $upload_width > $logo_max_upload_width) 
             {
-            $config['width'] = $logo_max_width_upload;
+            $config['width'] = $logo_max_upload_width;
             $config['height'] = $config['width']/$size_constant; 
-            }
-            
+            }            
             else {
             $config['width'] = $upload_width;
             $config['height'] = $config['width']/$size_constant; 
-            }
-            
+            }            
             $config['image_library'] = 'gd2';
             $config['source_image'] = $image['upload_data']['full_path'];
             $config['new_image'] = $thumbnail;

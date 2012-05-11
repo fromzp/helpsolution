@@ -134,7 +134,7 @@ echo get_header_auth($title, $objects);
 
                 <div class="inputs">                    
                     <span class="input_name"><{Електрона адреса:}></span>
-                    <input type="text" name="email" id="email" value="<?php echo $user_details['email']; ?>" />
+                    <input readonly="true" type="text" name="email" id="email" value="<?php echo $user_details['email']; ?>" />
                     <div class="msg"> <span for="email"  > </span><em></em> </div>
                 </div>
 

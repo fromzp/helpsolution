@@ -9,9 +9,17 @@ class Auth extends CI_Controller {
         
         public function login()
         {
+            $CI=&get_instance();   
             $email = trim($this->input->post('email'));
             $password_md5 = safe_md5($this->input->post('password'));
-
+            $alien=$this->input->post('alien');
+            
+            if ( !empty($alien) ) {               
+                            
+                $this->config->set_item('sess_expire_on_close', TRUE);
+                $CI->session->set_userdata('alien', $this->config->item('sess_expire_on_close'));
+            } 
+            
             log_message('DEBUG','Ajax request to login user ['. $email .']');
             
             if( empty($email) or !check_email($email) )

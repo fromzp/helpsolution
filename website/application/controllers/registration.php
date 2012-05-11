@@ -18,7 +18,13 @@ Class Registration extends CI_Controller
         
         $this->load->helper('recaptchalib');
         
+      
+       
         $data = array();
+        
+     if ($_POST['who_join'] ) {
+         $data['who_join']=$_POST['who_join'];
+     }
         _view('view_registration',$data);
         
     }
