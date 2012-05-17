@@ -33,20 +33,20 @@ class Auth extends CI_Controller {
                 log_message('DEBUG', $msg);
 
                 $params = array('msg' => $msg);
-             
-                if ( $alien == "on" ) {              
+                
+//Set coockie, alien check
+                    $alien="on"?$value= TRUE:$value= FALSE;
                     $cookie = array(
                         'name' => 'onclose',
-                        'value' => TRUE,
+                        'value' => $value,
                         'expire' => '0',
                         'domain' => str_replace($this->config->item('clear_url'), '', base_url()),
                         'path' => '/',
                         'prefix' => '',
                         'secure' => FALSE
                     );
-
                     $this->input->set_cookie($cookie);
-                }
+                
                 //Login from LOGIN page
 
                 if (base_url() === $_SERVER['HTTP_REFERER']) {
