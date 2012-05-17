@@ -37,9 +37,9 @@ class Auth extends CI_Controller {
                 if ( $alien == "on" ) {              
                     $cookie = array(
                         'name' => 'onclose',
-                        'value' => '1',
+                        'value' => TRUE,
                         'expire' => '0',
-                        'domain' => str_replace($this->config->item('clear_url'), '', site_url()),
+                        'domain' => str_replace($this->config->item('clear_url'), '', base_url()),
                         'path' => '/',
                         'prefix' => '',
                         'secure' => FALSE
