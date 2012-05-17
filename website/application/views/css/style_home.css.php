@@ -131,9 +131,10 @@
 
 
     .header .header_menu .menus {
-        width: 475px;
-        height: 97px;
-
+    height: 93px;
+    overflow: hidden;
+    width: 475px;
+    float:left;
     }
 
     .header .header_menu .menus .li {
@@ -151,16 +152,18 @@
     }
 
     .header .header_menu .menus .small span {
-        padding-right: 35px;
+      
+        float:left;
+        width: 105px;
 
 
     }
 
     .header .header_menu .menus .black_line {
-        background: black;
-        width: auto;
-        height: 12px;
-        margin-top: 21px;
+    background: none repeat scroll 0 0 black;
+    height: 12px;
+    margin-top: 36px;
+    width: auto;      
 
     }
 
@@ -1571,6 +1574,8 @@
     .clear_link {
         text-decoration: none;
         color: black;
+        float:left;
+        padding-left: 20px;
     }
 
     /*END about_as*/

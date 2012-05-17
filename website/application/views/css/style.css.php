@@ -1480,11 +1480,12 @@ content .main_content .market_history .all_of_history .history .history_fild .us
 }
 
 .content .main_content .why_i_here textarea {
-    
-    margin:0;
-    padding:0;
-    float:left;
-    resize: none;
+width: 100%;
+margin: 0;
+padding: 0;
+float: left;
+resize: none;
+
 }
 
 .content .main_content .info_div .selects {
@@ -1541,7 +1542,7 @@ font-weight: bold;
 .content .main_content .change_info .change_registration_info .inputs .input_name {
     float:left;
     height:16px;
-    width:150px;
+    width:155px;
     background:rgey;
     font-weight: bold;
 }
