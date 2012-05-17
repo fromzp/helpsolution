@@ -915,7 +915,21 @@
         float:left;
 
     }
-
+    
+    #imageform {
+        float:left;
+    }
+    
+  #photoimg {
+  width:1px;
+  height:1px;
+  opacity: 0.0; /* Standard: FF gt 1.5, Opera, Safari */
+  filter: alpha(opacity=0); /* IE lt 8 */
+  -ms-filter: "alpha(opacity=0)"; /* IE 8 */
+  -khtml-opacity: 0.0; /* Safari 1.x */
+  -moz-opacity: 0.0; /* FF lt 1.5, Netscape */
+    }
+    
     .user_photo .photo .choose {
         margin-top: 10px;
         float:left;

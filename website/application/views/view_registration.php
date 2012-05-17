@@ -29,7 +29,7 @@ echo get_header($title, $objects);
 </div>
 
 <form id="imageform" method="post" enctype="multipart/form-data" action='ajax/registration/user_photo_preview'>
-    <input type="file" name="userfile" size="20" id="photoimg" style="display: none;" />
+    <input type="file" name="userfile" size="20" id="photoimg"/>
 </form>
 
 <span class="ajax_messages_area"></span>
