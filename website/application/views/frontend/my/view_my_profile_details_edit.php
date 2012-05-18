@@ -111,24 +111,26 @@ echo get_header_auth($title, $objects);
             <div class="paragraph"> <span class="text">Істория Активності на Біржі</span> </div>
             <div class="all_of_history"> </div>
         </div>
-        <div id="ajax_msg"></div>
+        <div id="ajax_err"></div>
         <div class="base_skills">
             <div class="paragraph"> <span class="text">Освіта</span> <span class="save_edited" id="education">Зберiгти</span></div> 
             <form id="education_experience" class="educetion">
-                <div class="info_div"> <span>Назва навчального закладу:</span><input id="title" name="title" type="text"/></br> </div>
+                <div class="info_div"> <span>Назва навчального закладу:</span><input for="title" name="title" type="text"/></br> </div>
          
-                <div class="info_div"><span>Роки навчання:</span> <input id="age_begin" name="age_begin" type="text" size="4" maxlength="4"/>-<input id="age_end" name="age_end" type="text" size="4" maxlength="4"/></br> </div>
+                <div class="info_div"><span>Роки навчання:</span> <input for="age_begin" name="age_begin" type="text" size="4" maxlength="4"/>-<input for="age_end" name="age_end" type="text" size="4" maxlength="4"/></br> </div>
        
-                <div class="info_div"><span>Спецiальнiсть:</span> <input id="details" name="details" type="text"/> </div>
+                <div class="info_div"><span>Спецiальнiсть:</span> <input for="details" name="details" type="text"/> </div>
        
-                
+                <div id="education_msg"></div>
             </form>           
-            <div class="paragraph"> <span class="text">Історія роботи</span> <span class="save_edited" id="experience history">Зберiгти</span></div> 
-            <div class="work_where">
-                <div class="info_div"> <span>Назва навчального закладу:</span><input type="text"/></br> </div>
-                <div class="info_div"><span>Роки навчання:</span> <input type="text" size="4"/>-<input type="text" size="4"/></br> </div>
-                <div class="info_div"><span>Спецiальнiсть:</span> <input type="text"/> </div>
-            </div>
+            <div class="paragraph"> <span class="text">Історія роботи</span> <span class="save_edited" id="work">Зберiгти</span></div> 
+            <form id="work_experience" class="work_where">
+                <div class="info_div"> <span>Назва закладу:</span><input for="title" name="title" type="text"/></br> </div>
+         
+                <div class="info_div"><span>Роки навчання:</span> <input for="age_begin" name="age_begin" type="text" size="4" maxlength="4"/>-<input for="age_end" name="age_end" type="text" size="4" maxlength="4"/></br> </div>
+       
+                <div class="info_div"><span>Спецiальнiсть:</span> <input for="details" name="details" type="text"/> </div>
+            </form>
         </div>
 
 

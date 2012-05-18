@@ -85,6 +85,7 @@ Class Registration extends CI_Controller {
             $status=false;
             $params['msg']='No type';
         }
+        
         if ($status) {
             $details=array(
                 'user_id' => $user_id,
@@ -107,7 +108,7 @@ Class Registration extends CI_Controller {
 
             $msg = 'Success create';            
             $params = array(
-                'msg' => 'was made'
+                'msg' => $msg
             );
             make_json_answer($status, $params);
             return true;

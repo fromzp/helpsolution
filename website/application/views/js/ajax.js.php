@@ -39,6 +39,7 @@ function ajax_error(msg)
     });
     if( msg !== null && msg !== undefined )
     {
+        console.log('msg:'+msg);
         $("#ajax_err").html(msg);
         /*$("#ajax_err").show().delay(2400).fadeOut(600);*/
         $("#ajax_err").show();

@@ -1,13 +1,17 @@
 /*<script type="text/javascript">
         */
     
-        function add_experience()
+        function add_experience(name_form,name_type)
     {
-        var title=$("#title").val();
-        var age_begin=$("#age_begin").val();
-        var age_end=$("#age_end").val();
-        var details=$("#details").val();
+        var forma=name_form;
+        var type=name_type;
+        
+        var title=$('input[for=title]',forma).val();
+        var age_begin=$('input[for=age_begin]',forma).val();
+        var age_end=$('input[for=age_end]',forma).val();
+        var details=$('input[for=details]',forma).val();
         var requestUrl = '<?php echo site_url('ajax/registration/'); ?>';
+       
         $.ajaxSetup(
         {
             beforeSend: function(){
@@ -20,22 +24,24 @@
             }    
         });
         
-        $.post (requestUrl,{step:'experience', title:title, age_begin:age_begin,age_end:age_end,details:details}, function(data)
+        $.post (requestUrl,{step:'experience', type:type,title:title, age_begin:age_begin,age_end:age_end,details:details}, function(data)
         {
             ajax_loader();
             if( data.status == 0 )
             {
-                 if( data.msg != null && data.msg != undefined )
-                    {          
-                        ajax_error(data.msg);
-                        console.log('msg:'+data.msg);                      
-                    }
+                if( data.msg != null && data.msg != undefined )
+                {          
+                    $('#education_msg').html(data.msg).show().delay(2400).fadeOut(600);                                             
+                }
                 validator.showErrors(validator_errors_prepare(validator,data.params));
                 
             }                
             if( data.status == 1 )
             {
-                alert('made'); 
+                if( data.msg != null && data.msg != undefined ) 
+                {                         
+                    $('#education_msg').html(data.msg).show().delay(2400).fadeOut(600);
+                }
             }
         });
     }
@@ -138,52 +144,67 @@
             }
         });
         /*Add education*/
+        var education_experience=$('#education_experience');
         $('#education').live('click',function(){        
-                    
-            if ( $('#education_experience').valid() ) {
-                add_experience();
+            var forma=$('#education_experience');
+            var type='education';
+            my_valid(forma);
+            if ( $(forma).valid() ) {
+                add_experience(forma,type);
             }
            
         });   
-              
-        $('#education_experience').validate({
-            errorPlacement: function(error, element){
-                error.appendTo( $(element).parent('div') );
-            },    
-            errorClass: "error",
-            validClass: "valid",
-            success: 'valid',
-            debug: false,
-            highlight: function(element, errorClass, validClass) {   
-                 $("span[for=" + element.id + "]").addClass(errorClass);
-                $("#"+element.id).addClass('make_error');
-            },
-            unhighlight: function(element, errorClass, validClass) {
-                $("span[for=" + element.id + "]").removeClass(errorClass);
-                $("#"+element.id).removeClass('make_error');
-                
-            },
-            rules: {
-                title: {
-                    required: true                    
-                },
-                age_begin: {
-                    required: true,
-                    minlength: 4
-                    
-                },
-                age_end: {
-                    required: true,
-                    minlength:4
-                },
-                details: {
-                    required: true                     
-                }
+        
+        $('#work').live('click',function(){        
+            var forma2=$('#work_experience');
+            var type='work';
+            my_valid(forma2);
+            if ( $(forma2).valid() ) {
+                add_experience(forma2,type);
             }
+           
+        });
+           
+           
+        function my_valid(name_){
+            // $('#education_experience').validate({
+            $(name_).validate({
+                errorPlacement: function(error, element){
+                    error.appendTo( $(element).parent('div') );
+                },    
+                errorClass: "error",
+                validClass: "valid",
+                success: 'valid',
+                debug: false,
+                highlight: function(element, errorClass, validClass) { 
+                    $(element).addClass('make_error');
+                },
+                unhighlight: function(element, errorClass, validClass) {
+                    $(element).removeClass('make_error');
+                },
+                rules: {
+                    title: {
+                        required: true                    
+                    },
+                    age_begin: {
+                        required: true,
+                        minlength: 4
+                    
+                    },
+                    age_end: {
+                        required: true,
+                        minlength:4
+                    },
+                    details: {
+                        required: true                     
+                    }
+                }
                 
 
-        });
+            }); 
+        }  
         /*End Add education*/
     
     });
+   
     /*</script>*/

@@ -1471,6 +1471,20 @@ content .main_content .market_history .all_of_history .history .history_fild .us
 .content .main_content .base_skills .educetion .error {
     font-size:14px;
 }
+
+.content .main_content .base_skills .work_where {
+    float:left;
+    height:auto;
+    width:100%;   
+}
+
+.content .main_content .base_skills .work_where .make_error {
+    border: 1px solid red;
+}
+
+.content .main_content .base_skills .work_where .error {
+    font-size:14px;
+}
 /*
 .content .main_content .base_skills .paragraph    {    
     float:left;
@@ -1619,6 +1633,13 @@ font-weight: bold;
     
     #ajax_msg {
         display:none;
+    }
+    
+    #education_msg {
+        color:green;
+        float:left;
+        display:none;
+        
     }
     /*ERRORS END*/
 /*END*/
