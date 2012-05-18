@@ -20,7 +20,8 @@ echo get_header_auth($title, $objects);
                 </div>
                 <div class="portfolio_rating"> (звездочки) </div>
                 <div class="portfolio_photo">
-                    <img src="<?php echo _img('photo_load_grey.png'); ?>"  width="200" height="235" alt="Image">
+                   <img src="<?php if (!empty($user_details['image']))
+                        echo base_url() . $this->config->item('upload_url') . $user_details['image']; ?>"  width="<?php echo $user_details['image_width']?>" height="<?php echo $user_details['image_height']?>" alt="Image">
                 </div>
                 <div class="portfolio_energy">
 
@@ -110,14 +111,18 @@ echo get_header_auth($title, $objects);
             <div class="paragraph"> <span class="text">Істория Активності на Біржі</span> </div>
             <div class="all_of_history"> </div>
         </div>
-
+        <div id="ajax_msg"></div>
         <div class="base_skills">
             <div class="paragraph"> <span class="text">Освіта</span> <span class="save_edited" id="education">Зберiгти</span></div> 
-            <div class="educetion">
-                <div class="info_div"> <span>Назва навчального закладу:</span><input type="text"/></br> </div>
-                <div class="info_div"><span>Роки навчання:</span> <input type="text" size="4"/>-<input type="text" size="4"/></br> </div>
-                <div class="info_div"><span>Спецiальнiсть:</span> <input type="text"/> </div>
-            </div>           
+            <form id="education_experience" class="educetion">
+                <div class="info_div"> <span>Назва навчального закладу:</span><input id="title" name="title" type="text"/></br> </div>
+         
+                <div class="info_div"><span>Роки навчання:</span> <input id="age_begin" name="age_begin" type="text" size="4" maxlength="4"/>-<input id="age_end" name="age_end" type="text" size="4" maxlength="4"/></br> </div>
+       
+                <div class="info_div"><span>Спецiальнiсть:</span> <input id="details" name="details" type="text"/> </div>
+       
+                
+            </form>           
             <div class="paragraph"> <span class="text">Історія роботи</span> <span class="save_edited" id="experience history">Зберiгти</span></div> 
             <div class="work_where">
                 <div class="info_div"> <span>Назва навчального закладу:</span><input type="text"/></br> </div>

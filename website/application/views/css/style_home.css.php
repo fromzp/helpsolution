@@ -1611,6 +1611,8 @@
     #ajax_err
     {
         display:none;
+        color:red;
+        font-size:12px;
     }
 
     #ajax_msg

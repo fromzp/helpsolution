@@ -408,6 +408,15 @@ class User_model extends CI_Model {
         return false;
     }
 
+    function insert_into($details){
+         $CI = &get_instance();
+         
+         $this->db->insert('experience_history', $details);
+         if ($this->db->affected_rows() <= 0) {
+            return false;
+        }        
+        return true;         
+    }
 }
 
 ?>
