@@ -35,10 +35,10 @@ class Auth extends CI_Controller {
                 $params = array('msg' => $msg);
 
             //Set coockie, alien check
-                $alien == "on" ? $value = TRUE : $value = FALSE;
+                $alien == "on" ? $onclose = TRUE : $onclose = FALSE;
                 $cookie = array(
                     'name' => 'onclose',
-                    'value' => $value,
+                    'value' => $onclose,
                     'expire' => '0',
                     'domain' => str_replace($this->config->item('clear_url'), '', base_url()),
                     'path' => '/',

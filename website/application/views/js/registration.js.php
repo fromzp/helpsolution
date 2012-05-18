@@ -17,13 +17,11 @@
         var sex=$(':radio[name=sex][checked=checked]').val();
         var taked_status= $(':radio[name=help][checked=checked]').val();
         var agree = $(':checkbox[ name=accept_check]').attr('checked');
-        
+        var purpose=$(':radio[name=help][checked=checked]').val();
+   
         var recaptcha_response_field = $("#recaptcha_response_field").val();
         var recaptcha_challenge_field = $("#recaptcha_challenge_field").val();
         var image = $("#user_image").attr('alt');
-        
-        
- 
         
     $.ajax(
         {
@@ -70,7 +68,7 @@
             data: 
             {
                 step: 'user_create', 
-               
+                
                 'name':        name,
                 'lastname':    lastname,
                 'email':       email,
@@ -79,7 +77,8 @@
                 'recaptcha_response_field':    recaptcha_response_field,
                 'recaptcha_challenge_field':    recaptcha_challenge_field,
                 'image':        image,
-                'sex':          sex
+                'sex':          sex,
+                'purpose':      purpose
                     
                 
             },

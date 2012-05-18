@@ -2,17 +2,14 @@
     */
     
 
-    function make_edit()        
+    function make_edit_registration_info()        
     {
-       
-   
         var email = $("#email").val();
         var password = $("#password").val();
         var password2 = $("#password2").val();
         var name=$('#name').val();
         var lastname=$('#lastname').val();        
-        var sex=$(':radio[name=sex][checked=checked]').val();
-        
+        var sex=$(':radio[name=sex][checked=checked]').val();        
         var requestUrl = '<?php echo site_url('ajax/registration/user_registration_info_change'); ?>';
         
         $.ajaxSetup(
@@ -33,13 +30,6 @@
             ajax_loader();
             if( data.status == 0 )
             {
-                /*
-                    if( data.msg != null && data.msg != undefined )
-                    {
-
-                        ajax_error(data.msg);
-                        
-                    }*/
                 validator.showErrors(validator_errors_prepare(validator,data.params));
                 //@doto integrate with jquery.validator
             }
@@ -101,15 +91,10 @@
         });
 
         $('#registration_info').live('click', function()
-        {
-       /* $('#email').removeData("previousValue");
-        $('#edit_login_form').validate().element( "#email" );
-     */
-           
+        { 
            if ( $('#edit_login_form').valid() ) 
-           {
-              
-                make_edit();
+           {              
+                make_edit_registration_info();
                
             }
         });
