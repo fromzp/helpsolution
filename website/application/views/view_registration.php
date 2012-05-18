@@ -32,7 +32,7 @@ echo get_header($title, $objects);
     <input type="file" name="userfile" size="20" id="photoimg"/>
 </form>
 
-<span class="ajax_messages_area"></span>
+<span class="ajax_messages_area"><div id="ajax_err"></div></span>
 
 <form id="registrationForm" >
 
