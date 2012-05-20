@@ -399,7 +399,7 @@ function put_error($title='',$msg='')
     _view('frontend/error/error',$data);
 }
 
-function check_image_redize($image=''){
+function check_image_resize($image=''){
     $CI=&get_instance();
     if  (!empty ($image)) {
             $logo_max_upload_width = $CI->config->item('upload_logo_image_max_width');
