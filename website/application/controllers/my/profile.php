@@ -48,7 +48,7 @@ class Profile extends CI_Controller {
           $data['plan'] = $this->plan_model->plan_details_get($subscription['plan_id']);
           }
          */
-        /* image need size */
+/* image need size */
         if (!empty($user_details['image'])) {
 
             $logo_max_upload_width = $this->config->item('upload_logo_image_max_width');
@@ -68,11 +68,11 @@ class Profile extends CI_Controller {
             } else {
                 $will_width = $image_width;
                 $will_height = $will_width / $size_constant;
-                $will_height > $logo_max_upload_height? $user_details['image_height']=$logo_max_upload_height:$user_details['image_height'] = $will_height;  
+                $will_height > $logo_max_upload_height ? $user_details['image_height'] = $logo_max_upload_height : $user_details['image_height'] = $will_height;
             }
-
-            $user_details['image_width'] = $will_width;
             
+            $user_details['image_width'] = $will_width;
+            $user_details['image_height'] = $will_width/$size_constant;
         } else {
             $user_details['image_width'] = 200;
             $user_details['image_height'] = 235;

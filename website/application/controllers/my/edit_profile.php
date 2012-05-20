@@ -44,8 +44,9 @@ class Edit_profile extends CI_Controller {
                 $will_height = $will_width / $size_constant;
                 $will_height > $logo_max_upload_height ? $user_details['image_height'] = $logo_max_upload_height : $user_details['image_height'] = $will_height;
             }
-
+            
             $user_details['image_width'] = $will_width;
+            $user_details['image_height'] = $will_width/$size_constant;
         } else {
             $user_details['image_width'] = 200;
             $user_details['image_height'] = 235;
