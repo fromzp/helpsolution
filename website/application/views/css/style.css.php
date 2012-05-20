@@ -1271,13 +1271,16 @@ font-weight: bold;
     margin-top:5px;
 }
 
+.content .main_content .more_info .info_div .msg {
+    float:left;
+}
 
 .content .main_content .more_info .info_div span {
 height:auto;
 font-weight: bold;
 margin-left:5px;
 float:left;
-}
+}z
 
 .content .main_content .more_info .info_div .content_icon{
     height:17px;
@@ -1287,8 +1290,6 @@ float:left;
     margin-top:2px;
     
 }
-
-
 
 .content .main_content .more_info .info_div .content_icon_status {
     background: url( <?php echo _img('content_icon_famaly.png'); ?>) no-repeat scroll 0 0 transparent;
@@ -1485,6 +1486,12 @@ content .main_content .market_history .all_of_history .history .history_fild .us
 .content .main_content .base_skills .work_where .error {
     font-size:14px;
 }
+
+.content .main_content .base_skills .sucsess {
+    color:green;
+    float:left;
+}
+
 /*
 .content .main_content .base_skills .paragraph    {    
     float:left;
@@ -1640,6 +1647,10 @@ font-weight: bold;
         float:left;
         display:none;
         
+    }
+    
+    .make_error{
+        border:1px solid red;
     }
     /*ERRORS END*/
 /*END*/

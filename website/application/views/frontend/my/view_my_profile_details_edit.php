@@ -20,8 +20,8 @@ echo get_header_auth($title, $objects);
                 </div>
                 <div class="portfolio_rating"> (звездочки) </div>
                 <div class="portfolio_photo">
-                   <img src="<?php if (!empty($user_details['image']))
-                        echo base_url() . $this->config->item('upload_url') . $user_details['image']; ?>"  width="<?php echo $user_details['image_width']?>" height="<?php echo $user_details['image_height']?>" alt="Image">
+                    <img src="<?php if (!empty($user_details['image']))
+                        echo base_url() . $this->config->item('upload_url') . $user_details['image']; ?>"  width="<?php echo $user_details['image_width'] ?>" height="<?php echo $user_details['image_height'] ?>" alt="Image">
                 </div>
                 <div class="portfolio_energy">
 
@@ -67,23 +67,25 @@ echo get_header_auth($title, $objects);
             <textarea id ="about_me" cols="105" wrap="soft | hard" value="Чому я тут ?">  </textarea>
         </div>
         <div class="paragraph"> <span class="text">Загальна iнформацiя</span>  <span class="save_edited" id="general_information">Зберiгти</span></div>
-        <div class="more_info">
+        <form id="more_info" class="more_info">
             <div class="info_div"> <div class="content_icon content_icon_status">   </div>    <span class="info_span">Статус:</span> 
                 <div class="selects">
-                    <select id="select_status"> 
+                   <select id="select_status"> 
                         <option>Пункт 1</option>
-                        <option>Пункт 2</option>                     
-                    </select>
+                        <option>Пункт 2</option> 
+                    </select>                
                 </div>
             </div>
             <div class="info_div"> <div class="content_icon content_icon_age">      </div>    <span class="info_span">Вiк:</span>
-
-                <div class="selects"> <input type="text" id="age_select"/></div> </div>
+                <div class="selects"> <input style="text-align: center" maxlength="3" sieze="3" type="text" id="age_select"/></div> </div>
             <div class="info_div"> <div class="content_icon content_icon_marital">  </div>    <span class="info_span">Сiмейний стан:</span>
                 <div class="selects">
                     <select id="merital_select"> 
-                        <option>Пункт 1</option>
-                        <option>Пункт 2</option>                     
+                        <option value="choose">choose</option>
+                        <option value="married">married</option>
+                        <option value="single">single</option>
+                        <option value="divorced">divorced</option>
+                        <option value="widow">widow</option>  
                     </select>
                 </div>
             </div>
@@ -91,21 +93,24 @@ echo get_header_auth($title, $objects);
                 <div class="selects">
                     <select id="skills_select"> 
                         <option>Пункт 1</option>
-                        <option>Пункт 2</option>                     
+                        <option>Пункт 2</option>  
+   
                     </select>
                 </div>
             </div>
             <div class="info_div two_select"> <div class="content_icon content_icon_country">  </div>    <span class="info_span">Мiсто</span>
                 <div class="selects">
-                    <input type="text" id="city_select"/>
+                    <input type="text" id="city" name="city"/>
                     <select id="country_select"> 
-                        <option>Пункт 1</option>
-                        <option>Пункт 2</option>                     
-                    </select>
-                </div>
+<?php 
 
+echo country_select_get()?>                   
+                    </select>
+                    
+                </div>
+ <div class="msg"> <span for="city"  > </span><em></em> </div>
             </div>
-        </div>
+        </form>
 
         <div class="market_history">
             <div class="paragraph"> <span class="text">Істория Активності на Біржі</span> </div>
@@ -116,20 +121,21 @@ echo get_header_auth($title, $objects);
             <div class="paragraph"> <span class="text">Освіта</span> <span class="save_edited" id="education">Зберiгти</span></div> 
             <form id="education_experience" class="educetion">
                 <div class="info_div"> <span>Назва навчального закладу:</span><input for="title" name="title" type="text"/></br> </div>
-         
+
                 <div class="info_div"><span>Роки навчання:</span> <input for="age_begin" name="age_begin" type="text" size="4" maxlength="4"/>-<input for="age_end" name="age_end" type="text" size="4" maxlength="4"/></br> </div>
-       
+
                 <div class="info_div"><span>Спецiальнiсть:</span> <input for="details" name="details" type="text"/> </div>
-       
-                <div id="education_msg"></div>
+
+                <div class="sucsess" name="msg"></div>
             </form>           
             <div class="paragraph"> <span class="text">Історія роботи</span> <span class="save_edited" id="work">Зберiгти</span></div> 
             <form id="work_experience" class="work_where">
                 <div class="info_div"> <span>Назва закладу:</span><input for="title" name="title" type="text"/></br> </div>
-         
+
                 <div class="info_div"><span>Роки навчання:</span> <input for="age_begin" name="age_begin" type="text" size="4" maxlength="4"/>-<input for="age_end" name="age_end" type="text" size="4" maxlength="4"/></br> </div>
-       
+
                 <div class="info_div"><span>Спецiальнiсть:</span> <input for="details" name="details" type="text"/> </div>
+                <div class="sucsess" name ="msg"></div>
             </form>
         </div>
 

@@ -409,7 +409,7 @@ Class Registration extends CI_Controller {
         }
     }
 
-public function user_photo_preview() {
+    public function user_photo_preview() {
 
 
         $upload_path = $this->config->item('upload_path_tmp');

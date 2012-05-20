@@ -1,15 +1,21 @@
 /*<script type="text/javascript">
         */
     
+    
+function edit_general_info()
+{
+alert('privet');
+}
+    
         function add_experience(name_form,name_type)
     {
-        var forma=name_form;
+        var form=name_form;
         var type=name_type;
         
-        var title=$('input[for=title]',forma).val();
-        var age_begin=$('input[for=age_begin]',forma).val();
-        var age_end=$('input[for=age_end]',forma).val();
-        var details=$('input[for=details]',forma).val();
+        var title=$('input[for=title]',form).val();
+        var age_begin=$('input[for=age_begin]',form).val();
+        var age_end=$('input[for=age_end]',form).val();
+        var details=$('input[for=details]',form).val();
         var requestUrl = '<?php echo site_url('ajax/registration/'); ?>';
        
         $.ajaxSetup(
@@ -31,7 +37,7 @@
             {
                 if( data.msg != null && data.msg != undefined )
                 {          
-                    $('#education_msg').html(data.msg).show().delay(2400).fadeOut(600);                                             
+                    $(form).find('div[name=msg]').html(data.msg).show().delay(2400).fadeOut(600);                                             
                 }
                 validator.showErrors(validator_errors_prepare(validator,data.params));
                 
@@ -40,7 +46,7 @@
             {
                 if( data.msg != null && data.msg != undefined ) 
                 {                         
-                    $('#education_msg').html(data.msg).show().delay(2400).fadeOut(600);
+                    $(form).find('div[name=msg]').html(data.msg).show().delay(2400).fadeOut(600);        
                 }
             }
         });
@@ -143,31 +149,31 @@
                
             }
         });
-        /*Add education*/
-        var education_experience=$('#education_experience');
+        /*Add experience*/
+       
         $('#education').live('click',function(){        
-            var forma=$('#education_experience');
+            var form=$('#education_experience');
             var type='education';
-            my_valid(forma);
-            if ( $(forma).valid() ) {
-                add_experience(forma,type);
+            experience_valid(form);
+            if ( $(form).valid() ) {
+                add_experience(form,type);
             }
            
         });   
         
         $('#work').live('click',function(){        
-            var forma2=$('#work_experience');
+            var form=$('#work_experience');
             var type='work';
-            my_valid(forma2);
-            if ( $(forma2).valid() ) {
-                add_experience(forma2,type);
+            experience_valid(form);
+            if ( $(form).valid() ) {
+                add_experience(form,type);
             }
            
         });
            
            
-        function my_valid(name_){
-            // $('#education_experience').validate({
+        function experience_valid(name_){
+           
             $(name_).validate({
                 errorPlacement: function(error, element){
                     error.appendTo( $(element).parent('div') );
@@ -203,7 +209,39 @@
 
             }); 
         }  
-        /*End Add education*/
+        /*End Add experience*/
+        /*add general info*/
+        $('#general_information').live('click',function (){
+            var form=$('#more_info');
+            if (form.valid()) 
+            {
+                edit_general_info();
+            }            
+        });
+        
+        $('#more_info'). validate(
+        {
+            errorPlacement: function(error, element){
+                error.appendTo( $(element).parent('div').next('div') );
+            },
+            errorClass: "error",
+            validClass: "valid",
+            success: 'valid',
+            debug: false,
+            highlight: function(element, errorClass, validClass) { 
+                $(element).addClass('make_error');
+            },
+            unhighlight: function(element, errorClass, validClass) {
+                $(element).removeClass('make_error');
+            },
+            rules:{
+                city: {
+                    required: true
+                }
+            }
+        }
+    );
+        /*end add general info*/
     
     });
    
