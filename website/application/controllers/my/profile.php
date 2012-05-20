@@ -48,35 +48,11 @@ class Profile extends CI_Controller {
           $data['plan'] = $this->plan_model->plan_details_get($subscription['plan_id']);
           }
          */
-/* image need size */
-        if (!empty($user_details['image'])) {
-
-            $logo_max_upload_width = $this->config->item('upload_logo_image_max_width');
-            $logo_max_upload_height = $this->config->item('upload_logo_image_max_height');
-            $upload_path = $this->config->item('upload_path');
-
-            $image_size = GetImageSize($upload_path . $user_details['image']);
-
-            $image_width = $image_size[0];
-            $image_height = $image_size[1];
-
-            $size_constant = $image_width / $image_height;
-
-            if ($image_width > $logo_max_upload_width) {
-                $will_width = $logo_max_upload_width;
-                $will_height = $will_width / $size_constant;
-            } else {
-                $will_width = $image_width;
-                $will_height = $will_width / $size_constant;
-                $will_height > $logo_max_upload_height ? $user_details['image_height'] = $logo_max_upload_height : $user_details['image_height'] = $will_height;
-            }
-            
-            $user_details['image_width'] = $will_width;
-            $user_details['image_height'] = $will_width/$size_constant;
-        } else {
-            $user_details['image_width'] = 200;
-            $user_details['image_height'] = 235;
-        }
+        /* image need size */
+        $image = $user_details['image'];
+        $result = check_image_redize($image);
+        $user_details['image_width'] = $result['image_width'];
+        $user_details['image_height'] = $result['image_height'];
         /* image need size end */
         $data['user_details'] = $user_details;
         fb($data, 'profile 53 line user_details_array');

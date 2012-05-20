@@ -399,6 +399,41 @@ function put_error($title='',$msg='')
     _view('frontend/error/error',$data);
 }
 
+function check_image_redize($image=''){
+    $CI=&get_instance();
+    if  (!empty ($image)) {
+            $logo_max_upload_width = $CI->config->item('upload_logo_image_max_width');
+            $logo_max_upload_height = $CI->config->item('upload_logo_image_max_height');
+            $upload_path = $CI->config->item('upload_path');
+
+            $image_size = GetImageSize($upload_path . $image);
+
+            $image_width = $image_size[0];
+            $image_height = $image_size[1];
+
+            $size_constant = $image_width / $image_height;      
+
+            if ($image_width > $logo_max_upload_width) {
+                $will_width = $logo_max_upload_width;
+                $will_height = $will_width / $size_constant;
+                $will_height > $logo_max_upload_height ? $user_details['image_height'] = $logo_max_upload_height : $user_details['image_height'] = $will_height;
+                $user_details['image_width'] = $will_width;
+                return $user_details;
+            } else {
+                $will_width = $image_width;
+                $will_height = $will_width / $size_constant;
+                $will_height > $logo_max_upload_height ? $user_details['image_height'] = $logo_max_upload_height : $user_details['image_height'] = $will_height;
+                $user_details['image_width'] = $will_width;
+                return $user_details;
+            }
+            
+        } else {
+            $user_details['image_width'] = 200;
+            $user_details['image_height'] = 235;
+            return $user_details;
+        }
+    
+}
  /*
      * 
      * function form_custom_logo    return full path to the form logo image
