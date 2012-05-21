@@ -2,12 +2,63 @@
         */
     
     
-function edit_general_info()
-{
-alert('privet');
-}
+        function edit_general_info()
+    {
+        var status=$('#select_status').val()
+        var age=$('#age').val();
+        var marital_status=$('#merital_select').val();
+        var skills=$('#skills_select').val();
+        var country_id=$('#country_select').val();
+        var city=$('#city').val();
+        var requestUrl = '<?php echo site_url('ajax/registration/'); ?>';
+        var current_status=$('#current_status').val();
+        var step='info_time';
+        $.ajaxSetup(
+        {
+            beforeSend: function(){
+                ajax_loader();
+            },
+            error: function(){
+                ajax_loader();   
+                ajax_error('Experience error.');
+                alert('ERROR');
+            }    
+        });
+        $.post (requestUrl,
+        {
+            step:step,
+            status:status,
+            age:age,
+            marital_status:marital_status,
+            skills:skills,
+            country_id:country_id,
+            city:city,
+            current_status:current_status
+        }, function(data)
+        {
+            ajax_loader();
+            if( data.status == 0 )
+            {
+                if( data.msg != null && data.msg != undefined )
+                {          
+                    alert('no');                              
+                }
+                validator.showErrors(validator_errors_prepare(validator,data.params));
+                
+            }                
+            if( data.status == 1 )
+            {
+                if( data.msg != null && data.msg != undefined ) 
+                {                         
+                          
+                    alert('yes');     
+                }
+            }
+        }, 'json');
+        
+    }
     
-        function add_experience(name_form,name_type)
+    function add_experience(name_form,name_type)
     {
         var form=name_form;
         var type=name_type;
@@ -30,7 +81,15 @@ alert('privet');
             }    
         });
         
-        $.post (requestUrl,{step:'experience', type:type,title:title, age_begin:age_begin,age_end:age_end,details:details}, function(data)
+        $.post (requestUrl,
+        {
+            step:'experience',
+            type:type,
+            title:title,
+            age_begin:age_begin,
+            age_end:age_end,
+            details:details
+        }, function(data)
         {
             ajax_loader();
             if( data.status == 0 )
@@ -93,7 +152,7 @@ alert('privet');
     }
 
     $(document).ready(function(){
-
+        $("#age").mask("9999-99-99");
         var form = $("#edit_login_form");
 
         validator = $(form).validate(

@@ -373,7 +373,9 @@ function language_select_get($input='')
     return _view('common/language_select', $data, true); 
 }
 
-
+function get_marital_status($input=''){
+    
+}
 
 
 function get_menu_registration($step='registration')

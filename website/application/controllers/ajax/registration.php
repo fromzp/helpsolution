@@ -15,6 +15,7 @@ Class Registration extends CI_Controller {
                 return false;
             }
         }
+        fb($this->input->post('step'),'step');
         switch ($this->input->post('step')) {
             case "user_create":
                 $this->user_create();
@@ -24,6 +25,9 @@ Class Registration extends CI_Controller {
                 break;
             case "user_details_set":
                 $this->user_details_set();
+                break;
+            case "info_time":
+                $this->user_set_general_info();
                 break;
             case "experience":
                 $this->user_set_experience();
@@ -36,6 +40,70 @@ Class Registration extends CI_Controller {
         return false;
     }
 
+    
+    public function user_set_general_info(){
+        $CI = &get_instance();
+        $this->load->model('user_model');  
+         if (!auth_check()) {
+            $msg = 'Auth error';
+            log_message('DEBUG', $msg);
+            make_json_answer(false, $msg);
+            return false;
+        }
+        $user_id = user_id();
+        $user_status=$this->input->post('status');
+        $age=$this->input->post('age');
+        fb($age,'$age');
+        $marital_status=$this->input->post('marital_status');
+        fb($marital_status,'$marital_status');
+        $skills=$this->input->post('skills');
+        $country_id=$this->input->post('country_id');
+        $city=$this->input->post('city');
+        $current_status=$this->input->post('current_status');
+        
+        $status = true;
+        $params = array();
+        
+        if( empty($city) ) {
+            $status=false;
+            $params['city']=_jerr();
+        }
+        
+        if ($status) {
+              $details = array(               
+                'birthdate' => $age,
+                'marital_status' => $marital_status,
+                //'skills' => $skills,
+                'country_id' => $country_id,
+                'city_name' => $city,
+                'current_status'=> $current_status
+            );
+              fb($details,'$details');
+            
+            $result = $this->user_model->user_details_set($user_id, $details);
+            if (!$result) {
+                $status = false;
+                $params['msg'] = 'Set user details error';
+            }
+        }
+        
+         if ($status) {
+
+            $msg = 'Success update';            
+            $params = array(
+                'msg' => $msg
+            );
+            make_json_answer($status, $params);
+            return true;
+        }
+
+        if (!isset($params['msg']) or empty($params['msg'])) {
+            $params['msg'] = replace_lang('<{The fields you missed have been highlighted}>');
+        }
+        make_json_answer(false, $params);
+        return false;
+    }
+    
     public function user_set_experience() {
         $CI = &get_instance();
         $this->load->model('user_model');

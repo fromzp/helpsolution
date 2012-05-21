@@ -177,7 +177,9 @@ class User_model extends CI_Model {
             d.birthdate,
             d.marital_status,
             d.education,
-            d.about_me   
+            d.about_me,
+            d.city_name,
+            d.current_status
             ');
         }
 

@@ -1522,6 +1522,9 @@ resize: none;
     margin-right:38%;
 }
 
+.content .main_content .info_div .selects .current_status{
+    float:left;
+}
 #age_select {
     float: left;
     margin-right: 16px;

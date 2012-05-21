@@ -3,10 +3,11 @@ $title = replace_lang('<{My profile Title}>');
 $objects = array();
 $objects[] = array('js_source', 'js/jquery.validate.min.js', array('id' => 'validate.js'));
 $objects[] = array('js_source', 'js/jquery_validate_locale/messages_' . LANGUAGE_CODE2 . '.js', array('id' => 'validate_local.js'));
+$objects[] = array('js_source', 'js/jquery.maskedinput.js', array('id' => 'jquery.maskedinput'));
 
 $objects[] = array('js', 'ajax.js.php', array('id' => 'ajax.js'));
 $objects[] = array('js', 'edit_profile.js.php', array('id' => 'edit_profile.js'));
-
+fb($user_details['birthdate'],'age');
 echo get_header_auth($title, $objects);
 ?>
 
@@ -70,22 +71,29 @@ echo get_header_auth($title, $objects);
         <form id="more_info" class="more_info">
             <div class="info_div"> <div class="content_icon content_icon_status">   </div>    <span class="info_span">Статус:</span> 
                 <div class="selects">
-                   <select id="select_status"> 
+                    <input type="text" size ="40" maxlength="40" class="current_status" id="current_status" value="<?php echo !empty($user_details['current_status'])?$user_details['current_status']: ''; ?>"/>
+                  <!-- <select id="select_status"> 
                         <option>Пункт 1</option>
                         <option>Пункт 2</option> 
-                    </select>                
+                    </select>                -->
                 </div>
+                
             </div>
             <div class="info_div"> <div class="content_icon content_icon_age">      </div>    <span class="info_span">Вiк:</span>
-                <div class="selects"> <input style="text-align: center" maxlength="3" sieze="3" type="text" id="age_select"/></div> </div>
+                <div class="selects"> <input style="text-align: center" maxlength="10" sieze="40" type="text" id="age" value="<?php echo !empty($user_details['birthdate'])?$user_details['birthdate']:''; ?>"/></div> </div>
+         
             <div class="info_div"> <div class="content_icon content_icon_marital">  </div>    <span class="info_span">Сiмейний стан:</span>
                 <div class="selects">
                     <select id="merital_select"> 
-                        <option value="choose">choose</option>
-                        <option value="married">married</option>
-                        <option value="single">single</option>
-                        <option value="divorced">divorced</option>
-                        <option value="widow">widow</option>  
+                        <option value="NULL">choose</option>
+                        <?php
+                        $merital_status=array('married','single','divorced', 'widow');
+                        foreach ($merital_status as $value) {?>
+                        <option value="<?php echo$value ; ?>" <?php echo $user_details['marital_status']==$value?'selected="true"':''; ?>> <?php echo $value;?> </option>
+                        <?php?>
+                        
+                        <?php } ?>                       
+                        
                     </select>
                 </div>
             </div>
@@ -98,13 +106,13 @@ echo get_header_auth($title, $objects);
                     </select>
                 </div>
             </div>
-            <div class="info_div two_select"> <div class="content_icon content_icon_country">  </div>    <span class="info_span">Мiсто</span>
+            <div class="info_div two_select"> <div class="content_icon content_icon_country">  </div>    <span class="info_span">Мiсто:</span>
                 <div class="selects">
-                    <input type="text" id="city" name="city"/>
+                    <input type="text" id="city" name="city" value="<?php echo !empty($user_details['city_name'])?$user_details['city_name']:'';  ?>"/>
                     <select id="country_select"> 
 <?php 
 
-echo country_select_get()?>                   
+echo country_select_get($user_details['country_id'])?>                   
                     </select>
                     
                 </div>
