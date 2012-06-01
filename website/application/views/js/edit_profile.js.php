@@ -301,7 +301,21 @@
         }
     );
         /*end add general info*/
-    
+     $("#upload_photo").live('click',function()
+        {
+            
+            $("#photoimg").click();
+        });
+
+        $('#photoimg').live('change', function() //photoimg изменился?!
+        {
+            $("#preview").html(''); // чистим preview
+            $("#preview").html('<img src="<?php echo _img('loader.gif'); ?>"/>'); //показываем картинку загрузки
+            $("#imageform").ajaxForm( //отправляем аякс запрос (тут уже действует jquery.fomrm
+            {
+                target: '#preview'
+            }).submit();
+        });
     });
    
     /*</script>*/

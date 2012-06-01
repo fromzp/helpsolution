@@ -545,6 +545,20 @@ Class Registration extends CI_Controller {
         }
     }
 
+    public function edit_photo(){
+
+        $user_id = user_id();
+        $user_details = user_details();
+        /* image need size */
+        $image = $user_details['image'];
+        if(empty($image) ) {
+            echo "no image";            
+        } else {
+           
+        }
+    }
+    
+    
 }
 
 ?>

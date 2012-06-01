@@ -5,8 +5,7 @@ echo get_header_auth($title, $objects);
 ?>
 
 
-<div class="content profile_content">
-
+<div class="content profile_content">    
     <div class="profile">
         <div class="left_part">
             <div class="portfolio">
@@ -16,7 +15,7 @@ echo get_header_auth($title, $objects);
                 <div class="portfolio_rating"> (звездочки) </div>
                 <div class="portfolio_photo">
                     <img src="<?php if (!empty($user_details['image']))
-                        echo base_url() . $this->config->item('upload_url') . $user_details['image']; ?>"  width="<?php echo $user_details['image_width']?>" height="<?php echo $user_details['image_height']?>" alt="Image">
+                        echo base_url() . $this->config->item('upload_url') . $user_details['image']; ?>"  width="<?php echo $user_details['image_width'] ?>" height="<?php echo $user_details['image_height'] ?>" alt="Image">
                 </div>
                 <div class="portfolio_energy">
 

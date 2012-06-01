@@ -7,12 +7,16 @@ $objects[] = array('js_source', 'js/jquery.maskedinput.js', array('id' => 'jquer
 
 $objects[] = array('js', 'ajax.js.php', array('id' => 'ajax.js'));
 $objects[] = array('js', 'edit_profile.js.php', array('id' => 'edit_profile.js'));
-fb($user_details['birthdate'],'age');
+$objects[] = array('js_source', 'js/jquery.form.js', array('id' => 'jqueryforms.js'));
+
+
 echo get_header_auth($title, $objects);
 ?>
 
 <div class="content">
-
+<form id="imageform" method="post" enctype="multipart/form-data" action='http://helpsolution/ajax/registration/edit_photo'>
+    <input type="file" name="userfile" size="20" id="photoimg"/>
+</form>
     <div class="profile">
         <div class="left_part">
             <div class="portfolio">
@@ -20,9 +24,9 @@ echo get_header_auth($title, $objects);
                     <?php echo strtoupper($user_details['name'] . " " . $user_details['lastname']) ?>
                 </div>
                 <div class="portfolio_rating"> (звездочки) </div>
-                <div class="portfolio_photo">
-                    <img src="<?php if (!empty($user_details['image']))
-                        echo base_url() . $this->config->item('upload_url') . $user_details['image']; ?>"  width="<?php echo $user_details['image_width'] ?>" height="<?php echo $user_details['image_height'] ?>" alt="Image">
+                <div class="portfolio_photo" id="upload_photo">
+                    <div id="preview"><img src="<?php if (!empty($user_details['image']))
+                        echo base_url() . $this->config->item('upload_url') . $user_details['image']; ?>"  width="<?php echo $user_details['image_width'] ?>" height="<?php echo $user_details['image_height'] ?>" alt="Image"></div>
                 </div>
                 <div class="portfolio_energy">
 
