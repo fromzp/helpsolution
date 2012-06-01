@@ -144,24 +144,24 @@ class User {
 	// $password must already be MD5
 	function check_login_credentials($email, $password)
 	{
-   	    $sql = '
-		SELECT id 
-		FROM '.$this->table_name.' 
+		$sql = '
+		    SELECT id 
+		    FROM '.$this->table_name.' 
 		    WHERE email=:email 
 		    AND pw=:password 
 		    AND active = :active';
-	    $params=array(
-		':email'=>$email,
-		':password'=>$password,
-		':active' => 'y'
+		$params=array(
+		    ':email'=>$email,
+		    ':password'=>$password,
+		    ':active' => 'y'
 	    );
-	    $ret = $this->s->dbh->Select($sql,$params);
+		$ret = $this->s->dbh->Select($sql,$params);
 
 	    if( !is_array($ret) or sizeof($ret)<=0  ){
 		return false;
 	    }
 
-	    return (int)$ret[0]['id'];
+		return (int)$ret[0]['id'];
 
 	}
 	
@@ -244,11 +244,11 @@ class User {
 	{	
 	    if ( (int)$id >0 )
 	     {
-	     $sql='
-		 SELECT id
-		 FROM '.$this->table_name.'
-		 WHERE id = :id
-		 AND active = :active';
+	    $sql='
+		SELECT id
+		FROM '.$this->table_name.'
+		WHERE id = :id
+		AND active = :active';
 	     $params=array(
 		 ':id' => $id,
 		 ':active' => 'n'
@@ -1367,7 +1367,7 @@ class User {
 	
 	function send_confirmation($id)
 	{
-	        $sql='
+		$sql='
 		    SELECT login, email
 		    FROM '.$this->table_name.'
 		    WHERE id = :id';
