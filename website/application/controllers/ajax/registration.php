@@ -15,7 +15,7 @@ Class Registration extends CI_Controller {
                 return false;
             }
         }
-        fb($this->input->post('step'),'step');
+     
         switch ($this->input->post('step')) {
             case "user_create":
                 $this->user_create();
@@ -40,56 +40,55 @@ Class Registration extends CI_Controller {
         return false;
     }
 
-    
-    public function user_set_general_info(){
+    public function user_set_general_info() {
         $CI = &get_instance();
-        $this->load->model('user_model');  
-         if (!auth_check()) {
+        $this->load->model('user_model');
+        if (!auth_check()) {
             $msg = 'Auth error';
             log_message('DEBUG', $msg);
             make_json_answer(false, $msg);
             return false;
         }
         $user_id = user_id();
-        $user_status=$this->input->post('status');
-        $age=$this->input->post('age');
-        fb($age,'$age');
-        $marital_status=$this->input->post('marital_status');
-        fb($marital_status,'$marital_status');
-        $skills=$this->input->post('skills');
-        $country_id=$this->input->post('country_id');
-        $city=$this->input->post('city');
-        $current_status=$this->input->post('current_status');
-        
+        $user_status = $this->input->post('status');
+        $age = $this->input->post('age');
+
+        $marital_status = $this->input->post('marital_status');
+   
+        $skills = $this->input->post('skills');
+        $country_id = $this->input->post('country_id');
+        $city = $this->input->post('city');
+        $current_status = $this->input->post('current_status');
+
         $status = true;
         $params = array();
-        
-        if( empty($city) ) {
-            $status=false;
-            $params['city']=_jerr();
+
+        if (empty($city)) {
+            $status = false;
+            $params['city'] = _jerr();
         }
-        
+
         if ($status) {
-              $details = array(               
+            $details = array(
                 'birthdate' => $age,
                 'marital_status' => $marital_status,
                 //'skills' => $skills,
                 'country_id' => $country_id,
                 'city_name' => $city,
-                'current_status'=> $current_status
+                'current_status' => $current_status
             );
-              fb($details,'$details');
-            
+           
+
             $result = $this->user_model->user_details_set($user_id, $details);
             if (!$result) {
                 $status = false;
                 $params['msg'] = 'Set user details error';
             }
         }
-        
-         if ($status) {
 
-            $msg = 'Success update';            
+        if ($status) {
+
+            $msg = 'Success update';
             $params = array(
                 'msg' => $msg
             );
@@ -103,7 +102,7 @@ Class Registration extends CI_Controller {
         make_json_answer(false, $params);
         return false;
     }
-    
+
     public function user_set_experience() {
         $CI = &get_instance();
         $this->load->model('user_model');
@@ -115,66 +114,66 @@ Class Registration extends CI_Controller {
             return false;
         }
         $user_id = user_id();
-        $title=$this->input->post('title');
-        $age_begin=$this->input->post('age_begin');
-        $age_end=$this->input->post('age_end');
-        $type=$this->input->post('type');
-        $details=$this->input->post('details');
-        
+        $title = $this->input->post('title');
+        $age_begin = $this->input->post('age_begin');
+        $age_end = $this->input->post('age_end');
+        $type = $this->input->post('type');
+        $details = $this->input->post('details');
+
         $status = true;
         $params = array();
-        
+
         if (empty($title)) {
-            $status=false;
-            $params['title']=_jerr();
+            $status = false;
+            $params['title'] = _jerr();
         }
-        
+
         if (empty($age_begin)) {
-            $status=false;
-            $params['age_begin']=_jerr();
+            $status = false;
+            $params['age_begin'] = _jerr();
         }
-        
-         if (mb_strlen($age_begin) < 4) {
+
+        if (mb_strlen($age_begin) < 4) {
             $status = false;
             $params['password'] = _jerr('minlength', array(4));
         }
-        
+
         if (empty($age_end)) {
-            $status=false;
-            $params['age_begin']=_jerr();
+            $status = false;
+            $params['age_begin'] = _jerr();
         }
-        
-         if (mb_strlen($age_end) < 4) {
+
+        if (mb_strlen($age_end) < 4) {
             $status = false;
             $params['password'] = _jerr('minlength', array(4));
-        }        
-        
-        if ( empty($type)) {
-            $status=false;
-            $params['msg']='No type';
         }
-        
+
+        if (empty($type)) {
+            $status = false;
+            $params['msg'] = 'No type';
+        }
+
         if ($status) {
-            $details=array(
+            $details = array(
                 'user_id' => $user_id,
-                'title'=> $title,
+                'title' => $title,
                 'age_begin' => $age_begin,
                 'age_end' => $age_end,
                 'type' => $type,
-                'details' => $details 
+                'details' => $details
             );
-            $result=$this->user_model->insert_into($details);
-            if ($result>0) {
+            $result = $this->user_model->insert_into($details);
+            if ($result > 0) {
                 $status = true;
             } else {
-           $status = false;
-           $params['msg'] = 'image upload error';
+                $status = false;
+                $params['msg'] = 'image upload error';
             }
         }
-        
+
         if ($status) {
 
-            $msg = 'Success create';            
+            $msg = 'Success create';
             $params = array(
                 'msg' => $msg
             );
@@ -187,8 +186,8 @@ Class Registration extends CI_Controller {
         }
         make_json_answer(false, $params);
         return false;
-        
     }
+
 
     public function user_create() {
         $CI = &get_instance();
@@ -477,88 +476,7 @@ Class Registration extends CI_Controller {
         }
     }
 
-    public function user_photo_preview() {
-
-
-        $upload_path = $this->config->item('upload_path_tmp');
-        $upload_link = base_url() . $this->config->item('upload_url_tmp');
-        $logo_max_upload_width = $this->config->item('upload_logo_image_max_width');
-        $logo_max_upload_height = $this->config->item('upload_logo_image_max_height');
-        $max_upload_size = $this->config->item('upload_max_filesize');
-        $max_upload_width = $this->config->item('upload_image_max_width');
-        $max_upload_height = $this->config->item('upload_image_max_height');
-        $allowed_types = $this->config->item('upload_allowed_types');
-
-        if (!is_dir($upload_path)) {
-            if (!mkdir($upload_path)) {
-                echo "No access for creating temp folder";
-            };
-        }
-
-        $this->load->library('image_lib');
-        $config['upload_path'] = $upload_path;
-        $config['allowed_types'] = $allowed_types;
-        $config['max_size'] = $max_upload_size;
-        $config['max_width'] = $max_upload_width;
-        $config['max_height'] = $max_upload_height;
-        $config['overwrite'] = TRUE;
-        $config['file_name'] = md5($this->session->userdata('session_id'));
-        $config['overwrite'] = TRUE;
-
-        $this->load->library('upload', $config);
-
-        if (!$this->upload->do_upload()) {
-            $error = array('error' => $this->upload->display_errors());
-
-            echo $error['error'];
-        } else {
-
-            $image = array('upload_data' => $this->upload->data());
-
-            chmod($image['upload_data']['full_path'], 0666);
-
-            $thumbnail = $upload_path . 'thumb_' . $image['upload_data']['file_name'];
-
-            $upload_width = $image['upload_data']['image_width'];
-            $upload_height = $image['upload_data']['image_height'];
-            $size_constant = $upload_width / $upload_height;
-
-            if ($upload_width > $logo_max_upload_width) {
-                $config['width'] = $logo_max_upload_width;
-                $will_height = $config['width'] / $size_constant;
-                $will_height > $logo_max_upload_height ? $will_height = $logo_max_upload_height : $config['height'] = $will_height;
-            } else {
-                $config['width'] = $upload_width;
-                $will_height = $config['width'] / $size_constant;
-                $will_height > $logo_max_upload_height ? $config['height'] = $logo_max_upload_height : $config['height'] = $will_height;
-            }
-            $config['image_library'] = 'gd2';
-            $config['source_image'] = $image['upload_data']['full_path'];
-            $config['new_image'] = $thumbnail;
-            //   $config['create_thumb'] = TRUE;
-            $config['maintain_ratio'] = TRUE;
-
-            $this->image_lib->initialize($config);
-            $this->image_lib->resize();
-            fb('name_photo', $image['upload_data']['file_name']);
-            echo '<img id="user_image" height="' . $config['height'] . '" width= "' . $config['width'] . '" alt="' . $image['upload_data']['file_name'] . '" src="' . $upload_link . "thumb_" . $image['upload_data']['file_name'] . '/' . md5(microtime()) . '">';
-        }
-    }
-
-    public function edit_photo(){
-
-        $user_id = user_id();
-        $user_details = user_details();
-        /* image need size */
-        $image = $user_details['image'];
-        if(empty($image) ) {
-            echo "no image";            
-        } else {
-           
-        }
-    }
-    
-    
+       
 }
 
 ?>

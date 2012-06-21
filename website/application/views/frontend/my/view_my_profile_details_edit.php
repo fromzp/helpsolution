@@ -14,7 +14,7 @@ echo get_header_auth($title, $objects);
 ?>
 
 <div class="content">
-<form id="imageform" method="post" enctype="multipart/form-data" action='http://helpsolution/ajax/registration/edit_photo'>
+<form id="imageform" method="post" enctype="multipart/form-data" action='http://helpsolution/ajax/edit_image/user_photo_preview'>
     <input type="file" name="userfile" size="20" id="photoimg"/>
 </form>
     <div class="profile">
@@ -25,9 +25,10 @@ echo get_header_auth($title, $objects);
                 </div>
                 <div class="portfolio_rating"> (звездочки) </div>
                 <div class="portfolio_photo" id="upload_photo">
-                    <div id="preview"><img src="<?php if (!empty($user_details['image']))
-                        echo base_url() . $this->config->item('upload_url') . $user_details['image']; ?>"  width="<?php echo $user_details['image_width'] ?>" height="<?php echo $user_details['image_height'] ?>" alt="Image"></div>
+                    <div id="preview"><img src="<?php if (!empty($user_details['image'])) {
+                        echo base_url() . $this->config->item('upload_url') . $user_details['image'];} else echo 'http://helpsolution/img/photo_load.png' ?>"  id="user_image" width="<?php echo !empty($user_details['image'])?$user_details['image_width']:200; ?>" height="<?php echo !empty($user_details['image'])?$user_details['image_height']:275; ?>" alt="<?php echo  $user_details['image'];?>"></div>
                 </div>
+                <input type="button" value="Обновить" onclick="upload_new_image()"/>
                 <div class="portfolio_energy">
 
                     <table class="energy" border="0">                

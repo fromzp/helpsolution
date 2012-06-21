@@ -50,7 +50,8 @@ class Profile extends CI_Controller {
          */
         /* image need size */
         $image = $user_details['image'];
-        $result = check_image_resize($image);
+        $type='upload';
+        $result = check_image_resize($image, $type);
         $user_details['image_width'] = $result['image_width'];
         $user_details['image_height'] = $result['image_height'];
         /* image need size end */

@@ -28,7 +28,7 @@ echo get_header($title, $objects);
     <h3 style="text-align: center;"><{РЕЄСТРАЦIЯ}></h3>
 </div>
 
-<form id="imageform" method="post" enctype="multipart/form-data" action='ajax/registration/user_photo_preview'>
+<form id="imageform" method="post" enctype="multipart/form-data" action='ajax/edit_image/user_photo_preview'>
     <input type="file" name="userfile" size="20" id="photoimg"/>
 </form>
 

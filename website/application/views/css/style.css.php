@@ -1178,7 +1178,7 @@ a{
 .content .profile .left_part .portfolio .portfolio_photo {
     float:left;
     width:200px;
-    height:235px;
+    /*height:235px;*/
     margin:15px 0px 0px 10px;
     border: 1px solid black;
    
@@ -1671,5 +1671,19 @@ font-weight: bold;
         border:1px solid red;
     }
     /*ERRORS END*/
+    
+    /* Upload forma*/
+  #photoimg {
+  width:1px;
+  height:1px;
+  opacity: 0.0; /* Standard: FF gt 1.5, Opera, Safari */
+  filter: alpha(opacity=0); /* IE lt 8 */
+  -ms-filter: "alpha(opacity=0)"; /* IE 8 */
+  -khtml-opacity: 0.0; /* Safari 1.x */
+  -moz-opacity: 0.0; /* FF lt 1.5, Netscape */
+    }
+    /*End Upload forma*/
+    
+    
 /*END*/
 /*</style>*/

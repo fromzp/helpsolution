@@ -317,5 +317,18 @@
             }).submit();
         });
     });
+    
+    function upload_new_image()
+    {
+var image = $("#user_image").attr('alt');
+var requestUrl = '<?php echo site_url('ajax/edit_image/'); ?>';
+$.post(requestUrl, {image:image, step:'edit_image'}, function()
+        {
+alert('true');            
+        }, 'json');
+    }
+
+
+    
    
     /*</script>*/
