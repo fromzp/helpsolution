@@ -139,7 +139,7 @@ Class Edit_image extends CI_Controller {
             make_json_answer($status, $params);
             return TRUE;
         }
-
+//////////
         $status = false;
         $params['msg'] = "Can not update user photo";
         return FALSE;
