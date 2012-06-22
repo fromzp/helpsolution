@@ -46,9 +46,10 @@ echo get_header($title, $objects);
                 </div>
                 <div class="choose">
                     <div class="inputs_radio">
-                        <input type="radio" name="help" value="can_help"  <?php if (!empty($who_join) ) {echo $who_join=="can_help"?'checked="checked"':'checked=""';} else {echo 'checked="checked"';} ?>/><span>Я можу допомогти </span></br>
+                        <?php fb($who_join,'$who_join');?>
+                        <input type="radio" name="help" value="can_help"  <?php if (!empty($who_join) ) {echo $who_join=="can_help"?'checked="checked"':'';} else {echo 'checked="checked"';} ?>/><span>Я можу допомогти </span></br>
                         <div class="rubber"></div>
-                        <input type="radio" name="help" value="need_help" <?php if (!empty($who_join) ) {echo $who_join=="need_help"?'checked="checked"':'checked=""';} ?> /><span>Мені потрібна допомога   </span> 
+                        <input type="radio" name="help" value="need_help" <?php if (!empty($who_join) ) {echo $who_join=="need_help"?'checked="checked"':'';} ?> /><span>Мені потрібна допомога   </span> 
                     </div>
 
                 </div>
